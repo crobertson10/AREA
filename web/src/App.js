@@ -1,27 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
 import { 
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
+import Signin from "./Pages/Signin/Signin";
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <Switch>
-      <Route path="/">
-
-      </Route>
-      <Route path="/signup">
-        
-      </Route>
-      <Route path="/signin">
-        
-      </Route>
-      <Route path="/home">
-        
-      </Route>
+      <Route path="/sign-in" component={Signin} />
     </Switch>
   );
 }

@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:8.11.4
+FROM node:latest
 
 WORKDIR /web
 
@@ -8,6 +8,6 @@ RUN yarn install
 
 COPY . /web/
 
-EXPOSE 8081
+EXPOSE 8080
 
 CMD ["yarn", "start"]

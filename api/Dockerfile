@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:8.11.4
+FROM node:latest
 
 WORKDIR /api
 
@@ -8,6 +8,6 @@ RUN yarn install
 
 COPY . /api/
 
-EXPOSE 8081
+EXPOSE 3000
 
 CMD ["yarn", "start"]

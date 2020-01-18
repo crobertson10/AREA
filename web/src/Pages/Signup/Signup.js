@@ -7,13 +7,6 @@ import SignUpForm from "Components/Form/Forms/SignUpForm";
 const useStyles = makeStyles(styles);
 
 class SignUp extends React.Component {
-  state = {
-    FirstName: "",
-    LastName: "",
-    Email: "",
-    Pass: ""
-  };
-
   render() {
     return (
       <div

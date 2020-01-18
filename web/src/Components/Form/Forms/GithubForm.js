@@ -1,9 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import Icon from "@material-ui/core/Icon";
-import People from "@material-ui/icons/People";
-import Footer from "components/Footer/Footer.js";
 import EmailIcon from "@material-ui/icons/Email";
 import LockIcon from "@material-ui/icons/Lock";
 import CheckIcon from "@material-ui/icons/Check";
@@ -20,7 +17,7 @@ import styles from "assets/jss/material-kit-react/views/loginPage.js";
 import CustomLinearProgress from "components/CustomLinearProgress/CustomLinearProgress.js";
 const useStyles = makeStyles(styles);
 
-export default function SighUpForm() {
+export default function GithubForm() {
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
   setTimeout(function() {
     setCardAnimation("");
@@ -32,45 +29,19 @@ export default function SighUpForm() {
         <GridItem xs={12} sm={12} md={4}>
           <Card className={classes[cardAnimaton]}>
             <CardHeader color="primary" style={{ textAlign: "center" }}>
-              <h1>Sign-Up</h1>
+              <Button color="transparent">
+                <i className={" fab fa-github"} style={{ fontSize: 200 }} />
+              </Button>
             </CardHeader>
             <CardBody>
-              <h5>Veuillez renseigné vos informations</h5>
+              <h5>Veuillez renseigné vos identifiants Github</h5>
               <CustomLinearProgress
                 variant="determinate"
                 color="success"
-                value={25}
+                value={90}
                 style={{ width: "100%", display: "inline-block" }}
               />
               <form>
-                <CustomInput
-                  labelText="Prénom"
-                  id="Firstname"
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                  inputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <People />
-                      </InputAdornment>
-                    )
-                  }}
-                />
-                <CustomInput
-                  labelText="Nom"
-                  id="Lastname"
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                  inputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <People />
-                      </InputAdornment>
-                    )
-                  }}
-                />
                 <CustomInput
                   labelText="Email"
                   id="Email"
@@ -102,13 +73,13 @@ export default function SighUpForm() {
               </form>
             </CardBody>
             <CardFooter>
-              <Button href={"/facebook"} color="success" round>
+              <Button href={"/github"} color="success" round>
                 <CheckIcon />
                 Next
               </Button>
-              <Button href={"/"} color="danger" round>
+              <Button href={"/github"} color="danger" round>
                 <CancelIcon />
-                Cancel
+                Ignore
               </Button>
             </CardFooter>
           </Card>

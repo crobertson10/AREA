@@ -20,7 +20,7 @@ import styles from "assets/jss/material-kit-react/views/loginPage.js";
 import CustomLinearProgress from "components/CustomLinearProgress/CustomLinearProgress.js";
 const useStyles = makeStyles(styles);
 
-export default function SighUpForm() {
+export default function FacebookForm() {
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
   setTimeout(function() {
     setCardAnimation("");
@@ -32,45 +32,19 @@ export default function SighUpForm() {
         <GridItem xs={12} sm={12} md={4}>
           <Card className={classes[cardAnimaton]}>
             <CardHeader color="primary" style={{ textAlign: "center" }}>
-              <h1>Sign-Up</h1>
+              <Button color="transparent">
+                <i className={" fab fa-facebook"} style={{ fontSize: 200 }} />
+              </Button>
             </CardHeader>
             <CardBody>
-              <h5>Veuillez renseigné vos informations</h5>
+              <h5>Veuillez renseigné vos identifiants Facebook</h5>
               <CustomLinearProgress
                 variant="determinate"
                 color="success"
-                value={25}
+                value={50}
                 style={{ width: "100%", display: "inline-block" }}
               />
               <form>
-                <CustomInput
-                  labelText="Prénom"
-                  id="Firstname"
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                  inputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <People />
-                      </InputAdornment>
-                    )
-                  }}
-                />
-                <CustomInput
-                  labelText="Nom"
-                  id="Lastname"
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                  inputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <People />
-                      </InputAdornment>
-                    )
-                  }}
-                />
                 <CustomInput
                   labelText="Email"
                   id="Email"
@@ -102,13 +76,13 @@ export default function SighUpForm() {
               </form>
             </CardBody>
             <CardFooter>
-              <Button href={"/facebook"} color="success" round>
+              <Button href={"/slack"} color="success" round>
                 <CheckIcon />
                 Next
               </Button>
-              <Button href={"/"} color="danger" round>
+              <Button href={"/slack"} color="danger" round>
                 <CancelIcon />
-                Cancel
+                Ignore
               </Button>
             </CardFooter>
           </Card>

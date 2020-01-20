@@ -3,11 +3,11 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const verify = require('./verifyToken');
 const User = require('../models/usershema');
-const { validation } = require('../validation');
+const { registerValidation, loginValidation } = require('../validation');
 
 router.post('/register', async (req, res) => {
     // Validate data
-    const { error } = validation(req.body);
+    const { error } = registerValidation(req.body);
     if (error)
         return res.status(400).send(error.details[0].message);
     // Check existing user
@@ -19,6 +19,8 @@ router.post('/register', async (req, res) => {
     const hash = await bcrypt.hash(req.body.password, salt);
     // Create new user
     const user = new User({
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
         email: req.body.email,
         password: hash
         });
@@ -33,7 +35,7 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     // Validate data
-    const { error } = validation(req.body);
+    const { error } = loginValidation(req.body);
     if (error)
         return res.status(400).send(error.details[0].message);
 

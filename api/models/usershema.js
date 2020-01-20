@@ -9,6 +9,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         min: 6
+    },
+    github: {
+        id: String,
+        token: String,
+        username: String
     }
 });
 

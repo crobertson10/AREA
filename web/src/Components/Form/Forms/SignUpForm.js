@@ -1,4 +1,5 @@
 import React from "react";
+import Axios from 'axios';
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Icon from "@material-ui/core/Icon";
@@ -22,6 +23,35 @@ const useStyles = makeStyles(styles);
 
 export default function SighUpForm() {
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
+  const [values, setValues] = React.useState({
+    firstName: "",
+    lastName: "",
+    mail: "",
+    password: ""
+  });
+
+  const handleChange = prop => event => {
+    setValues({...values, [prop]: event.target.value});
+  }
+
+  const submit = () => {
+    console.log('password: ' + values.password);
+    console.log('mail: ' + values.mail);
+    console.log('firstName: ' + values.firstName);
+    console.log('lastName: ' + values.lastName);
+    Axios({
+      method: 'POST',
+      url: 'http://localhost:3000/api/user/register',
+      data: values,
+    })
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
   setTimeout(function() {
     setCardAnimation("");
   }, 700);
@@ -50,6 +80,8 @@ export default function SighUpForm() {
                     fullWidth: true
                   }}
                   inputProps={{
+                    value: values.firstName,
+                    onChange: handleChange('firstName'),
                     endAdornment: (
                       <InputAdornment position="end">
                         <People />
@@ -64,6 +96,8 @@ export default function SighUpForm() {
                     fullWidth: true
                   }}
                   inputProps={{
+                    value: values.lastName,
+                    onChange: handleChange('lastName'),
                     endAdornment: (
                       <InputAdornment position="end">
                         <People />
@@ -78,6 +112,8 @@ export default function SighUpForm() {
                     fullWidth: true
                   }}
                   inputProps={{
+                    value: values.mail,
+                    onChange: handleChange('mail'),
                     endAdornment: (
                       <InputAdornment position="end">
                         <EmailIcon />
@@ -92,6 +128,9 @@ export default function SighUpForm() {
                     fullWidth: true
                   }}
                   inputProps={{
+                    type: "Password",
+                    value: values.password,
+                    onChange: handleChange('password'),
                     endAdornment: (
                       <InputAdornment position="end">
                         <LockIcon />
@@ -102,7 +141,7 @@ export default function SighUpForm() {
               </form>
             </CardBody>
             <CardFooter>
-              <Button href={"/facebook"} color="success" round>
+              <Button color="success" onClick={submit} round>
                 <CheckIcon />
                 Next
               </Button>

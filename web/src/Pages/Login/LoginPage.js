@@ -12,6 +12,7 @@ import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardFooter from "components/Card/CardFooter.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
+import Axios from "axios";
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 
 const useStyles = makeStyles(styles);
@@ -22,6 +23,30 @@ export default function LoginPage() {
     setCardAnimation("");
   }, 700);
   const classes = useStyles();
+  const [values, setValues] = React.useState({
+    mail: "",
+    password: ""
+  });
+
+  const handleChange = prop => event => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
+
+  const submit = () => {
+    console.log("password: " + values.password);
+    console.log("mail: " + values.mail);
+    Axios({
+      method: "POST",
+      url: "http://localhost:3000/api/user/register",
+      data: values
+    })
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   return (
     <div>
@@ -40,6 +65,8 @@ export default function LoginPage() {
                     fullWidth: true
                   }}
                   inputProps={{
+                    value: values.mail,
+                    onChange: handleChange("mail"),
                     endAdornment: (
                       <InputAdornment position="end">
                         <EmailIcon />
@@ -54,6 +81,8 @@ export default function LoginPage() {
                     fullWidth: true
                   }}
                   inputProps={{
+                    value: values.password,
+                    onChange: handleChange("password"),
                     endAdornment: (
                       <InputAdornment position="end">
                         <LockIcon />
@@ -63,7 +92,12 @@ export default function LoginPage() {
                 />
               </CardBody>
               <CardFooter>
-                <Button href={"/dashboard"} color="primary" round>
+                <Button
+                  href={"/dashboard"}
+                  color="primary"
+                  round
+                  onClick={submit}
+                >
                   Sign In
                 </Button>
                 <Button href={"/sign-up"} color="primary" round>

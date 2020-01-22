@@ -17,12 +17,27 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         min: 6
-    },
-    github: {
-        id: String,
-        token: String,
-        username: String
     }
 });
 
+const githubSchema = new mongoose.Schema({
+    userId: {
+        type: String,
+        required: true
+    },
+    gihubId: {
+        type: String,
+        required: true
+    },
+    token: {
+        type: String,
+        required: true
+    },
+    username: {
+        type: String,
+        required: true
+    }
+});
+
+module.exports = mongoose.model('Github', githubSchema);
 module.exports = mongoose.model('User', userSchema);

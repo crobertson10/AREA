@@ -1,9 +1,11 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const passport = require('../passport');
 const verify = require('./verifyToken');
-const User = require('../models/usershema');
+const { User, Github } = require('../models/usershema');
 const { registerValidation, loginValidation } = require('../validation');
+//require('../passport')(passport);
 
 router.post('/register', async (req, res) => {
     // Validate data
@@ -52,6 +54,14 @@ router.post('/login', async (req, res) => {
     // Create and assign jwt
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
     res.header('auth-token', token).send(token);
+});
+
+router.get('/github', passport.authorize('github', { failureRedirect: '/account' }));
+
+router.get('/github/callback', passport.authorize('github', { failureRedirect: '/account' }), 
+function(req, res) {
+    console.log(req);
+    res.send(req);    
 });
 
 module.exports = router;

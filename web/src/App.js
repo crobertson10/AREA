@@ -2,6 +2,7 @@ import React from "react";
 import Home from "./Pages/Login/LoginPage";
 import Signup from "./Pages/Signup/Signup";
 import FacebookSignIn from "./Pages/FacebookSignIn/FacebookSignIn";
+import Dashboard from "./Pages/LandingPage/LandingPage";
 import SlackSignIn from "./Pages/SlackSignIn/SlackSignIn";
 import GithubSignIn from "./Pages/GithubSignIn/GithubSignIn";
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
@@ -28,6 +29,7 @@ function App() {
         <Route exact path="/facebook" component={FacebookSignIn} />
         <Route exact path="/slack" component={SlackSignIn} />
         <Route exact path="/github" component={GithubSignIn} />
+        <Route exact path="/dashboard" component={Dashboard} />
       </Switch>
     </div>
   );

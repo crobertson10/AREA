@@ -8,17 +8,7 @@ const useStyles = makeStyles(styles);
 
 class SlackSignIn extends React.Component {
   render() {
-    return (
-      <div
-        style={{
-          backgroundImage: "url(" + image + ")",
-          backgroundSize: "cover",
-          backgroundPosition: "top center"
-        }}
-      >
-        <SlackForm />
-      </div>
-    );
+    return <SlackForm />;
   }
 }
 

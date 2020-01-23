@@ -14,6 +14,7 @@ import CardFooter from "components/Card/CardFooter.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import Axios from "axios";
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
+import Image from "assets/img/logo1.png";
 
 const useStyles = makeStyles(styles);
 
@@ -55,7 +56,8 @@ export default function LoginPage() {
           <GridItem xs={12} sm={12} md={4}>
             <Card className={classes[cardAnimaton]}>
               <CardHeader color="primary" style={{ textAlign: "center" }}>
-                <h3>Login</h3>
+                <img src={Image}></img>
+                {/* <h3>Login</h3> */}
               </CardHeader>
               <CardBody>
                 <CustomInput

@@ -3,7 +3,7 @@ import React from "react";
 import classNames from "classnames";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-
+import { CloudDownload } from "@material-ui/icons";
 // @material-ui/icons
 
 // core components
@@ -14,9 +14,9 @@ import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
 import Parallax from "components/Parallax/Parallax.js";
-import Image from "assets/img/doge.jpeg";
+import Image from "assets/img/logo1.png";
 import styles from "assets/jss/material-kit-react/views/landingPage.js";
-
+import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
 // Sections for this page
 const useStyles = makeStyles(styles);
 
@@ -27,12 +27,14 @@ export default function LandingPage(props) {
     <div>
       <Header
         color="transparent"
-        brand="AREA"
+        brand={<img src={Image} height="50" />}
+        rightLinks={<HeaderLinks />}
         fixed
         changeColorOnScroll={{
           height: 400,
           color: "white"
         }}
+        {...rest}
       />
       <Parallax>
         <div className={classes.container}>

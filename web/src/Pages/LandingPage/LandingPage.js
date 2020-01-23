@@ -1,77 +1,88 @@
 import React from "react";
-// nodejs library that concatenates classes
-import classNames from "classnames";
-// @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-
-// @material-ui/icons
-
-// core components
-import Header from "components/Header/Header.js";
-import Footer from "components/Footer/Footer.js";
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
-import HeaderLinks from "components/Header/HeaderLinks.js";
-import Parallax from "components/Parallax/Parallax.js";
-import Image from "assets/img/doge.jpeg";
+import GridContainer from "Components/components/Grid/GridContainer";
+import GridItem from "Components/components/Grid/GridItem";
 import styles from "assets/jss/material-kit-react/views/landingPage.js";
-
-// Sections for this page
+import CustomTabs from "Components/components/CustomTabs/CustomTabs";
+import Face from "@material-ui/icons/Face";
+import Chat from "@material-ui/icons/Chat";
+import Build from "@material-ui/icons/Build";
 const useStyles = makeStyles(styles);
 
 export default function LandingPage(props) {
   const classes = useStyles();
-  const { ...rest } = props;
   return (
     <div>
-      <Header
-        color="transparent"
-        brand="AREA"
-        fixed
-        changeColorOnScroll={{
-          height: 400,
-          color: "white"
-        }}
-      />
-      <Parallax>
-        <div className={classes.container}>
-          <GridContainer>
-            <GridItem xs={12} sm={12} md={6}>
-              <h1 className={classes.title}>Welcome to your AREA!</h1>
-              <h4>Create your own automated dashboard with AREA.</h4>
-            </GridItem>
-            <GridItem xs={12} sm={12} md={6}>
-              <img src={Image} width="100%" />
-            </GridItem>
-          </GridContainer>
-        </div>
-      </Parallax>
-      <div className={classNames(classes.main, classes.mainRaised)}>
-        <div className={classes.container}>
-          <GridContainer>
-            <GridItem
-              md={1}
-              direction="column"
-              justify="center"
-              alignItems="center"
-            >
-              <img src={Image} width="100%" />
-              <img src={Image} width="100%" />
-            </GridItem>
-            <GridItem
-              md={11}
-              direction="column"
-              justify="center"
-              alignItems="center"
-            >
-              <img src={Image} width="100%" />
-              <img src={Image} width="100%" />
-            </GridItem>
-          </GridContainer>
+      <div PaddingTop="100000">
+        <div className={classes.container} PaddingTop="1000">
+          <div id="nav-tabs">
+            <h3>Navigation Tabs</h3>
+            <GridContainer>
+              <GridItem md={6}>
+                <h1>coucou</h1>
+              </GridItem>
+              <GridItem xs={12} sm={12} md={6}>
+                <h3>
+                  <small>Tabs with Icons on Card</small>
+                </h3>
+                <CustomTabs
+                  headerColor="danger"
+                  tabs={[
+                    {
+                      tabName: "Profile",
+                      tabIcon: Face,
+                      tabContent: (
+                        <p className={classes.textCenter}>
+                          I think that’s a responsibility that I have, to push
+                          possibilities, to show people, this is the level that
+                          things could be at. So when you get something that has
+                          the name Kanye West on it, it’s supposed to be pushing
+                          the furthest possibilities. I will be the leader of a
+                          company that ends up being worth billions of dollars,
+                          because I got the answers. I understand culture. I am
+                          the nucleus.
+                        </p>
+                      )
+                    },
+                    {
+                      tabName: "Messages",
+                      tabIcon: Chat,
+                      tabContent: (
+                        <p className={classes.textCenter}>
+                          I think that’s a responsibility that I have, to push
+                          possibilities, to show people, this is the level that
+                          things could be at. I will be the leader of a company
+                          that ends up being worth billions of dollars, because
+                          I got the answers. I understand culture. I am the
+                          nucleus. I think that’s a responsibility that I have,
+                          to push possibilities, to show people, this is the
+                          level that things could be at.
+                        </p>
+                      )
+                    },
+                    {
+                      tabName: "Settings",
+                      tabIcon: Build,
+                      tabContent: (
+                        <p className={classes.textCenter}>
+                          think that’s a responsibility that I have, to push
+                          possibilities, to show people, this is the level that
+                          things could be at. So when you get something that has
+                          the name Kanye West on it, it’s supposed to be pushing
+                          the furthest possibilities. I will be the leader of a
+                          company that ends up being worth billions of dollars,
+                          because I got the answers. I understand culture. I am
+                          the nucleus.
+                        </p>
+                      )
+                    }
+                  ]}
+                />
+              </GridItem>
+            </GridContainer>
+          </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

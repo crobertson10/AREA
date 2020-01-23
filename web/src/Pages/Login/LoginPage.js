@@ -4,14 +4,14 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import EmailIcon from "@material-ui/icons/Email";
 import AddIcon from "@material-ui/icons/Add";
 import LockIcon from "@material-ui/icons/Lock";
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
-import Card from "components/Card/Card.js";
-import CardBody from "components/Card/CardBody.js";
-import CardHeader from "components/Card/CardHeader.js";
-import CardFooter from "components/Card/CardFooter.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
+import GridContainer from "Components/components/Grid/GridContainer";
+import GridItem from "Components/components/Grid/GridItem";
+import Button from "Components/components/CustomButtons/Button";
+import Card from "Components/components/Card/Card";
+import CardBody from "Components/components/Card/CardBody";
+import CardHeader from "Components/components/Card/CardHeader";
+import CardFooter from "Components/components/Card/CardFooter";
+import CustomInput from "Components/components/CustomInput/CustomInput";
 import Axios from "axios";
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 
@@ -54,7 +54,7 @@ export default function LoginPage() {
         <GridContainer justify="center">
           <GridItem xs={12} sm={12} md={4}>
             <Card className={classes[cardAnimaton]}>
-              <CardHeader color="primary" style={{ textAlign: "center" }}>
+              <CardHeader color="danger" style={{ textAlign: "center" }}>
                 <h3>Login</h3>
               </CardHeader>
               <CardBody>
@@ -94,13 +94,13 @@ export default function LoginPage() {
               <CardFooter>
                 <Button
                   href={"/dashboard"}
-                  color="primary"
+                  color="danger"
                   round
                   onClick={submit}
                 >
                   Sign In
                 </Button>
-                <Button href={"/sign-up"} color="primary" round>
+                <Button href={"/sign-up"} color="danger" round>
                   <AddIcon />
                   Sign Up
                 </Button>

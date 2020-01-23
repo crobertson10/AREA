@@ -25,6 +25,7 @@ function App() {
     >
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/login" component={Home} />
         <Route exact path="/sign-up" component={Signup} />
         <Route exact path="/facebook" component={FacebookSignIn} />
         <Route exact path="/slack" component={SlackSignIn} />

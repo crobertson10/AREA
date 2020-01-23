@@ -1,18 +1,18 @@
 import React from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
-// nodejs library to set properties for components
+// nodejs library to set properties for Components/components
 import PropTypes from "prop-types";
 
-// material-ui components
+// material-ui Components/components
 import { makeStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Icon from "@material-ui/core/Icon";
-// core components
-import Card from "components/Card/Card.js";
-import CardBody from "components/Card/CardBody.js";
-import CardHeader from "components/Card/CardHeader.js";
+// core Components/components
+import Card from "Components/components/Card/Card.js";
+import CardBody from "Components/components/Card/CardBody.js";
+import CardHeader from "Components/components/Card/CardHeader.js";
 
 import styles from "assets/jss/material-kit-react/components/customTabsStyle.js";
 

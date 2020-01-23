@@ -18,7 +18,7 @@ function App() {
     <div
       className={classes.pageHeader}
       style={{
-        backgroundImage: "url(" + image + ")",
+        backgroundColor: "black",
         backgroundSize: "cover",
         backgroundPosition: "top center"
       }}

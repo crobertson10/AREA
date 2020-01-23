@@ -30,15 +30,14 @@ export default function HeaderLinks(props) {
         <CustomDropdown
           noLiPadding
           buttonText="Pre-built ZAP"
+          hoverColor="white"
           buttonProps={{
-            color: "transparent"
+            color: "danger"
           }}
           buttonIcon={Apps}
           dropdownList={[
-            <Button color="transparent" target="_blank">
-              Github to Slack
-            </Button>,
-            <Button color="transparent" target="_blank">
+            <Button color="white">Github to Slack</Button>,
+            <Button color="white" target="_blank">
               Github to Gmail
             </Button>
           ]}

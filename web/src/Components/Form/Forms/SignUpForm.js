@@ -61,7 +61,7 @@ export default function SighUpForm() {
       <GridContainer justify="center">
         <GridItem xs={12} sm={12} md={4}>
           <Card className={classes[cardAnimaton]}>
-            <CardHeader color="primary" style={{ textAlign: "center" }}>
+            <CardHeader color="danger" style={{ textAlign: "center" }}>
               <h1>Sign-Up</h1>
             </CardHeader>
             <CardBody>

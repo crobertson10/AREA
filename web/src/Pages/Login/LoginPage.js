@@ -55,9 +55,8 @@ export default function LoginPage() {
         <GridContainer justify="center">
           <GridItem xs={12} sm={12} md={4}>
             <Card className={classes[cardAnimaton]}>
-              <CardHeader color="primary" style={{ textAlign: "center" }}>
-                <img src={Image}></img>
-                {/* <h3>Login</h3> */}
+              <CardHeader color="danger" style={{ textAlign: "center" }}>
+                <h3>Login</h3>
               </CardHeader>
               <CardBody>
                 <CustomInput
@@ -96,13 +95,13 @@ export default function LoginPage() {
               <CardFooter>
                 <Button
                   href={"/dashboard"}
-                  color="primary"
+                  color="danger"
                   round
                   onClick={submit}
                 >
                   Sign In
                 </Button>
-                <Button href={"/sign-up"} color="primary" round>
+                <Button href={"/sign-up"} color="danger" round>
                   <AddIcon />
                   Sign Up
                 </Button>

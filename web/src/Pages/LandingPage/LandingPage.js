@@ -2,14 +2,12 @@ import React from "react";
 import classNames from "classnames";
 import { makeStyles } from "@material-ui/core/styles";
 import { CloudDownload } from "@material-ui/icons";
-import Header from "Components/components/Header/Header";
 import Footer from "Components/components/Footer/Footer";
 import GridContainer from "Components/components/Grid/GridContainer";
 import GridItem from "Components/components/Grid/GridItem";
 import Button from "Components/components/CustomButtons/Button";
-import HeaderLinks from "Components/components/Header/HeaderLinks";
 import Parallax from "Components/components/Parallax/Parallax";
-import Image from "assets/img/logo1.png";
+
 import styles from "assets/jss/material-kit-react/views/landingPage.js";
 import CustomTabs from "Components/components/CustomTabs/CustomTabs";
 import CustomDropdown from "Components/components/CustomDropdown/CustomDropdown";
@@ -23,12 +21,6 @@ export default function LandingPage(props) {
   const { ...rest } = props;
   return (
     <div>
-      <Header
-        color="white"
-        brand={<img src={Image} height="50" />}
-        rightLinks={<HeaderLinks />}
-        fixed
-      />
       <div PaddingTop="100000">
         <div className={classes.container} PaddingTop="1000">
           <div id="nav-tabs">
@@ -42,7 +34,7 @@ export default function LandingPage(props) {
                   <small>Tabs with Icons on Card</small>
                 </h3>
                 <CustomTabs
-                  headerColor="primary"
+                  headerColor="danger"
                   tabs={[
                     {
                       tabName: "Profile",

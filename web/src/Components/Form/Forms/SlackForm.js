@@ -28,7 +28,7 @@ export default function SlackForm() {
       <GridContainer justify="center">
         <GridItem xs={12} sm={12} md={4}>
           <Card className={classes[cardAnimaton]}>
-            <CardHeader color="primary" style={{ textAlign: "center" }}>
+            <CardHeader color="danger" style={{ textAlign: "center" }}>
               <Button color="transparent">
                 <i className={" fab fa-slack"} style={{ fontSize: 200 }} />
               </Button>

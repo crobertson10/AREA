@@ -10,7 +10,7 @@ import GithubSignIn from "./Pages/GithubSignIn/GithubSignIn";
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 import { makeStyles } from "@material-ui/core/styles";
 import { Switch, Route } from "react-router-dom";
-import Image from "assets/img/logo1.png";
+import Logo from "assets/img/logo1.png";
 import "./App.css";
 
 const useStyles = makeStyles(styles);
@@ -27,7 +27,7 @@ function App() {
     >
       <Header
         color="white"
-        brand={<img src={Image} height="50" />}
+        brand={<img src={Logo} height="50" />}
         rightLinks={<HeaderLinks />}
         fixed
       />

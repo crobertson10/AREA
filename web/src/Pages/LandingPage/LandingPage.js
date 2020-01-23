@@ -1,16 +1,9 @@
 import React from "react";
-import classNames from "classnames";
 import { makeStyles } from "@material-ui/core/styles";
-import { CloudDownload } from "@material-ui/icons";
-import Footer from "Components/components/Footer/Footer";
 import GridContainer from "Components/components/Grid/GridContainer";
 import GridItem from "Components/components/Grid/GridItem";
-import Button from "Components/components/CustomButtons/Button";
-import Parallax from "Components/components/Parallax/Parallax";
-
 import styles from "assets/jss/material-kit-react/views/landingPage.js";
 import CustomTabs from "Components/components/CustomTabs/CustomTabs";
-import CustomDropdown from "Components/components/CustomDropdown/CustomDropdown";
 import Face from "@material-ui/icons/Face";
 import Chat from "@material-ui/icons/Chat";
 import Build from "@material-ui/icons/Build";
@@ -18,7 +11,6 @@ const useStyles = makeStyles(styles);
 
 export default function LandingPage(props) {
   const classes = useStyles();
-  const { ...rest } = props;
   return (
     <div>
       <div PaddingTop="100000">

@@ -14,7 +14,6 @@ import CardFooter from "Components/components/Card/CardFooter";
 import CustomInput from "Components/components/CustomInput/CustomInput";
 import Axios from "axios";
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
-import Image from "assets/img/logo1.png";
 
 const useStyles = makeStyles(styles);
 

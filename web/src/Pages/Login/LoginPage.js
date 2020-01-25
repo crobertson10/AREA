@@ -1,6 +1,5 @@
 import InputAdornment from "@material-ui/core/InputAdornment";
 import { makeStyles } from "@material-ui/core/styles";
-import AddIcon from "@material-ui/icons/Add";
 import EmailIcon from "@material-ui/icons/Email";
 import AddIcon from "@material-ui/icons/Add";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
@@ -43,8 +42,8 @@ export default function LoginPage() {
       data: values
     })
       .then(res => {
-        localStorage.setItem('auth-token', res.data);
-        console.log(localStorage.getItem('auth-token'));
+        localStorage.setItem("auth-token", res.data);
+        console.log(localStorage.getItem("auth-token"));
         window.location.href = "/dashboard";
       })
       .catch(err => {
@@ -54,11 +53,15 @@ export default function LoginPage() {
 
   return (
     <div>
-      {error && 
-        <div style={{display: 'flex', justifyContent: 'center'}} className="alert alert-danger" role="alert">
-            {msg}
+      {/* {err && (
+        <div
+          style={{ display: "flex", justifyContent: "center" }}
+          className="alert alert-danger"
+          role="alert"
+        >
+          {err}
         </div>
-      }
+      )} */}
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={12} md={4}>
@@ -101,23 +104,23 @@ export default function LoginPage() {
                 />
               </CardBody>
               <CardFooter>
-              <GridContainer justify="center">
-              <GridItem xs={6} sm={6} md={6} justify="center">
-                <Button
-                  href={"/dashboard"}
-                  color="danger"
-                  round
-                  onClick={submit}
-                >
-                  <ExitToAppIcon />
-                  Sign In
-                </Button>
-                <Button href={"/sign-up"} color="danger" round>
-                  <AddIcon />
-                  Sign Up
-                </Button>
-                </GridItem>
-              </GridContainer>
+                <GridContainer justify="center">
+                  <GridItem xs={6} sm={6} md={6} justify="center">
+                    <Button
+                      href={"/dashboard"}
+                      color="danger"
+                      round
+                      onClick={submit}
+                    >
+                      <ExitToAppIcon />
+                      Sign In
+                    </Button>
+                    <Button href={"/sign-up"} color="danger" round>
+                      <AddIcon />
+                      Sign Up
+                    </Button>
+                  </GridItem>
+                </GridContainer>
               </CardFooter>
             </Card>
           </GridItem>

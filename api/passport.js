@@ -1,6 +1,8 @@
 const passport = require('passport');
 const githubStrategy = require('passport-github');
-const { User, Github } = require('./models/usershema');
+const User = require('./models/usershema');
+const Github = require('./models/githubschema');
+const jwt = require('jsonwebtoken');
 
 passport.use('github' ,new githubStrategy({
     clientID: '8c5b5264f9da75c1176b',
@@ -9,23 +11,42 @@ passport.use('github' ,new githubStrategy({
     passReqToCallback: true
 },
 function (req, accessToken, refreshToken, profile, done) {
-    Github.findOne({ githubId: profile.id }, function(err, account) {
-        if (err) {
-            console.log(err);
-            return done(err);
+    const tkn = req.header('auth-token');
+    verified = jwt.verify(tkn, process.env.TOKEN_SECRET);
+    User.findOne({ _id: verified._id }, function (errr, user) {
+        if (errr) {
+            console.log(errr);
+            return done(errr);
         }
-        if (!err && account) {
-            return done(null, account);
+        if (!errr && !user) {
+            return done("User does not exist");
         }
-        else {
-            account = new Github({
-                githubId: profile.id,
-                token: accessToken,
-                username: profile.username
-            });
-            req.account = account;
-            return done(null, account);
-        }
+        Github.findOne({ githubId: profile.id }, function(err, account) {
+            if (err) {
+                console.log(err);
+                return done(err);
+            }
+            if (!err && account) {
+                return done(null, account);
+            }
+            else {
+                account = new Github({
+                    userId: verified._id,
+                    githubId: profile.id,
+                    token: accessToken,
+                    username: profile.username
+                });
+                console.log(account);
+                
+                try {
+                    account.save();
+                    return done(null, account);
+                } catch (error) {
+                    console.log(error);
+                    return (error)
+                }
+            }
+        });
     });
 }
 ));

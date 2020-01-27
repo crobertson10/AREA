@@ -3,7 +3,8 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const passport = require('../passport');
 const verify = require('./verifyToken');
-const { User, Github } = require('../models/usershema');
+const User = require('../models/usershema');
+const Github = require('../models/githubschema');
 const { registerValidation, loginValidation } = require('../validation');
 //require('../passport')(passport);
 
@@ -56,12 +57,8 @@ router.post('/login', async (req, res) => {
     res.header('auth-token', token).send(token);
 });
 
-router.get('/github', passport.authorize('github', { failureRedirect: '/account' }));
+router.get('/github', verify, passport.authorize('github', { failureRedirect: '/' }));
 
-router.get('/github/callback', passport.authorize('github', { failureRedirect: '/account' }), 
-function(req, res) {
-    console.log(req);
-    res.send(req);    
-});
+router.get('/auth/github/callback', passport.authorize('github', { successRedirect: '/succes', failureRedirect: '/' }));
 
 module.exports = router;

@@ -1,19 +1,20 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import { makeStyles } from "@material-ui/core/styles";
 import EmailIcon from "@material-ui/icons/Email";
 import AddIcon from "@material-ui/icons/Add";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import LockIcon from "@material-ui/icons/Lock";
-import GridContainer from "Components/components/Grid/GridContainer";
-import GridItem from "Components/components/Grid/GridItem";
-import Button from "Components/components/CustomButtons/Button";
+import styles from "assets/jss/material-kit-react/views/loginPage.js";
+import Axios from "axios";
 import Card from "Components/components/Card/Card";
 import CardBody from "Components/components/Card/CardBody";
-import CardHeader from "Components/components/Card/CardHeader";
 import CardFooter from "Components/components/Card/CardFooter";
+import CardHeader from "Components/components/Card/CardHeader";
+import Button from "Components/components/CustomButtons/Button";
 import CustomInput from "Components/components/CustomInput/CustomInput";
-import Axios from "axios";
-import styles from "assets/jss/material-kit-react/views/loginPage.js";
+import GridContainer from "Components/components/Grid/GridContainer";
+import GridItem from "Components/components/Grid/GridItem";
+import React from "react";
 
 const useStyles = makeStyles(styles);
 
@@ -41,7 +42,9 @@ export default function LoginPage() {
       data: values
     })
       .then(res => {
-        console.log(res);
+        localStorage.setItem("auth-token", res.data);
+        console.log(localStorage.getItem("auth-token"));
+        window.location.href = "/dashboard";
       })
       .catch(err => {
         console.log(err);
@@ -50,6 +53,15 @@ export default function LoginPage() {
 
   return (
     <div>
+      {/* {err && (
+        <div
+          style={{ display: "flex", justifyContent: "center" }}
+          className="alert alert-danger"
+          role="alert"
+        >
+          {err}
+        </div>
+      )} */}
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={12} md={4}>
@@ -92,18 +104,23 @@ export default function LoginPage() {
                 />
               </CardBody>
               <CardFooter>
-                <Button
-                  href={"/dashboard"}
-                  color="danger"
-                  round
-                  onClick={submit}
-                >
-                  Sign In
-                </Button>
-                <Button href={"/sign-up"} color="danger" round>
-                  <AddIcon />
-                  Sign Up
-                </Button>
+                <GridContainer justify="center">
+                  <GridItem xs={6} sm={6} md={6} justify="center">
+                    <Button
+                      href={"/dashboard"}
+                      color="danger"
+                      round
+                      onClick={submit}
+                    >
+                      <ExitToAppIcon />
+                      Sign In
+                    </Button>
+                    <Button href={"/sign-up"} color="danger" round>
+                      <AddIcon />
+                      Sign Up
+                    </Button>
+                  </GridItem>
+                </GridContainer>
               </CardFooter>
             </Card>
           </GridItem>

@@ -1,88 +1,149 @@
 import React from "react";
+import "./LandingPage.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Card, Nav } from "react-bootstrap";
 import { makeStyles } from "@material-ui/core/styles";
-import GridContainer from "Components/components/Grid/GridContainer";
-import GridItem from "Components/components/Grid/GridItem";
-import styles from "assets/jss/material-kit-react/views/landingPage.js";
-import CustomTabs from "Components/components/CustomTabs/CustomTabs";
-import Face from "@material-ui/icons/Face";
-import Chat from "@material-ui/icons/Chat";
-import Build from "@material-ui/icons/Build";
+import CardBody from "Components/components/Card/CardBody";
+import GridContainer from "Components/components/Grid/GridContainer.js";
+import GridItem from "Components/components/Grid/GridItem.js";
+import NavPills from "Components/components/NavPills/NavPills.js";
+import CardHeader from "Components/components/Card/CardHeader.js";
+import Button from "Components/components/CustomButtons/Button.js";
+import Slack from "assets/img/slack.png";
+import Trello from "assets/img/trello.png";
+import Plus from "assets/img/plus.png";
+
+import {
+  cardTitle,
+  cardLink,
+  cardSubtitle
+} from "assets/jss/material-kit-react.js";
+
+const styles = {
+  cardTitle,
+  cardLink,
+  cardSubtitle
+};
 const useStyles = makeStyles(styles);
 
 export default function LandingPage(props) {
   const classes = useStyles();
   return (
-    <div>
-      <div PaddingTop="100000">
-        <div className={classes.container} PaddingTop="1000">
-          <div id="nav-tabs">
-            <h3>Navigation Tabs</h3>
-            <GridContainer>
-              <GridItem md={6}>
-                <h1>coucou</h1>
-              </GridItem>
-              <GridItem xs={12} sm={12} md={6}>
-                <h3>
-                  <small>Tabs with Icons on Card</small>
-                </h3>
-                <CustomTabs
-                  headerColor="danger"
-                  tabs={[
-                    {
-                      tabName: "Profile",
-                      tabIcon: Face,
-                      tabContent: (
-                        <p className={classes.textCenter}>
-                          I think that’s a responsibility that I have, to push
-                          possibilities, to show people, this is the level that
-                          things could be at. So when you get something that has
-                          the name Kanye West on it, it’s supposed to be pushing
-                          the furthest possibilities. I will be the leader of a
-                          company that ends up being worth billions of dollars,
-                          because I got the answers. I understand culture. I am
-                          the nucleus.
-                        </p>
-                      )
-                    },
-                    {
-                      tabName: "Messages",
-                      tabIcon: Chat,
-                      tabContent: (
-                        <p className={classes.textCenter}>
-                          I think that’s a responsibility that I have, to push
-                          possibilities, to show people, this is the level that
-                          things could be at. I will be the leader of a company
-                          that ends up being worth billions of dollars, because
-                          I got the answers. I understand culture. I am the
-                          nucleus. I think that’s a responsibility that I have,
-                          to push possibilities, to show people, this is the
-                          level that things could be at.
-                        </p>
-                      )
-                    },
-                    {
-                      tabName: "Settings",
-                      tabIcon: Build,
-                      tabContent: (
-                        <p className={classes.textCenter}>
-                          think that’s a responsibility that I have, to push
-                          possibilities, to show people, this is the level that
-                          things could be at. So when you get something that has
-                          the name Kanye West on it, it’s supposed to be pushing
-                          the furthest possibilities. I will be the leader of a
-                          company that ends up being worth billions of dollars,
-                          because I got the answers. I understand culture. I am
-                          the nucleus.
-                        </p>
-                      )
-                    }
-                  ]}
-                />
-              </GridItem>
-            </GridContainer>
-          </div>
-        </div>
-      </div>
+    <div class="main">
+      <GridContainer justify="center">
+        <GridItem xs={12} sm={12} md={6}>
+          <Card>
+            <CardHeader color="danger" style={{ textAlign: "center" }}>
+              <h1>Create a Zap</h1>
+            </CardHeader>
+            <CardBody>
+              <h4 className={classes.cardTitle}>Github to Slack</h4>
+              <GridContainer justify="center">
+                <GridItem xs={12} sm={12} md={3}>
+                  <img src={Slack} height="100" />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={3}>
+                  <img src={Plus} height="100" />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={3}>
+                  <img src={Trello} height="100" />
+                </GridItem>
+                <GridItem
+                  xs={12}
+                  sm={12}
+                  md={3}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center"
+                  }}
+                >
+                  <Button style={{ background: "#dc3545" }}>Try this!</Button>
+                </GridItem>
+              </GridContainer>
+            </CardBody>
+            <CardBody>
+              <h4 className={classes.cardTitle}>Github to Slack</h4>
+              <GridContainer justify="center">
+                <GridItem xs={12} sm={12} md={3}>
+                  <img src={Slack} height="100" />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={3}>
+                  <img src={Plus} height="100" />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={3}>
+                  <img src={Trello} height="100" />
+                </GridItem>
+                <GridItem
+                  xs={12}
+                  sm={12}
+                  md={3}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center"
+                  }}
+                >
+                  <Button style={{ background: "#dc3545" }}>Try this!</Button>
+                </GridItem>
+              </GridContainer>
+            </CardBody>
+            <CardBody>
+              <h4 className={classes.cardTitle}>Github to Slack</h4>
+              <GridContainer justify="center">
+                <GridItem xs={12} sm={12} md={3}>
+                  <img src={Slack} height="100" />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={3}>
+                  <img src={Plus} height="100" />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={3}>
+                  <img src={Trello} height="100" />
+                </GridItem>
+                <GridItem
+                  xs={12}
+                  sm={12}
+                  md={3}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center"
+                  }}
+                >
+                  <Button style={{ background: "#dc3545" }}>Try this!</Button>
+                </GridItem>
+              </GridContainer>
+            </CardBody>
+          </Card>
+        </GridItem>
+        <GridItem xs={12} sm={12} md={4}>
+          <Card color="warning">
+            <NavPills
+              color="danger"
+              tabs={[
+                {
+                  color: "danger",
+                  tabButton: "MyZap",
+                  tabContent: (
+                    <span>
+                      <p>PEPITO</p>
+                      <p>El BLACKO</p>
+                    </span>
+                  )
+                },
+                {
+                  tabButton: "Settings",
+                  tabContent: <span></span>
+                },
+                {
+                  tabButton: "Options",
+                  tabContent: <span></span>
+                }
+              ]}
+            />
+          </Card>
+        </GridItem>
+      </GridContainer>
     </div>
   );
 }

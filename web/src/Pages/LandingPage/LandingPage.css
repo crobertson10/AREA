@@ -1,8 +1,7 @@
 .main {
-  margin-top: 100px;
+  padding-top: 200px;
 }
 
-.right-card {
-  margin-top: 100px;
-  background-color: aqua;
+.r-container {
+  margin-left: 200px;
 }

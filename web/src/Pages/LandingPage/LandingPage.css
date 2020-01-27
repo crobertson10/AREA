@@ -5,3 +5,9 @@
 .r-container {
   margin-left: 200px;
 }
+
+.cardzap {
+  margin: 15px;
+  border: 10px;
+  border-color: black;
+}

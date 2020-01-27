@@ -12,6 +12,8 @@ import Button from "Components/components/CustomButtons/Button.js";
 import Slack from "assets/img/slack.png";
 import Trello from "assets/img/trello.png";
 import Plus from "assets/img/plus.png";
+import Github from "assets/img/github.png";
+import Epitech from "assets/img/epitech.png";
 
 import {
   cardTitle,
@@ -36,8 +38,8 @@ export default function LandingPage(props) {
             <CardHeader color="danger" style={{ textAlign: "center" }}>
               <h1>Create a Zap</h1>
             </CardHeader>
-            <CardBody>
-              <h4 className={classes.cardTitle}>Github to Slack</h4>
+            <div className="cardzap">
+              <h4 className={classes.cardTitle}>Slack to Trello</h4>
               <GridContainer justify="center">
                 <GridItem xs={12} sm={12} md={3}>
                   <img src={Slack} height="100" />
@@ -61,18 +63,18 @@ export default function LandingPage(props) {
                   <Button style={{ background: "#dc3545" }}>Try this!</Button>
                 </GridItem>
               </GridContainer>
-            </CardBody>
-            <CardBody>
+            </div>
+            <Card>
               <h4 className={classes.cardTitle}>Github to Slack</h4>
               <GridContainer justify="center">
                 <GridItem xs={12} sm={12} md={3}>
-                  <img src={Slack} height="100" />
+                  <img src={Github} height="100" />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={3}>
                   <img src={Plus} height="100" />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={3}>
-                  <img src={Trello} height="100" />
+                  <img src={Slack} height="100" />
                 </GridItem>
                 <GridItem
                   xs={12}
@@ -87,18 +89,18 @@ export default function LandingPage(props) {
                   <Button style={{ background: "#dc3545" }}>Try this!</Button>
                 </GridItem>
               </GridContainer>
-            </CardBody>
-            <CardBody>
-              <h4 className={classes.cardTitle}>Github to Slack</h4>
+            </Card>
+            <Card>
+              <h4 className={classes.cardTitle}>Intra Epitech to Github</h4>
               <GridContainer justify="center">
                 <GridItem xs={12} sm={12} md={3}>
-                  <img src={Slack} height="100" />
+                  <img src={Epitech} height="100" />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={3}>
                   <img src={Plus} height="100" />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={3}>
-                  <img src={Trello} height="100" />
+                  <img src={Github} height="100" />
                 </GridItem>
                 <GridItem
                   xs={12}
@@ -113,7 +115,7 @@ export default function LandingPage(props) {
                   <Button style={{ background: "#dc3545" }}>Try this!</Button>
                 </GridItem>
               </GridContainer>
-            </CardBody>
+            </Card>
           </Card>
         </GridItem>
         <GridItem xs={12} sm={12} md={4}>
@@ -126,8 +128,8 @@ export default function LandingPage(props) {
                   tabButton: "MyZap",
                   tabContent: (
                     <span>
-                      <p>PEPITO</p>
-                      <p>El BLACKO</p>
+                      <p>Here put history of all zap of user</p>
+                      <p>APP|TRIGER|APP|DATE</p>
                     </span>
                   )
                 },

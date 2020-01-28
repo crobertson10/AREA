@@ -3,7 +3,6 @@ import Home from "./Pages/Login/LoginPage";
 import Signup from "./Pages/Signup/Signup";
 import Header from "Components/components/Header/Header";
 import HeaderLinks from "Components/components/Header/HeaderLinks";
-import Footer from "Components/Footer/Footer";
 import FacebookSignIn from "./Pages/FacebookSignIn/FacebookSignIn";
 import Dashboard from "./Pages/LandingPage/LandingPage";
 import SlackSignIn from "./Pages/SlackSignIn/SlackSignIn";
@@ -17,7 +16,7 @@ function App() {
     <div class="App">
       <Header
         color="white"
-        brand={<img src={Logo} height="50" />}
+        brand={<img alt="Logo" src={Logo} height="50" />}
         rightLinks={<HeaderLinks />}
         fixed
       />

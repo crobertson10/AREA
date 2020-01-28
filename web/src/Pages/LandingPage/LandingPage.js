@@ -1,9 +1,8 @@
 import React from "react";
 import "./LandingPage.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Card, Nav } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { makeStyles } from "@material-ui/core/styles";
-import CardBody from "Components/components/Card/CardBody";
 import GridContainer from "Components/components/Grid/GridContainer.js";
 import GridItem from "Components/components/Grid/GridItem.js";
 import NavPills from "Components/components/NavPills/NavPills.js";
@@ -42,14 +41,15 @@ export default function LandingPage(props) {
               <h4 className={classes.cardTitle}>Slack to Trello</h4>
               <GridContainer justify="center">
                 <GridItem xs={12} sm={12} md={3}>
-                  <img src={Slack} height="100" />
+                  <img alt="slack" src={Slack} height="100" />
                   {/* <img src={Slack} height="100" /> */}
                 </GridItem>
                 <GridItem xs={12} sm={12} md={3}>
-                  <img src={Plus} height="100" />
+                  <img alt="plus" src={Plus} height="100" />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={3}>
                   <img
+                    alt="trello"
                     src={Trello}
                     className={
                       classes.imgRoundedCircle + " " + classes.imgFluid
@@ -75,13 +75,13 @@ export default function LandingPage(props) {
               <h4 className={classes.cardTitle}>Github to Slack</h4>
               <GridContainer justify="center">
                 <GridItem xs={12} sm={12} md={3}>
-                  <img src={Github} height="100" />
+                  <img alt="github" src={Github} height="100" />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={3}>
-                  <img src={Plus} height="100" />
+                  <img alt="plus" src={Plus} height="100" />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={3}>
-                  <img src={Slack} height="100" />
+                  <img alt="slack" src={Slack} height="100" />
                 </GridItem>
                 <GridItem
                   xs={12}
@@ -101,13 +101,13 @@ export default function LandingPage(props) {
               <h4 className={classes.cardTitle}>Intra Epitech to Github</h4>
               <GridContainer justify="center">
                 <GridItem xs={12} sm={12} md={3}>
-                  <img src={Epitech} height="100" />
+                  <img alt="epitech" src={Epitech} height="100" />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={3}>
-                  <img src={Plus} height="100" />
+                  <img alt="plus" src={Plus} height="100" />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={3}>
-                  <img src={Github} height="100" />
+                  <img alt="github" src={Github} height="100" />
                 </GridItem>
                 <GridItem
                   xs={12}

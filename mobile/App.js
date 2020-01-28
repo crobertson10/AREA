@@ -6,7 +6,7 @@
  * @flow
  */
 
-import React from 'react';
+import React, {Fragment, useEffect} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -16,6 +16,8 @@ import {
   StatusBar,
 } from 'react-native';
 
+import SplashScreen from 'react-native-splash-screen';
+
 import {
   Header,
   LearnMoreLinks,
@@ -24,9 +26,13 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const App: () => React$Node = () => {
+const App = () => {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
+
   return (
-    <>
+    <Fragment>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <ScrollView
@@ -68,7 +74,7 @@ const App: () => React$Node = () => {
           </View>
         </ScrollView>
       </SafeAreaView>
-    </>
+    </Fragment>
   );
 };
 

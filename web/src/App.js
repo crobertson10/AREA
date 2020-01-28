@@ -7,6 +7,7 @@ import FacebookSignIn from "./Pages/FacebookSignIn/FacebookSignIn";
 import Dashboard from "./Pages/LandingPage/LandingPage";
 import SlackSignIn from "./Pages/SlackSignIn/SlackSignIn";
 import GithubSignIn from "./Pages/GithubSignIn/GithubSignIn";
+import ZapCreator from "./Pages/ZapCreator/ZapCreator";
 import { Switch, Route } from "react-router-dom";
 import Logo from "assets/img/logo1.png";
 import "./App.css";
@@ -28,6 +29,7 @@ function App() {
         <Route exact path="/slack" component={SlackSignIn} />
         <Route exact path="/github" component={GithubSignIn} />
         <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/creator" component={ZapCreator} />
       </Switch>
       {/* <Footer /> */}
     </div>

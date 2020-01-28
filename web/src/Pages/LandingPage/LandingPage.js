@@ -38,17 +38,24 @@ export default function LandingPage(props) {
             <CardHeader color="danger" style={{ textAlign: "center" }}>
               <h1>Create a Zap</h1>
             </CardHeader>
-            <div className="cardzap">
+            <div class="cardzap">
               <h4 className={classes.cardTitle}>Slack to Trello</h4>
               <GridContainer justify="center">
                 <GridItem xs={12} sm={12} md={3}>
                   <img src={Slack} height="100" />
+                  {/* <img src={Slack} height="100" /> */}
                 </GridItem>
                 <GridItem xs={12} sm={12} md={3}>
                   <img src={Plus} height="100" />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={3}>
-                  <img src={Trello} height="100" />
+                  <img
+                    src={Trello}
+                    className={
+                      classes.imgRoundedCircle + " " + classes.imgFluid
+                    }
+                    height="100"
+                  />
                 </GridItem>
                 <GridItem
                   xs={12}
@@ -60,11 +67,11 @@ export default function LandingPage(props) {
                     justifyContent: "center"
                   }}
                 >
-                  <Button style={{ background: "#dc3545" }}>Try this!</Button>
+                  <Button style={{ background: "#e63b37" }}>Try this!</Button>
                 </GridItem>
               </GridContainer>
             </div>
-            <Card>
+            <div class="cardzap">
               <h4 className={classes.cardTitle}>Github to Slack</h4>
               <GridContainer justify="center">
                 <GridItem xs={12} sm={12} md={3}>
@@ -86,11 +93,11 @@ export default function LandingPage(props) {
                     justifyContent: "center"
                   }}
                 >
-                  <Button style={{ background: "#dc3545" }}>Try this!</Button>
+                  <Button style={{ background: "#e63b37" }}>Try this!</Button>
                 </GridItem>
               </GridContainer>
-            </Card>
-            <Card>
+            </div>
+            <div class="cardzap">
               <h4 className={classes.cardTitle}>Intra Epitech to Github</h4>
               <GridContainer justify="center">
                 <GridItem xs={12} sm={12} md={3}>
@@ -112,10 +119,10 @@ export default function LandingPage(props) {
                     justifyContent: "center"
                   }}
                 >
-                  <Button style={{ background: "#dc3545" }}>Try this!</Button>
+                  <Button style={{ background: "#e63b37" }}>Try this!</Button>
                 </GridItem>
               </GridContainer>
-            </Card>
+            </div>
           </Card>
         </GridItem>
         <GridItem xs={12} sm={12} md={4}>

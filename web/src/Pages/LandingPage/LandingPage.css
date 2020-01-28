@@ -7,7 +7,10 @@
 }
 
 .cardzap {
-  margin: 15px;
-  border: 10px;
-  border-color: black;
+  padding: 10px;
+  border-style: solid;
+  margin: 5px;
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: #dadfe2;
 }

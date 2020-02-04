@@ -3,10 +3,7 @@ import Home from "./Pages/Login/LoginPage";
 import Signup from "./Pages/Signup/Signup";
 import Header from "Components/components/Header/Header";
 import HeaderLinks from "Components/components/Header/HeaderLinks";
-import FacebookSignIn from "./Pages/FacebookSignIn/FacebookSignIn";
 import Dashboard from "./Pages/LandingPage/LandingPage";
-import SlackSignIn from "./Pages/SlackSignIn/SlackSignIn";
-import GithubSignIn from "./Pages/GithubSignIn/GithubSignIn";
 import ZapCreator from "./Pages/ZapCreator/ZapCreator";
 import { Switch, Route } from "react-router-dom";
 import Logo from "assets/img/logo1.png";
@@ -25,9 +22,6 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Home} />
         <Route exact path="/sign-up" component={Signup} />
-        <Route exact path="/facebook" component={FacebookSignIn} />
-        <Route exact path="/slack" component={SlackSignIn} />
-        <Route exact path="/github" component={GithubSignIn} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/creator" component={ZapCreator} />
       </Switch>

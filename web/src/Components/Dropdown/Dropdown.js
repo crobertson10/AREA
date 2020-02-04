@@ -11,19 +11,19 @@ export default function AppDropdown(props) {
     <DropdownButton id="dropdown-basic-button" title={props.title}>
       <Dropdown.Item onClick={() => props.selected("slack")}>
         <img alt="slack" src={Slack} height="30" />
-        <h5>Slack</h5>
+        Slack
       </Dropdown.Item>
       <Dropdown.Item onClick={() => props.selected("github")}>
         <img alt="slack" src={Github} height="30" />
-        <h5>Github</h5>
+        Github
       </Dropdown.Item>
       <Dropdown.Item onClick={() => props.selected("epitech")}>
         <img alt="slack" src={Epitech} height="30" />
-        <h5>Epitech</h5>
+        Epitech
       </Dropdown.Item>
       <Dropdown.Item onClick={() => props.selected("trello")}>
         <img alt="slack" src={Trello} height="30" />
-        <h5>Trello</h5>
+        Trello
       </Dropdown.Item>
     </DropdownButton>
   );

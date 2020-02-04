@@ -3,9 +3,14 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const passport = require('../passport');
 const verify = require('./verifyToken');
-const { User, Github } = require('../models/usershema');
+const User = require('../models/usershema');
+const Github = require('../models/githubschema');
 const { registerValidation, loginValidation } = require('../validation');
-//require('../passport')(passport);
+const axios = require('axios');
+const url = require('url');
+
+const dotenv = require('dotenv');
+dotenv.config();
 
 router.post('/register', async (req, res) => {
     // Validate data
@@ -56,12 +61,31 @@ router.post('/login', async (req, res) => {
     res.header('auth-token', token).send(token);
 });
 
-router.get('/github', passport.authorize('github', { failureRedirect: '/account' }));
+router.get('/github', verify, passport.authorize('github', { failureRedirect: '/' }));
 
-router.get('/github/callback', passport.authorize('github', { failureRedirect: '/account' }), 
-function(req, res) {
-    console.log(req);
-    res.send(req);    
+router.get('/auth/github/callback', passport.authorize('github', { successRedirect: '/succes', failureRedirect: '/' }));
+
+router.get('/slack', verify, passport.authorize('slack', { failureRedirect: '/' }));
+
+router.get('/auth/slack/callback', passport.authorize('slack', { successRedirect: '/succes', failureRedirect: '/' }));
+
+router.get('/trello', verify, (req, res) => {
+    const url = "https://trello.com/1/OAuthAuthorizeToken?expiration=never&name=Area&scope=read&response_type=token&callback_method=fragment&return_url=http://localhost:3000/api/user/auth/trello/callback&key="+process.env.TRELLO_ID;
+    console.log(url);
+    res.writeHead(301, { Location: url});
+    res.end();
+});
+
+router.get('/auth/trello/callback', (req, res) => {
+    console.log(url.href);
+    
+});
+
+router.get('/epitech', verify, (req, res) => {
+    console.log(req.body.epitech);
+    
+    axios.get(req.body.epitech);
+    res.send("okok")
 });
 
 module.exports = router;

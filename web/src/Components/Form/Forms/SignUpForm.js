@@ -22,9 +22,9 @@ const useStyles = makeStyles(styles);
 export default function SighUpForm() {
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
   const [values, setValues] = React.useState({
-    firstName: "",
-    lastName: "",
-    mail: "",
+    firstname: "",
+    lastname: "",
+    email: "",
     password: ""
   });
 
@@ -33,10 +33,6 @@ export default function SighUpForm() {
   };
 
   const submit = () => {
-    console.log("password: " + values.password);
-    console.log("mail: " + values.mail);
-    console.log("firstName: " + values.firstName);
-    console.log("lastName: " + values.lastName);
     Axios({
       method: "POST",
       url: "http://localhost:3000/api/user/register",
@@ -44,6 +40,7 @@ export default function SighUpForm() {
     })
       .then(res => {
         console.log(res);
+        window.location.href = "/dashboard";
       })
       .catch(err => {
         console.log(err);
@@ -78,8 +75,8 @@ export default function SighUpForm() {
                     fullWidth: true
                   }}
                   inputProps={{
-                    value: values.firstName,
-                    onChange: handleChange("firstName"),
+                    value: values.firstname,
+                    onChange: handleChange("firstname"),
                     endAdornment: (
                       <InputAdornment position="end">
                         <People />
@@ -94,8 +91,8 @@ export default function SighUpForm() {
                     fullWidth: true
                   }}
                   inputProps={{
-                    value: values.lastName,
-                    onChange: handleChange("lastName"),
+                    value: values.lastname,
+                    onChange: handleChange("lastname"),
                     endAdornment: (
                       <InputAdornment position="end">
                         <People />
@@ -110,8 +107,8 @@ export default function SighUpForm() {
                     fullWidth: true
                   }}
                   inputProps={{
-                    value: values.mail,
-                    onChange: handleChange("mail"),
+                    value: values.email,
+                    onChange: handleChange("email"),
                     endAdornment: (
                       <InputAdornment position="end">
                         <EmailIcon />

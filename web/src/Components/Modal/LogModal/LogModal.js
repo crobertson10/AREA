@@ -13,9 +13,7 @@ function LogModal(props) {
       <Modal.Body className="BodyMod">
         <Form></Form>
       </Modal.Body>
-      <Modal.Footer className="FootMod">
-        <Button onClick={props.onHide}>Submit</Button>
-      </Modal.Footer>
+      <Modal.Footer className="FootMod"></Modal.Footer>
     </Modal>
   );
 }

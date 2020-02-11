@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const passport = require('../passport');
 const verify = require('./verifyToken');
 const User = require('../models/usershema');
-const Github = require('../models/githubschema');
+const Registered = require('../models/registeredschema');
 const { registerValidation, loginValidation } = require('../validation');
 const axios = require('axios');
 const url = require('url');
@@ -61,13 +61,57 @@ router.post('/login', async (req, res) => {
     res.header('auth-token', token).send(token);
 });
 
+router.post('/save', verify, async (req, res) => {
+    const authToken = req.body.authToken;
+    const token = req.body.token;
+    const service = req.body.service;
+    const verified = jwt.verify(authToken, process.env.TOKEN_SECRET);
+    let doc = await Registered.findOne({ token: token, name: service });
+    if (!doc) {
+        return res.send({"Error": "Can't find this token or service"});
+    }
+    doc.userId = verified._id;
+    try {
+        doc.save();
+        return res.send("Succes");
+    } catch {
+        console.log("Server Error while updating user Id");
+        return res.status(400).send('Error');
+    }
+});
+
 router.get('/github', verify, passport.authorize('github', { failureRedirect: '/' }));
 
-router.get('/auth/github/callback', passport.authorize('github', { successRedirect: '/succes', failureRedirect: '/' }));
+router.get('/auth/github/callback', function (req, res, next) {
+    passport.authorize('github', { failureRedirect: '/' }, function (err, account, info) {
+        if (err) {return next(err);}
+        console.log(account);
+        const url = "/?service=Github&token=" + account.token;
+        return res.redirect(url);
+    })(req, res, next);
+});
 
 router.get('/slack', verify, passport.authorize('slack', { failureRedirect: '/' }));
 
-router.get('/auth/slack/callback', passport.authorize('slack', { successRedirect: '/succes', failureRedirect: '/' }));
+router.get('/auth/slack/callback', function (req, res, next) {
+    passport.authorize('slack', { failureRedirect: '/' }, function (err, account, info) {
+        if (err) {return next(err);}
+        console.log(account);
+        const url = "/?service=Slack&token=" + account.token;
+        return res.redirect(url);
+    })(req, res, next);
+});
+
+router.get('/epitech', verify, passport.authorize('azure', { failureRedirect: '/' }));
+
+router.get('/auth/azure/callback', function (req, res, next) {
+    passport.authorize('azure', { failureRedirect: '/' }, function (err, account, info) {
+        if (err) {return next(err);}
+        console.log(account);
+        const url = "/?token=" + account.token;
+        return res.redirect(url);
+    })(req, res, next);
+});
 
 router.get('/trello', verify, (req, res) => {
     const url = "https://trello.com/1/OAuthAuthorizeToken?expiration=never&name=Area&scope=read&response_type=token&callback_method=fragment&return_url=http://localhost:3000/api/user/auth/trello/callback&key="+process.env.TRELLO_ID;
@@ -83,9 +127,22 @@ router.get('/auth/trello/callback', (req, res) => {
 
 router.get('/epitech', verify, (req, res) => {
     console.log(req.body.epitech);
+    const auto_url = req.body.epitech;
     
-    axios.get(req.body.epitech);
+    axios.post(auto_url).catch((err) => {console.log(err)});
     res.send("okok")
 });
+
+router.get('/test', (req, res) => {
+    res.header('token', "ldshfhrkflhqg");
+    console.log(res.header.token);
+    res.writeHead(301, { Location: "http://localhost:3000/api/user/test2"});
+    res.end();
+})
+
+router.get('/test2', (req, res) => {
+    console.log(req);
+    res.send()
+})
 
 module.exports = router;

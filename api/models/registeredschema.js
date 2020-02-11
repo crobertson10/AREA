@@ -1,22 +1,18 @@
 const mongoose = require('mongoose');
 
-const githubSchema = new mongoose.Schema({
+const registeredSchema = new mongoose.Schema({
     userId: {
         type: String,
         required: true
     },
-    githubId: {
+    name: {
         type: String,
         required: true
     },
     token: {
         type: String,
         required: true
-    },
-    username: {
-        type: String,
-        required: true
     }
 });
 
-module.exports = mongoose.model('Github', githubSchema);
+module.exports = mongoose.model('Registered', registeredSchema);

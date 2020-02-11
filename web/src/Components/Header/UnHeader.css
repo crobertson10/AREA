@@ -1,0 +1,44 @@
+.UnHeader {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 100vw;
+  height: 80px;
+  background-color: black;
+}
+
+.RightItem {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+}
+
+.Button {
+  border-color: #b793e6;
+  border-width: 2px;
+  border-radius: 5px;
+  margin-left: 40px;
+  background-color: inherit;
+  color: #b793e6;
+  padding: 1px 50px 1px 50px;
+  transition-delay: 500ms;
+  transition: 0.5s;
+}
+
+.Button:hover {
+  border-color: #b793e6;
+  border-width: 2px;
+  margin-left: 40px;
+  background-color: inherit;
+  color: #b793e6;
+  background-color: white;
+  padding: 1px 50px 1px 50px;
+}
+
+.Logo {
+  width: 50px;
+  height: 50px;
+}

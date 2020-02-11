@@ -4,6 +4,7 @@ import SplashScreen from 'react-native-splash-screen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './src/Pages/HomeScreen/HomeScreen';
+import Register from './src/Pages/Register/Register';
 
 function App() {
   const Stack = createStackNavigator();
@@ -20,6 +21,7 @@ function App() {
           component={HomeScreen}
           options={{headerShown: false}}
         />
+        <Stack.Screen name="Register" component={Register} />
       </Stack.Navigator>
     </NavigationContainer>
   );

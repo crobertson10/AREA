@@ -9,41 +9,61 @@ import {
   Alert,
 } from 'react-native';
 
-export default class LoginView extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: '',
-      password: '',
-      confpassword: '',
-      name: '',
-      lastname: '',
-    };
-  }
+function Register() {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     email: '',
+  //     password: '',
+  //     confpassword: '',
+  //     name: '',
+  //     lastname: '',
+  //   };
+  // }
 
-  onClickListener = viewId => {
-    Alert.alert('Alert', 'Button pressed ' + viewId);
-  };
+  // onClickListener = viewId => {
+  //   Alert.alert('Alert', 'Button pressed ' + viewId);
+  // };
 
-  render() {
-    return (
-      <View style={styles.container}>
+  return (
+    <View style={styles.container}>
+      <View style={styles.inputContainer}>
+        <Image style={styles.inputIcon} />
+        <TextInput
+          style={styles.inputs}
+          placeholder="Name"
+          underlineColorAndroid="transparent"
+          onChangeText={name => this.setState({name})}
+        />
+
         <View style={styles.inputContainer}>
           <Image style={styles.inputIcon} />
           <TextInput
             style={styles.inputs}
-            placeholder="Name"
+            placeholder="Lastname"
             underlineColorAndroid="transparent"
-            onChangeText={name => this.setState({name})}
+            onChangeText={lastname => this.setState({lastname})}
+          />
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Image style={styles.inputIcon} />
+          <TextInput
+            style={styles.inputs}
+            placeholder="Email"
+            keyboardType="email-address"
+            underlineColorAndroid="transparent"
+            onChangeText={email => this.setState({email})}
           />
 
           <View style={styles.inputContainer}>
             <Image style={styles.inputIcon} />
             <TextInput
               style={styles.inputs}
-              placeholder="Lastname"
+              placeholder="Password"
+              secureTextEntry={true}
               underlineColorAndroid="transparent"
-              onChangeText={lastname => this.setState({lastname})}
+              onChangeText={password => this.setState({password})}
             />
           </View>
 
@@ -51,50 +71,28 @@ export default class LoginView extends Component {
             <Image style={styles.inputIcon} />
             <TextInput
               style={styles.inputs}
-              placeholder="Email"
-              keyboardType="email-address"
+              placeholder="Confirm Password"
+              secureTextEntry={true}
               underlineColorAndroid="transparent"
-              onChangeText={email => this.setState({email})}
+              onChangeText={confpassword => this.setState({confpassword})}
             />
-
-            <View style={styles.inputContainer}>
-              <Image style={styles.inputIcon} />
-              <TextInput
-                style={styles.inputs}
-                placeholder="Password"
-                secureTextEntry={true}
-                underlineColorAndroid="transparent"
-                onChangeText={password => this.setState({password})}
-              />
-            </View>
-
-            <View style={styles.inputContainer}>
-              <Image style={styles.inputIcon} />
-              <TextInput
-                style={styles.inputs}
-                placeholder="Confirm Password"
-                secureTextEntry={true}
-                underlineColorAndroid="transparent"
-                onChangeText={confpassword => this.setState({confpassword})}
-              />
-            </View>
-
-            <TouchableHighlight
-              style={[styles.buttonContainer, styles.loginButton]}
-              onPress={() => this.onClickListener('register')}>
-              <Text style={styles.loginText}>Register</Text>
-            </TouchableHighlight>
-
-            <TouchableHighlight
-              style={styles.buttonContainer}
-              onPress={() => this.onClickListener('login')}>
-              <Text>Login</Text>
-            </TouchableHighlight>
           </View>
+
+          <TouchableHighlight
+            style={[styles.buttonContainer, styles.loginButton]}
+            onPress={() => this.onClickListener('register')}>
+            <Text style={styles.loginText}>Register</Text>
+          </TouchableHighlight>
+
+          <TouchableHighlight
+            style={styles.buttonContainer}
+            onPress={() => this.onClickListener('login')}>
+            <Text>Login</Text>
+          </TouchableHighlight>
         </View>
       </View>
-    );
-  }
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -143,3 +141,5 @@ const styles = StyleSheet.create({
     color: 'white',
   },
 });
+
+export default Register;

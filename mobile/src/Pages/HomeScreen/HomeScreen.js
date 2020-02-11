@@ -16,7 +16,7 @@ const Styles = StyleSheet.create({
   },
 });
 
-function HomeScreen(props) {
+function HomeScreen({navigation}) {
   return (
     <ScrollView>
       <KeyboardAvoidingView behavior={'position'} enabled>
@@ -105,6 +105,7 @@ function HomeScreen(props) {
           fontWeight={'bold'}
           color={'#ffffff'}
           textAlign={'center'}
+          onPress={() => navigation.navigate('Register')}
         />
       </KeyboardAvoidingView>
     </ScrollView>

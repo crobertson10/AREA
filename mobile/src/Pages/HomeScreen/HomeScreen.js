@@ -4,7 +4,6 @@ import Header from '../../Components/Header/Header';
 import AnimatedGradient from '../../Components/AnimatedGradient/AnimatedGradient';
 import AnimatedImage from '../../Components/AnimatedImage/AnimatedImage';
 import AREAText from '../../Components/AREAText/AREAText';
-import AREAInput from '../../Components/AREAInput/AREAInput';
 import AREATouchableOpacity from '../../Components/AREATouchableOpacity/AREATouchableOpacity';
 import Scherpi from '../../Assets/scherpi1.png';
 import Slack from '../../Assets/slack-logo.png';

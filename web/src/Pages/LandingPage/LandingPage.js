@@ -1,4 +1,5 @@
 import React from "react";
+import Axios from "axios";
 import "./LandingPage.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card } from "react-bootstrap";
@@ -28,6 +29,20 @@ const styles = {
 const useStyles = makeStyles(styles);
 
 export default function LandingPage(props) {
+  const twitch = () => {
+    Axios({
+      method: "GET",
+      url: "http://localhost:3000/twitch/auth/twitch",
+      value: { "auth-token": localStorage.getItem("auth-token") }
+    })
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   const classes = useStyles();
   return (
     <div class="main">
@@ -142,7 +157,13 @@ export default function LandingPage(props) {
                 },
                 {
                   tabButton: "Settings",
-                  tabContent: <span></span>
+                  tabContent: (
+                    <span>
+                      <Button onClick={twitch}>twitch</Button>
+                      <Button>Slack</Button>
+                      <Button>Trello</Button>
+                    </span>
+                  )
                 },
                 {
                   tabButton: "Options",

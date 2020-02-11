@@ -25,7 +25,7 @@ export default function LoginPage() {
   }, 700);
   const classes = useStyles();
   const [values, setValues] = React.useState({
-    mail: "",
+    email: "",
     password: ""
   });
 
@@ -35,16 +35,16 @@ export default function LoginPage() {
 
   const submit = () => {
     console.log("password: " + values.password);
-    console.log("mail: " + values.mail);
+    console.log("mail: " + values.email);
     Axios({
       method: "POST",
-      url: "http://localhost:3000/api/user/register",
+      url: "http://localhost:3000/api/user/login",
       data: values
     })
       .then(res => {
         localStorage.setItem("auth-token", res.data);
         console.log(localStorage.getItem("auth-token"));
-        window.location.href = "/dashboard";
+        // window.location.href = "/dashboard";
       })
       .catch(err => {
         console.log(err);
@@ -77,8 +77,8 @@ export default function LoginPage() {
                     fullWidth: true
                   }}
                   inputProps={{
-                    value: values.mail,
-                    onChange: handleChange("mail"),
+                    value: values.email,
+                    onChange: handleChange("email"),
                     endAdornment: (
                       <InputAdornment position="end">
                         <EmailIcon />
@@ -106,12 +106,7 @@ export default function LoginPage() {
               <CardFooter>
                 <GridContainer justify="center">
                   <GridItem xs={6} sm={6} md={6} justify="center">
-                    <Button
-                      href={"/dashboard"}
-                      color="danger"
-                      round
-                      onClick={submit}
-                    >
+                    <Button color="danger" round onClick={submit}>
                       <ExitToAppIcon />
                       Sign In
                     </Button>

@@ -12,6 +12,8 @@ const url = require('url');
 const dotenv = require('dotenv');
 dotenv.config();
 
+const ClientUrl = process.env.CLIENT_URL;
+
 router.post('/register', async (req, res) => {
     // Validate data
     const { error } = registerValidation(req.body);
@@ -34,7 +36,8 @@ router.post('/register', async (req, res) => {
     // Save new user
     try {
         const savedUser = await user.save();
-        res.send({ user: savedUser._id });
+        const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+        res.send({ authToken: token });
     } catch (err) {
         res.status(400).send(err);
     }
@@ -58,7 +61,7 @@ router.post('/login', async (req, res) => {
 
     // Create and assign jwt
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-    res.header('auth-token', token).send(token);
+    res.send({ authToken: token });
 });
 
 router.post('/save', verify, async (req, res) => {
@@ -80,41 +83,36 @@ router.post('/save', verify, async (req, res) => {
     }
 });
 
-router.get('/github', verify, passport.authorize('github', { failureRedirect: '/' }));
+router.get('/github', verify, passport.authorize('github', { failureRedirect: ClientUrl }));
 
 router.get('/auth/github/callback', function (req, res, next) {
-    passport.authorize('github', { failureRedirect: '/' }, function (err, account, info) {
+    passport.authorize('github', { failureRedirect: ClientUrl }, function (err, account, info) {
         if (err) {return next(err);}
         console.log(account);
-        const url = "/?service=Github&token=" + account.token;
+        const url = ClientUrl + "save/?service=Github&token=" + account.token;
         return res.redirect(url);
     })(req, res, next);
 });
 
-router.get('/slack', verify, passport.authorize('slack', { failureRedirect: '/' }));
+router.get('/slack', verify, passport.authorize('slack', { failureRedirect: ClientUrl }));
 
 router.get('/auth/slack/callback', function (req, res, next) {
-    passport.authorize('slack', { failureRedirect: '/' }, function (err, account, info) {
+    passport.authorize('slack', { failureRedirect: ClientUrl }, function (err, account, info) {
         if (err) {return next(err);}
         console.log(account);
-        const url = "/?service=Slack&token=" + account.token;
+        const url = ClientUrl + "save/?service=Slack&token=" + account.token;
         return res.redirect(url);
     })(req, res, next);
 });
 
 router.get('/trello', verify, (req, res) => {
-    const url = "https://trello.com/1/OAuthAuthorizeToken?expiration=never&name=Area&scope=read&response_type=token&callback_method=fragment&return_url=http://localhost:3000/api/user/auth/trello/callback&key="+process.env.TRELLO_ID;
+    const url = "https://trello.com/1/OAuthAuthorizeToken?expiration=never&name=Area&scope=read&response_type=token&callback_method=fragment&&return_url=" + ClientUrl + "trello/&key=" + process.env.TRELLO_ID;
     console.log(url);
     res.writeHead(301, { Location: url});
     res.end();
 });
 
-router.get('/auth/trello/callback', (req, res) => {
-    console.log(url.href);
-    
-});
-
-router.get('/epitech', verify, async (req, res) => {
+router.post('/epitech', verify, async (req, res) => {
     const auto_url = req.body.epitech;
     const tbx = auto_url.split("-");
     let epitech = "";
@@ -127,6 +125,11 @@ router.get('/epitech', verify, async (req, res) => {
     else {
         res.status(400).send("Error autologin Invalid");
     }
+    const url = "https://intra.epitech.eu/auth-" + epitech + "/?format=json"
+    await axios.get(url).catch(function (error) {
+        console.log(error.data);
+        res.status(400).send("Error autologin Invalid");
+    })
     let token = req.header('auth-token');
     if (!token) {
         token = req.query.authtoken
@@ -143,6 +146,7 @@ router.get('/epitech', verify, async (req, res) => {
         console.log("Error while saving epitech account");
         res.status(400).send("Error while saving epitech account");
     }
+    res.send("okoko");
 });
 
 module.exports = router;

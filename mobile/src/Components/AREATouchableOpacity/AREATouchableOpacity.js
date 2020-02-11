@@ -22,7 +22,7 @@ function AREATouchable(props) {
   });
   return (
     <View>
-      <TouchableOpacity style={Styles.container}>
+      <TouchableOpacity style={Styles.container} onPress={props.onPress}>
         <Text style={Styles.text}>{props.text}</Text>
       </TouchableOpacity>
     </View>

@@ -64,7 +64,7 @@ function HomeScreen(props) {
           fontWeight={'bold'}
           fontSize={25}
         />
-        <AREAInput
+        {/* <AREAInput
           placeholder={'Email adress'}
           underlineColorAndroid={'transparent'}
           alignSelf={'stretch'}
@@ -76,15 +76,30 @@ function HomeScreen(props) {
           paddingLeft={10}
           fontSize={20}
           fontWeight={'bold'}
-        />
+        /> */}
         <AREATouchableOpacity
-          text={'Continue'}
+          text={'Login'}
           alignSelf={'stretch'}
           backgroundColor={'#ff0000'}
           borderRadius={20}
           marginRight={10}
           marginLeft={10}
-          marginTop={-8}
+          marginTop={10}
+          padding={5}
+          paddingLeft={10}
+          fontSize={20}
+          fontWeight={'bold'}
+          color={'#ffffff'}
+          textAlign={'center'}
+        />
+        <AREATouchableOpacity
+          text={'Register'}
+          alignSelf={'stretch'}
+          backgroundColor={'#0000ff'}
+          borderRadius={20}
+          marginRight={10}
+          marginLeft={10}
+          marginTop={5}
           padding={5}
           paddingLeft={10}
           fontSize={20}

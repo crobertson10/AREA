@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {Animated} from 'react-native';
 
-const FadeInView = props => {
+function FadeInView(props) {
   const fadeAnim = new Animated.Value(0);
 
   useEffect(() => {
@@ -20,6 +20,6 @@ const FadeInView = props => {
       {props.children}
     </Animated.View>
   );
-};
+}
 
 export default FadeInView;

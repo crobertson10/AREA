@@ -17,7 +17,7 @@ const Styles = StyleSheet.create({
   },
 });
 
-function HomeScreen() {
+function HomeScreen(props) {
   return (
     <ScrollView>
       <KeyboardAvoidingView behavior={'position'} enabled>
@@ -96,5 +96,9 @@ function HomeScreen() {
     </ScrollView>
   );
 }
+
+// HomeScreen.navigationOptions = ({navigation}) => ({
+//   headerShown: false,
+// });
 
 export default HomeScreen;

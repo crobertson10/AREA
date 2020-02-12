@@ -90,6 +90,7 @@ function HomeScreen({navigation}) {
           fontWeight={'bold'}
           color={'#ffffff'}
           textAlign={'center'}
+          onPress={() => navigation.navigate('Login')}
         />
         <AREATouchableOpacity
           text={'Register'}

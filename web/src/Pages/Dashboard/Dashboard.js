@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "Components/Header/Navbar";
 import "./Dashboard.css";
 

@@ -18,19 +18,6 @@ function LogForm(props) {
         console.log(err.toString());
       });
   }
-
-  useEffect(() => {
-    //console.log(window.location.href);
-    let token = window.location.hash.substr(1);
-    if (token) {
-      const splitedToken = token.split("=");
-
-      console.log(splitedToken[1]);
-      localStorage.setItem("trello-token", splitedToken[1]);
-      window.close();
-      window.location.reload();
-    }
-  });
   return (
     <Button className="TrelloButton" onClick={connect}>
       <img className="TrelloLogo" src={Trello} alt=""></img>

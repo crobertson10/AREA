@@ -1,0 +1,26 @@
+.TrelloButton {
+  border-color: #b793e6;
+  border-width: 2px;
+  border-radius: 5px;
+  margin-left: 40px;
+  background-color: #b793e6;
+  color: white;
+  padding: 5px 5px 5px 5px;
+  transition-delay: 500ms;
+  transition: 0.5s;
+}
+
+.TrelloButton:hover {
+  border-color: #b793e6;
+  border-width: 2px;
+  margin-left: 40px;
+  color: #b793e6;
+  background-color: white;
+  padding: 5px 5px 5px 5px;
+}
+
+.TrelloLogo {
+  height: 20px;
+  width: 20px;
+  margin: 20px;
+}

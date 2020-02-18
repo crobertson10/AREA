@@ -1,0 +1,30 @@
+.ConnectModal {
+  display: flex;
+  margin-top: 100px;
+  border: 1px;
+  border-width: 20px;
+  border-radius: 100px;
+}
+
+.ConnectHeadMod {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: blueviolet;
+}
+
+.ConnectBodyMod {
+  color: aliceblue;
+}
+
+.ConnectFootMod {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.ConnectlogoMod {
+  height: 100px;
+  width: 100px;
+  margin: 20px;
+}

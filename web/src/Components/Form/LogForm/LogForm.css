@@ -2,9 +2,3 @@
   font-size: large;
   color: gray;
 }
-
-.LogFormButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}

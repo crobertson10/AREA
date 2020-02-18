@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Alert } from "react-bootstrap";
+import { Redirect } from "react-router-dom";
+import { login } from "../../Routes/utils";
 import "./SignForm.css";
 
 function SignForm(props) {
@@ -8,6 +10,7 @@ function SignForm(props) {
   const [pass, setPass] = useState("");
   const [lastname, setLname] = useState("");
   const [firstname, setFname] = useState("");
+  const [redir, setRedir] = useState(0);
 
   const mail = event => {
     setEmail(event.target.value);
@@ -42,13 +45,18 @@ function SignForm(props) {
       })
       .then(function(response) {
         console.log(response);
+        login(response.data.authToken);
+        setRedir(1);
       })
       .catch(function(error) {
         console.log(error);
+        setRedir(2);
       });
   };
   return (
     <Form>
+      {redir === 1 && <Redirect to="/dashboard" />}
+      {redir === 2 && <Alert variant="danger">Wrong Email or Password</Alert>}
       <Form.Group>
         <Form.Label className="Typo">Nom</Form.Label>
         <Form.Control type="lastname" placeholder="LastName" onChange={Lname} />

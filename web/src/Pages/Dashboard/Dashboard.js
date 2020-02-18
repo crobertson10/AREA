@@ -1,13 +1,13 @@
 import React from "react";
 import Navbar from "Components/Header/Navbar";
-import "./Login.css";
+import "./Dashboard.css";
 
-function Login(...props) {
+function Dashboard(...props) {
   return (
     <div>
-      <Navbar props={false} />
+      <Navbar props={true} />
     </div>
   );
 }
 
-export default Login;
+export default Dashboard;

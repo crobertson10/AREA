@@ -1,8 +1,7 @@
 const Strategy = require('passport-github');
 const dotenv = require('dotenv');
 
-const User = require('../models/usershema');
-const Github = require('../models/githubschema');
+const Registered = require('../models/registeredschema');
 
 dotenv.config();
 
@@ -13,44 +12,31 @@ const githubStrategy = new Strategy({
     passReqToCallback: true
 },
 function (req, accessToken, refreshToken, profile, done) {
-    const tkn = req.header('auth-token');
-    verified = jwt.verify(tkn, process.env.TOKEN_SECRET);
-    User.findOne({ _id: verified._id }, function (errr, user) {
-        if (errr) {
-            console.log(errr);
-            return done(errr);
+    Registered.findOne({ token: accessToken, name: "Github" }, function(err, account) {
+        if (err) {
+            console.log(err);
+            return done(err);
         }
-        if (!errr && !user) {
-            return done("User does not exist");
+        if (!err && account) {
+            return done(null, account);
         }
-        Github.findOne({ githubId: profile.id }, function(err, account) {
-            if (err) {
-                console.log(err);
-                return done(err);
-            }
-            if (!err && account) {
+        else {
+            account = new Registered({
+                userId: "undefined",
+                name: "Github",
+                token: accessToken
+            });
+            console.log(account);
+            try {
+                account.save();
                 return done(null, account);
-            }
-            else {
-                account = new Github({
-                    userId: verified._id,
-                    githubId: profile.id,
-                    token: accessToken,
-                    username: profile.username
-                });
-                console.log(account);
-                
-                try {
-                    account.save();
-                    return done(null, account);
-                } catch (error) {
-                    console.log(error);
-                    return (error)
-                }
-            }
-        });
+            } catch (error) {
+                console.log("Error while Github DB saving");
+                console.log(error);
+                return done(error);
+            }                
+        }
     });
-}
-);
+});
 
 module.exports = githubStrategy;

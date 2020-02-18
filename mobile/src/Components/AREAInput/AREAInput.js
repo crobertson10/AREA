@@ -15,12 +15,15 @@ function AREAInput(props) {
       fontWeight: props.fontWeight,
     },
   });
+
   return (
     <View>
       <TextInput
+        secureTextEntry={props.secure}
         style={Styles.container}
         placeholder={props.placeholder}
         underlineColorAndroid={props.underlineColorAndroid}
+        onChangeText={text => props.onChange(text)}
       />
     </View>
   );

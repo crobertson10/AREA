@@ -12,6 +12,7 @@ function LogForm(props) {
     })
       .then(res => {
         console.log(res.data);
+        localStorage.setItem('service', 'Trello');
         window.open(res.data.url, "_blank");
       })
       .catch(err => {

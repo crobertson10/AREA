@@ -3,16 +3,19 @@ import Logo from "Assets/logo.png";
 import { Modal } from "react-bootstrap";
 import "./ConnectModal.css";
 import TrelloButton from "../../Button/TrelloButton/TrelloButton";
+import Axios from 'axios';
 
 function ConnectModal(props) {
   useEffect(() => {
     //console.log(window.location.href);
-    let token = window.location.hash.substr(1);
-    console.log("coucou", token);
-    if (token) {
+    if (localStorage.getItem('service') !== null) {
+      let token = window.location.hash.substr(1);
+      console.log("coucou", token);
       const splitedToken = token.split("=");
       console.log(splitedToken[1]);
+      console.log(localStorage.getItem('service'));
       localStorage.setItem("trello-token", splitedToken[1]);
+      localStorage.removeItem('service');
       window.close();
       window.location.reload();
     }

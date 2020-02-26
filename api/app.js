@@ -12,6 +12,9 @@ const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
 const trelloRouter = require('./test/auth/Trello/Trello');
 const githubRouter = require('./test/auth/Github/Github');
+const yammerRouter = require('./test/auth/Yammer/Yammer');
+const twitchRouter = require('./test/auth/Twitch/Twitch');
+const slackRouter = require('./test/auth/Slack/Slack');
 
 const app = express();
 
@@ -43,7 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api/user', authRouter);
-app.use('/link', trelloRouter, githubRouter);
+app.use('/link', trelloRouter, githubRouter, yammerRouter, twitchRouter, slackRouter);
 //app.use('/link', githubRouter);
 
 // catch 404 and forward to error handler

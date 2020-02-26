@@ -4,26 +4,95 @@ import { Modal } from "react-bootstrap";
 import "./ConnectModal.css";
 import TrelloButton from "../../Button/TrelloButton/TrelloButton";
 import GithubButton from '../../Button/GithubButton/GithubButton';
+import YammerButton from '../../Button/YammerButton/YammerButton';
+import TwitchButton from '../../Button/TwitchButton/TwitchButton';
+import SlackButton from '../../Button/SlackButton/SlackButton';
 import Axios from 'axios';
 
 function ConnectModal(props) {
+
+  function setYammerToken() {
+    if (localStorage.getItem('service') !== null && localStorage.getItem('service') === 'Yammer') {
+      let token = window.location.href.split('=');
+      Axios('http://localhost:3000/link/access/yammer', {
+        method: 'POST',
+        data: {
+          code: token[1]
+        }
+      })
+      .then(res => {
+        console.log(res.data.yammer_token);
+        localStorage.setItem('yammer-token', res.data.yammer_token);
+        localStorage.removeItem('service');
+        window.close();
+        window.reload();
+      })
+      .catch(err => {
+        console.log(err.toString);
+      })
+    }
+  }
+
+  function setSlackToken() {
+    if (localStorage.getItem('service') !== null && localStorage.getItem('service') === 'Slack') {
+      const token = window.location.href.split('&');
+      const hash = token[0].split('=');
+      console.log(hash[1]);
+      Axios('http://localhost:3000/link/access/slack', {
+        method: 'POST',
+        data: {
+          code: hash[1]
+        }
+      })
+      .then(res => {
+        console.log(res.data.slack_token);
+        localStorage.setItem('slakc-token', res.data.slack_token);
+        localStorage.removeItem('service');
+        window.close();
+        window.reload();
+      })
+      .catch(err => {
+        console.log(err.toString());
+      })
+    }
+  }
+
+  function setTwitchToken() {
+    if (localStorage.getItem('service') !== null && localStorage.getItem('service') === 'Twitch') {
+      let token = window.location.href.split('&');
+      console.log(token);
+      let hash = token[0].split('=');
+      console.log(hash);
+      Axios('http://localhost:3000/link/access/twitch', {
+        method: 'POST',
+        data: {
+          code: hash[1]
+        }
+      })
+      .then(res => {
+        console.log(res.data.twitch_token);
+        localStorage.setItem('twitch-token', res.data.twitch_token);
+        localStorage.removeItem('service');
+        window.close();
+        window.reload();
+      })
+    }
+  }
+
   useEffect(() => {
-    //console.log(window.location.href);
+    setSlackToken();
+    setTwitchToken();
+    setYammerToken();
     if (localStorage.getItem('service') !== null && localStorage.getItem('service') === 'Trello') {
       let token = window.location.hash.substr(1);
-      console.log("coucou", token);
       const splitedToken = token.split("=");
-      console.log(splitedToken[1]);
-      console.log(localStorage.getItem('service'));
       localStorage.setItem("trello-token", splitedToken[1]);
       localStorage.removeItem('service');
       window.close();
       window.location.reload();
     }
   if (localStorage.getItem('service') !== null && localStorage.getItem('service') === 'Github') {
-      console.log('chibroscopie');
       let token = window.location.href.split('=');
-      console.log("coucou", token[1]);
       Axios('http://localhost:3000/link/access/github', {
         method: 'POST',
         data: {
@@ -31,7 +100,6 @@ function ConnectModal(props) {
         }
       })
       .then(res => {
-        console.log(res.data);
         localStorage.setItem('github-token', res.data.github_token);
         localStorage.removeItem('service');
         window.close();
@@ -50,6 +118,9 @@ function ConnectModal(props) {
       <Modal.Body className="ConnectBodyMod">
         <TrelloButton></TrelloButton>
         <GithubButton></GithubButton>
+        <YammerButton></YammerButton>
+        <TwitchButton></TwitchButton>
+        <SlackButton></SlackButton>
       </Modal.Body>
     </Modal>
   );

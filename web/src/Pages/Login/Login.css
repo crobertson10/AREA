@@ -3,7 +3,7 @@
 }
 
 .noCol {
-  padding: 0px 0px 0px 10px;
+  padding: 0px 0px 0px 0px;
 }
 
 .floatR {
@@ -11,6 +11,10 @@
   margin: 0px 0px 0px 0px;
   /* display: flex;
   justify-content: flex-end; */
+}
+.middleC {
+  display: flex;
+  flex-direction: row;
 }
 
 .rightC {
@@ -26,23 +30,23 @@
 }
 
 .buttonWidget {
-  border-color: #b793e6;
+  border-color: #a970fd;
   border-width: 2px;
   border-radius: 5px;
   background-color: inherit;
   margin: 10px 10px 10px 10px;
-  box-shadow: 2px 2px 2px #;
-  color: #b793e6;
+  box-shadow: 2px 2px 2px;
+  color: #a970fd;
   padding: 10px 0px 10px 0px;
   transition-delay: 500ms;
   transition: 0.5s;
 }
 
 .buttonWidget:hover {
-  border-color: #b793e6;
+  border-color: #a970fd;
   border-width: 2px;
   margin: 10px 10px 10px -40px;
   background-color: inherit;
-  color: #b793e6;
-  background-color: white;
+  color: #a970fd;
+  background-color: #444444;
 }

@@ -13,10 +13,9 @@ function Header(props) {
       <img className="Logo" src={Logo} alt=""></img>
       <div className="RightItem">
         <button className="Button" onClick={() => ssetShow(true)}>
-          Connect to your service
+          Connect your services
         </button>
         <ConnectModal show={sshow} onHide={() => ssetShow(false)} />
-        <button className="Button">Create a Zap</button>
         <button className="Button" onClick={() => nsetShow(true)}>
           Log Out
         </button>

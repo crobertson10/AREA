@@ -11,6 +11,10 @@ import Axios from "axios";
 
 function ConnectModal(props) {
   const [trelloCo, setTrelloCo] = useState(false);
+  const [yammerCo, setYammerCo] = useState(false);
+  const [githubCo, setGithubCo] = useState(false);
+  const [twitchCo, setTwitchCo] = useState(false);
+  const [slackCo, setSlackCo] = useState(false);
 
   function setYammerToken() {
     if (
@@ -53,7 +57,7 @@ function ConnectModal(props) {
       })
         .then(res => {
           console.log(res.data.slack_token);
-          localStorage.setItem("slakc-token", res.data.slack_token);
+          localStorage.setItem("slack-token", res.data.slack_token);
           localStorage.removeItem("service");
           window.close();
           window.reload();
@@ -92,6 +96,11 @@ function ConnectModal(props) {
     setSlackToken();
     setTwitchToken();
     setYammerToken();
+    if (localStorage.getItem("trello-token") !== null) setTrelloCo(true);
+    if (localStorage.getItem("github-token") !== null) setGithubCo(true);
+    if (localStorage.getItem("twitch-token") !== null) setTwitchCo(true);
+    if (localStorage.getItem("slack-token") !== null) setSlackCo(true);
+    if (localStorage.getItem("yammer-token") !== null) setYammerCo(true);
     if (
       localStorage.getItem("service") !== null &&
       localStorage.getItem("service") === "Trello"
@@ -137,19 +146,19 @@ function ConnectModal(props) {
         </Container>
         <Container className="ConnectServiceCard">
           <GithubButton></GithubButton>
-          <ConnectMarquer connect={trelloCo}></ConnectMarquer>
+          <ConnectMarquer connect={githubCo}></ConnectMarquer>
         </Container>
         <Container className="ConnectServiceCard">
           <YammerButton></YammerButton>
-          <ConnectMarquer connect={trelloCo}></ConnectMarquer>
+          <ConnectMarquer connect={yammerCo}></ConnectMarquer>
         </Container>
         <Container className="ConnectServiceCard">
           <TwitchButton></TwitchButton>
-          <ConnectMarquer connect={trelloCo}></ConnectMarquer>
+          <ConnectMarquer connect={twitchCo}></ConnectMarquer>
         </Container>
         <Container className="ConnectServiceCard">
           <SlackButton></SlackButton>
-          <ConnectMarquer connect={trelloCo}></ConnectMarquer>
+          <ConnectMarquer connect={slackCo}></ConnectMarquer>
         </Container>
       </Modal.Body>
     </Modal>

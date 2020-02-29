@@ -7,11 +7,11 @@ function LogForm(props) {
   function connect() {
     localStorage.removeItem("trello-token");
     Axios("http://localhost:3000/link/auth/trello", {
-      method: "GET",
+      method: "GET"
     })
       .then(res => {
         console.log(res.data);
-        localStorage.setItem('service', 'Trello');
+        localStorage.setItem("service", "Trello");
         window.open(res.data.url, "_blank");
       })
       .catch(err => {

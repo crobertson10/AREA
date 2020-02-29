@@ -1,20 +1,21 @@
 import React, { useEffect } from "react";
 import Axios from "axios";
 import { Button } from "react-bootstrap";
+import "../TrelloButton/TrelloButton.css";
 
 function LogForm(props) {
   function connect() {
-    Axios('http://localhost:3000/link/auth/github', {
-      method: 'GET',
+    Axios("http://localhost:3000/link/auth/github", {
+      method: "GET"
     })
-    .then(res => {
-      console.log(res.data);
-      localStorage.setItem('service', 'Github');
-      window.open(res.data.url, "_blank");
-    })
-    .catch(e => {
-      console.log(e.toString());
-    })
+      .then(res => {
+        console.log(res.data);
+        localStorage.setItem("service", "Github");
+        window.open(res.data.url, "_blank");
+      })
+      .catch(e => {
+        console.log(e.toString());
+      });
     /*localStorage.removeItem("trello-token");
     Axios("http://localhost:3000/link/auth/trello", {
       method: "GET"
@@ -29,7 +30,7 @@ function LogForm(props) {
       });*/
   }
   return (
-    <Button onClick={connect}>
+    <Button className="TrelloButton" onClick={connect}>
       Github
     </Button>
   );

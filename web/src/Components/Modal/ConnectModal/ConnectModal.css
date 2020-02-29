@@ -36,11 +36,11 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: stretch;
-  border: 2px;
+  border: #a970fd;
+  border-width: 2px;
   border-radius: 10px;
-  border-width: 4px;
-  border-color: #a970fd;
   background-color: #18181b;
+  margin: 10px 0px 10px 0px;
 }
 
 .ConnectionMarquer {

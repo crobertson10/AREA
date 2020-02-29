@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Axios from "axios";
 import { Button } from "react-bootstrap";
+import twitchLogo from "Assets/twitch.png";
 import "../TrelloButton/TrelloButton.css";
 
 function LogForm(props) {
@@ -19,6 +20,7 @@ function LogForm(props) {
   }
   return (
     <Button className="TrelloButton" onClick={connect}>
+      <img className="ConnectionLogo" src={twitchLogo}></img>
       Twitch
     </Button>
   );

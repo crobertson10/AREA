@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Axios from "axios";
 import { Button } from "react-bootstrap";
+import githubLogo from "Assets/github.png";
 import "../TrelloButton/TrelloButton.css";
 
 function LogForm(props) {
@@ -31,6 +32,7 @@ function LogForm(props) {
   }
   return (
     <Button className="TrelloButton" onClick={connect}>
+      <img className="ConnectionLogo" src={githubLogo}></img>
       Github
     </Button>
   );

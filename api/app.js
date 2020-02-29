@@ -7,10 +7,14 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
 
-const indexRouter = require("./routes/index");
-const usersRouter = require("./routes/users");
-const authRouter = require("./routes/auth");
-const trelloRouter = require("./test/auth/Trello/Trello");
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const authRouter = require('./routes/auth');
+const trelloRouter = require('./test/auth/Trello/Trello');
+const githubRouter = require('./test/auth/Github/Github');
+const yammerRouter = require('./test/auth/Yammer/Yammer');
+const twitchRouter = require('./test/auth/Twitch/Twitch');
+const slackRouter = require('./test/auth/Slack/Slack');
 
 const app = express();
 
@@ -40,10 +44,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
-app.use("/api/user", authRouter);
-app.use("/link", trelloRouter);
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/api/user', authRouter);
+app.use('/link', trelloRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

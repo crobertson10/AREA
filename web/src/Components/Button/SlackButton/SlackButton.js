@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Axios from "axios";
 import { Button } from "react-bootstrap";
 import slackLogo from "Assets/slack.png";
@@ -20,7 +20,7 @@ function LogForm(props) {
   }
   return (
     <Button className="TrelloButton" onClick={connect}>
-      <img className="ConnectionLogo" src={slackLogo}></img>
+      <img className="ConnectionLogo" src={slackLogo} alt=""></img>
       Slack
     </Button>
   );

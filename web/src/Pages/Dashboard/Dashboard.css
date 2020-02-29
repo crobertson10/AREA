@@ -31,3 +31,9 @@
   color: #a970fd;
   background-color: #444444;
 }
+
+.CarouselDash {
+  width: auto;
+  height: 500px;
+  margin: auto;
+}

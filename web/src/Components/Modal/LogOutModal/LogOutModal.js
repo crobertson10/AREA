@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Logo from "Assets/logo.png";
 import { Redirect } from "react-router-dom";
 import { Modal, Container } from "react-bootstrap";
 import { logout } from "../../Routes/utils";

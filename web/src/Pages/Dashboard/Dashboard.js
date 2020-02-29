@@ -56,10 +56,11 @@ function Dashboard(...props) {
           </Container>
         </Col>
         <Col className="middleC" xs={10}>
-          <Weather lol={"Weather"} show={showWeather} />
-          <Weather lol={"Time"} show={showTime} />
-          <Weather lol={"Satelite"} show={showSat} />
-          <Weather lol={"Steam"} show={showSteam} />
+            <Weather lol={"Weather"} show={showWeather} />
+            <Weather lol={"Time"} show={showTime} />
+            <Weather lol={"Satelite"} show={showSat} />
+            <Weather lol={"Steam"} show={showSteam} />
+          </Row>
         </Col>
         <Col className="noCol" xs={1}>
           <Container className="rightC">

@@ -7,7 +7,6 @@ import GithubButton from "../../Button/GithubButton/GithubButton";
 import YammerButton from "../../Button/YammerButton/YammerButton";
 import TwitchButton from "../../Button/TwitchButton/TwitchButton";
 import SlackButton from "../../Button/SlackButton/SlackButton";
-import trelloLogo from "Assets/trello.png";
 import Axios from "axios";
 
 function ConnectModal(props) {
@@ -134,7 +133,7 @@ function ConnectModal(props) {
           console.log(err.toString());
         });
     }
-  });
+  }, []);
   return (
     <Modal className="ConnectModal" {...props}>
       <Modal.Header className="ConnectHeadMod">

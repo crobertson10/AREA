@@ -21,7 +21,7 @@ function LogForm(props) {
   }
   return (
     <Button className="TrelloButton" onClick={connect}>
-      <img className="ConnectionLogo" src={trelloLogo}></img>
+      <img className="ConnectionLogo" src={trelloLogo} alt=""></img>
       Trello
     </Button>
   );

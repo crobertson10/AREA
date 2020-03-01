@@ -12,7 +12,6 @@ router.post("/github/create", (req, res)=> {
         },
         data: {
             "name": req.body.repo,
-            "description": req.body.description,
             "private": false,
             "auto_init": true
         }

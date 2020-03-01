@@ -23,6 +23,7 @@ function SlackCard(props) {
   };
 
   const messConv = () => {
+    console.log(conv, " ", mess);
     Axios.post("http://localhost:3000/action/slack/send", {
       token: localStorage.getItem("slack-token"),
       name: conv,

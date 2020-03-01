@@ -11,7 +11,7 @@ function getMemberId(token, name, ) {
             var options = {
                 method: 'GET',
                 url: `https://api.trello.com/1/members/${name}`,
-                qs: {fields: ['id', 'name'], key: process.env.TRELLO_ID, token: token},
+                qs: {fields: ['id', 'name'], key: process.env.TRELLO_API_KEY, token: token},
                 headers: {'content-type': 'application/json'}
             };
             request(options, function (error, response, body) {
@@ -43,7 +43,7 @@ function getBoardId(token, name, memberId) {
                   memberships: 'none',
                   organization: 'false',
                   organization_fields: 'name,displayName',
-                  key: process.env.TRELLO_ID,
+                  key: process.env.TRELLO_API_KEY,
                   token: token
                 }
             };
@@ -117,7 +117,7 @@ router.post("/trello/board/delete", async (req, res) => {
                 method: "DELETE",
                 url: `https://api.trello.com/1/boards/${board}`,
                 qs: {
-                    key: process.env.TRELLO_ID,
+                    key: process.env.TRELLO_API_KEY,
                     token: req.body.token
                 }
             };
@@ -161,7 +161,7 @@ router.post("/trello/user", async (req, res) => {
                 var options = {
                     method: method,
                     url: `https://api.trello.com/1/boards/${board_id}/members/${member_id}`,
-                    qs: {type: 'normal', key: process.env.TRELLO_ID, token: req.body.token},
+                    qs: {type: 'normal', key: process.env.TRELLO_API_KEY, token: req.body.token},
                     headers: {'content-type': 'application/json'}
                 };
                   

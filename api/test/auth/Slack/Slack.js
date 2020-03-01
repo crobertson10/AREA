@@ -4,7 +4,7 @@ const axios = require('axios');
 const router = express.Router();
 
 router.get('/auth/slack', async (req, res) => {
-    const request = `https://slack.com/oauth/authorize?client_id=${process.env.SLACK_CLIENT_ID}&scope=users.profile:read+groups:write+channels:write+read&redirect_uri=http://localhost:8080/dashboard`;
+    const request = `https://slack.com/oauth/authorize?client_id=${process.env.SLACK_CLIENT_ID}&scope=users.profile:read+groups:write+channels:write+channels:read&redirect_uri=http://localhost:8080/dashboard`;
     res.send({url: request});
 });
 

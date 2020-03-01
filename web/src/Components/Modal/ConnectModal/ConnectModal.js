@@ -7,6 +7,7 @@ import GithubButton from "../../Button/GithubButton/GithubButton";
 import YammerButton from "../../Button/YammerButton/YammerButton";
 import TwitchButton from "../../Button/TwitchButton/TwitchButton";
 import SlackButton from "../../Button/SlackButton/SlackButton";
+import FacebookButton from "../../Button/FacebookButton/FacebookButton";
 import Axios from "axios";
 
 function ConnectModal(props) {
@@ -15,6 +16,7 @@ function ConnectModal(props) {
   const [githubCo, setGithubCo] = useState(false);
   const [twitchCo, setTwitchCo] = useState(false);
   const [slackCo, setSlackCo] = useState(false);
+  const [facebookCo, setFacebookCo] = useState(false);
 
   function setYammerToken() {
     if (
@@ -92,15 +94,42 @@ function ConnectModal(props) {
     }
   }
 
+  function setFacebookToken() {
+    if (
+        localStorage.getItem('service') != null &&
+        localStorage.getItem('service') === 'Facebook'
+    ) {
+        let token = window.location.href.split('?');
+        console.log(token);
+        let hash = token[1].split('code=');
+        console.log(hash);
+        Axios('http://localhost:3000/link/access/facebook', {
+          method: 'POST',
+          data: {
+            code: hash[1]
+          }
+        })
+            .then(res => {
+              console.log(res.data.facebook_token);
+              localStorage.setItem('facebook-token', res.data.facebook_token);
+              localStorage.removeItem('service');
+              window.close();
+              window.reload();
+            })
+    }
+  }
+
   useEffect(() => {
     setSlackToken();
     setTwitchToken();
     setYammerToken();
+    setFacebookToken();
     if (localStorage.getItem("trello-token") !== null) setTrelloCo(true);
     if (localStorage.getItem("github-token") !== null) setGithubCo(true);
     if (localStorage.getItem("twitch-token") !== null) setTwitchCo(true);
     if (localStorage.getItem("slack-token") !== null) setSlackCo(true);
     if (localStorage.getItem("yammer-token") !== null) setYammerCo(true);
+    if (localStorage.getItem("facebook-token") !== null) setFacebookCo(true);
     if (
       localStorage.getItem("service") !== null &&
       localStorage.getItem("service") === "Trello"
@@ -159,6 +188,10 @@ function ConnectModal(props) {
         <Container className="ConnectServiceCard">
           <SlackButton></SlackButton>
           <ConnectMarquer connect={slackCo}></ConnectMarquer>
+        </Container>
+        <Container className="ConnectServiceCard">
+          <FacebookButton></FacebookButton>
+          <ConnectMarquer connect={facebookCo}></ConnectMarquer>
         </Container>
       </Modal.Body>
     </Modal>

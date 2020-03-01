@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 
-function getMemberId(token, name) {
+function getMemberId(token, name, ) {
     return new Promise(resolve => {
         setTimeout(() => {
             var options = {
@@ -66,9 +66,13 @@ function getBoardId(token, name, memberId) {
 }
 
 
-router.post("/trello/create/board", (req, res) => {
+router.post("/trello/board", (req, res) => {
+    var method = 'POST';
+    if (req.body.delete === true) {
+        method = 'DELETE'
+    }
     var options = {
-        method: 'POST',
+        method: method,
         url: 'https://api.trello.com/1/boards/',
         qs: {
             name: req.body.name,
@@ -100,7 +104,11 @@ router.post("/trello/create/board", (req, res) => {
     });
 })
 
-router.post("/trello/user/add", async (req, res) => {
+router.post("/trello/user", async (req, res) => {
+    var method = 'PUT';
+    if (req.body.delete === true) {
+        method = 'DELETE'
+    }
     my_id = await getMemberId(req.body.token, "you");
     if (!my_id) {
         res.status(400).send("Can't get your id");
@@ -118,7 +126,7 @@ router.post("/trello/user/add", async (req, res) => {
             } else {
                 console.log(member_id);
                 var options = {
-                    method: 'PUT',
+                    method: method,
                     url: `https://api.trello.com/1/boards/${board_id}/members/${member_id}`,
                     qs: {type: 'normal', key: process.env.TRELLO_ID, token: req.body.token},
                     headers: {'content-type': 'application/json'}

@@ -29,3 +29,31 @@
   width: 60rem;
   margin: 0px 0px 0px 10px;
 }
+
+.AccordionCard {
+  background-color: #39393a;
+  border-color: black;
+}
+
+.AccordionBody {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: #5a5a5a;
+}
+
+.AccordionForm {
+  width: 300px;
+}
+
+.AccordionButton {
+  color: #a970fd;
+  border-color: #1f1f23;
+  background-color: #1f1f23;
+}
+
+.AccordionButton:hover {
+  border-color: #1f1f23;
+  color: #a970fd;
+  background-color: #3a3a3a;
+}

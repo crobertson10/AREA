@@ -14,7 +14,7 @@ function Dashboard(...props) {
   const [showTime, setShowT] = useState(true);
   const [showSat, setShowS] = useState(true);
   const [showSteam, setShowSteam] = useState(false);
-  const [showCard, setShowCard] = useState(1);
+  const [showCard, setShowCard] = useState(0);
 
   const handleShowW = () => {
     if (showWeather === false) {

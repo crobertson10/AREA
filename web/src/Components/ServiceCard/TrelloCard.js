@@ -15,6 +15,7 @@ function TrelloCard(props) {
       name: boardName
     })
       .then(function(response) {
+        setBoardName("");
         console.log(response);
       })
       .catch(function(error) {

@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ServiceCard.css";
 import { Accordion, Card, Button, Form } from "react-bootstrap";
 import trelloLogo from "Assets/trello.png";
+import Axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function TrelloCard(props) {
+  const [boardName, setBoardName] = useState("");
+  const [mateName, setMateName] = useState("");
+
+  const submitCreate = () => {
+    Axios.post("http://localhost:3000/action/trello/board", {
+      token: localStorage.getItem("trello-token"),
+      name: boardName,
+      delete: false
+    })
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  };
+
   if (props.id === 0)
     return (
       <div>
@@ -25,8 +43,16 @@ function TrelloCard(props) {
                         type="text"
                         placeholder="Name of your board"
                         className="AccordionForm"
+                        onChange={e => {
+                          setBoardName(e.target.value);
+                        }}
                       />
-                      <Button className="AccordionButton">
+                      <Button
+                        className="AccordionButton"
+                        onClick={() => {
+                          submitCreate();
+                        }}
+                      >
                         Create my board!
                       </Button>
                     </Card.Body>

@@ -83,7 +83,7 @@ router.post("/trello/board/create", (req, res) => {
             prefs_cardCovers: 'true',
             prefs_background: 'blue',
             prefs_cardAging: 'regular',
-            key: process.env.TRELLO_ID,
+            key: process.env.TRELLO_API_KEY,
             token: req.body.token
         }
     };

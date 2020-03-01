@@ -36,7 +36,7 @@ function GithubCard(props) {
   };
 
   const addMate = () => {
-    Axios.post("http://localhost:3000/action/github/invite", {
+    Axios.post("http://localhost:3000/action/github/invit", {
       token: localStorage.getItem("github-token"),
       repo: repo,
       user: mate
@@ -94,7 +94,7 @@ function GithubCard(props) {
                       <Form.Control
                         size="lg"
                         type="text"
-                        placeholder="Name of your board"
+                        placeholder="Name of your repo"
                         className="AccordionForm"
                         onChange={e => {
                           setRepo(e.target.value);
@@ -124,7 +124,7 @@ function GithubCard(props) {
                       <Form.Control
                         size="lg"
                         type="text"
-                        placeholder="Name of your board"
+                        placeholder="Name of your Repo"
                         className="AccordionForm"
                         onChange={e => {
                           setRepo(e.target.value);
@@ -154,7 +154,7 @@ function GithubCard(props) {
                       <Form.Control
                         size="lg"
                         type="text"
-                        placeholder="Name of your Board"
+                        placeholder="Name of your Repo"
                         className="AccordionForm"
                         onChange={e => {
                           setRepo(e.target.value);
@@ -193,7 +193,7 @@ function GithubCard(props) {
                       <Form.Control
                         size="lg"
                         type="text"
-                        placeholder="Name of your Board"
+                        placeholder="Name of your Repo"
                         className="AccordionForm"
                         onChange={e => {
                           setRepo(e.target.value);
@@ -232,7 +232,7 @@ function GithubCard(props) {
                       <Form.Control
                         size="lg"
                         type="text"
-                        placeholder="Name of your Board"
+                        placeholder="Name of your Repo"
                         className="AccordionForm"
                         onChange={e => {
                           setRepo(e.target.value);

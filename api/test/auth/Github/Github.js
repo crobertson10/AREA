@@ -4,7 +4,7 @@ const axios = require('axios');
 const router = express.Router();
 
 router.get('/auth/github', async (req, res) => {
-    const request = `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}&scope=repo`
+    const request = `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}&scope=repo,delete_repo`
     res.send({ url: request })
 })
 

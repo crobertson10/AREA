@@ -127,6 +127,13 @@ react-bootstrap@^1.0.0-beta.16:
     uncontrollable "^7.0.0"
     warning "^4.0.3"
 
+react-dragable@^0.0.4-1:
+  version "0.0.4-1"
+  resolved "https://registry.yarnpkg.com/react-dragable/-/react-dragable-0.0.4-1.tgz#17120e8abd20448b25cb11fc8cf937feb2746ae1"
+  integrity sha512-fA7HR08nNKvFFJOwJj7Q5CsvMT4ongs/uJykU+g0yJ8sWBMe5bpiwRdxI75a9DDE0A+dTxzi7FJqQEMaCCuaug==
+  dependencies:
+    classnames "^2.2.6"
+
 react-is@^16.3.2, react-is@^16.8.1:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"

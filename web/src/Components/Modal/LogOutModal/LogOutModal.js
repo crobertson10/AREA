@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import Logo from "Assets/logo.png";
 import { Redirect } from "react-router-dom";
-import { Modal } from "react-bootstrap";
+import { Modal, Container } from "react-bootstrap";
 import { logout } from "../../Routes/utils";
 import "../LogOutModal/LogOutModal.css";
 
@@ -14,19 +13,20 @@ function LogOutModal(props) {
   };
 
   return (
-    <Modal className="Modal" {...props}>
+    <Modal className="DisconnectModal" {...props}>
       {log === 1 && <Redirect to="/" />}
-      <Modal.Header className="HeadMod">
-        <img src={Logo} alt="" className="logoMod"></img>
-        <h1>Do you really want to Log Out?</h1>
+      <Modal.Header className="DisconnectHeadMod">
+        Do you really want to Log Out?
       </Modal.Header>
-      <Modal.Body className="bodyMod">
-        <button className="Button" onClick={logOut}>
-          Yes
-        </button>
-        <button className="Button" onClick={props.onHide}>
-          No
-        </button>
+      <Modal.Body className="DisconnectBodyMod">
+        <Container className="DisconnectServiceCard">
+          <button className="TrelloButton" onClick={logOut}>
+            Yes
+          </button>
+          <button className="TrelloButton" onClick={props.onHide}>
+            No
+          </button>
+        </Container>
       </Modal.Body>
     </Modal>
   );

@@ -1,3 +1,21 @@
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const cors = require("cors");
+
+const indexRouter = require("./routes/index");
+const usersRouter = require("./routes/users");
+const authRouter = require("./routes/auth");
+const trelloRouter = require("./test/auth/Trello/Trello");
+const githubRouter = require("./test/auth/Github/Github");
+const yammerRouter = require("./test/auth/Yammer/Yammer");
+const twitchRouter = require("./test/auth/Twitch/Twitch");
+const slackRouter = require("./test/auth/Slack/Slack");
+
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -7,10 +25,6 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const authRouter = require('./routes/auth');
-const trelloRouter = require('./test/auth/Trello/Trello');
 const reactionTrello = require('./reaction/trello');
 const reactionGithub = require('./reaction/github');
 const reactionSlack = require('./reaction/slack');
@@ -23,29 +37,34 @@ dotenv.config();
 
 // Mongoose connect
 
-mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true })
-    .then(() => {
-      console.log("Connected to mongoDB");
-    })
-    .catch((err) => {
-      console.log("Error while DB connecting");
-      console.log(err);
-    });
+mongoose
+  .connect(process.env.DB_CONNECT, { useNewUrlParser: true })
+  .then(() => {
+    console.log("Connected to mongoDB");
+  })
+  .catch(err => {
+    console.log("Error while DB connecting");
+    console.log(err);
+  });
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "jade");
 
-app.use(logger('dev'));
+app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/api/user', authRouter);
-app.use('/link', trelloRouter);
+app.use("/", indexRouter);
+app.use("/users", usersRouter);
+app.use("/api/user", authRouter);
+app.use("/link", trelloRouter);
+app.use("/link", slackRouter);
+app.use("/link", githubRouter);
+app.use("/link", twitchRouter);
+app.use("/link", yammerRouter);
 app.use('/action', reactionGithub);
 app.use('/action', reactionSlack);
 app.use('/action', reactionTrello);
@@ -59,11 +78,11 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.error = req.app.get("env") === "development" ? err : {};
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render("error");
 });
 
 module.exports = app;

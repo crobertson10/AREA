@@ -10,10 +10,9 @@ function TrelloCard(props) {
   const [mateName, setMateName] = useState("");
 
   const submitCreate = () => {
-    Axios.post("http://localhost:3000/action/trello/board", {
+    Axios.post("http://localhost:3000/action/trello/board/create", {
       token: localStorage.getItem("trello-token"),
-      name: boardName,
-      delete: false
+      name: boardName
     })
       .then(function(response) {
         console.log(response);

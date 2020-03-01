@@ -12,11 +12,14 @@
   /* display: flex;
   justify-content: flex-end; */
 }
-.middleC {
+.middleL {
   display: flex;
   flex-direction: row;
 }
-
+.middleR {
+  display: flex;
+  flex-direction: column;
+}
 .rightC {
   display: flex;
   flex-direction: column;

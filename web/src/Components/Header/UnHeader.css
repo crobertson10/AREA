@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
   width: 100vw;
-  height: 80px;
+  height: 70px;
   background-color: black;
 }
 
@@ -17,11 +17,9 @@
 }
 
 .Button {
-  border-color: #a970fd;
-  border-width: 2px;
-  border-radius: 5px;
-  margin-left: 40px;
+  font-size: 24px;
   background-color: inherit;
+  border-color: black;
   color: #a970fd;
   padding: 1px 50px 1px 50px;
   transition-delay: 500ms;
@@ -29,12 +27,13 @@
 }
 
 .Button:hover {
-  border-color: #a970fd;
+  font-size: 32px;
+  border-color: black;
+  border-bottom-color: #a970fd;
   border-width: 2px;
   margin-left: 40px;
   background-color: inherit;
   color: #a970fd;
-  background-color: #444444;
   padding: 1px 50px 1px 50px;
 }
 

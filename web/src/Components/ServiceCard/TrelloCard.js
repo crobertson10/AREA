@@ -15,7 +15,50 @@ function TrelloCard(props) {
       name: boardName
     })
       .then(function(response) {
-        setBoardName("");
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  };
+
+  const submitDelete = () => {
+    Axios.post("http://localhost:3000/action/trello/board/delete", {
+      token: localStorage.getItem("trello-token"),
+      name: boardName
+    })
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  };
+
+  const addMate = () => {
+    Axios.post("http://localhost:3000/action/trello/user", {
+      token: localStorage.getItem("trello-token"),
+      name: boardName,
+      user: mateName,
+      delete: false
+    })
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  };
+
+  const kickMate = () => {
+    console.log(boardName, " ", mateName);
+    Axios.post("http://localhost:3000/action/trello/user", {
+      token: localStorage.getItem("trello-token"),
+      name: boardName,
+      user: mateName,
+      delete: true
+    })
+      .then(function(response) {
         console.log(response);
       })
       .catch(function(error) {
@@ -73,8 +116,16 @@ function TrelloCard(props) {
                         type="text"
                         placeholder="Name of your board"
                         className="AccordionForm"
+                        onChange={e => {
+                          setBoardName(e.target.value);
+                        }}
                       />
-                      <Button className="AccordionButton">
+                      <Button
+                        className="AccordionButton"
+                        onClick={() => {
+                          submitDelete();
+                        }}
+                      >
                         Delete my board!
                       </Button>
                     </Card.Body>
@@ -95,14 +146,27 @@ function TrelloCard(props) {
                         type="text"
                         placeholder="Name of your Board"
                         className="AccordionForm"
+                        onChange={e => {
+                          setBoardName(e.target.value);
+                        }}
                       />
                       <Form.Control
                         size="lg"
                         type="text"
                         placeholder="Name of your Mate"
                         className="AccordionForm"
+                        onChange={e => {
+                          setMateName(e.target.value);
+                        }}
                       />
-                      <Button className="AccordionButton">Add my mate!</Button>
+                      <Button
+                        className="AccordionButton"
+                        onClick={() => {
+                          addMate();
+                        }}
+                      >
+                        Add my mate!
+                      </Button>
                     </Card.Body>
                   </Accordion.Collapse>
                 </Card>
@@ -121,14 +185,27 @@ function TrelloCard(props) {
                         type="text"
                         placeholder="Name of your Board"
                         className="AccordionForm"
+                        onChange={e => {
+                          setBoardName(e.target.value);
+                        }}
                       />
                       <Form.Control
                         size="lg"
                         type="text"
                         placeholder="Name of your Mate"
                         className="AccordionForm"
+                        onChange={e => {
+                          setMateName(e.target.value);
+                        }}
                       />
-                      <Button className="AccordionButton">Kick my mate!</Button>
+                      <Button
+                        className="AccordionButton"
+                        onClick={() => {
+                          kickMate();
+                        }}
+                      >
+                        Kick my mate!
+                      </Button>
                     </Card.Body>
                   </Accordion.Collapse>
                 </Card>

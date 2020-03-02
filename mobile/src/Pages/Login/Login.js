@@ -2,14 +2,30 @@ import React, {useState} from 'react';
 import {ScrollView, KeyboardAvoidingView} from 'react-native';
 import AREATouchableOpacity from '../../Components/AREATouchableOpacity/AREATouchableOpacity';
 import AREAInput from '../../Components/AREAInput/AREAInput';
+import axios from 'react-native-axios';
+
+import config from '../../../config.json';
 
 function Login({navigation}) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('clement.scherpereel@epitech.eu');
+  const [password, setPassword] = useState('toto');
 
+
+  const addr = config.address + config.login;
   function login() {
-    console.log(email);
-    console.log(password);
+    data = {
+      email: email,
+      password: password
+    };
+    console.log(addr);
+    console.log(data);
+
+    axios.post(addr, data)
+    .then(function (response) {
+      console.log(reponse);
+    })
+    .catch(error => console.log(error));
+    ;
   }
 
   return (

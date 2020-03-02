@@ -13,7 +13,7 @@ import twitchLogo from "Assets/twitch.png";
 import slackLogo from "Assets/slack.png";
 import githubLogo from "Assets/github.png";
 import yammerLogo from "Assets/yammer.png";
-import facebookLogo from "Assets/trello.png";
+import facebookLogo from "Assets/facebook.png";
 import "./Dashboard.css";
 
 function Dashboard(...props) {

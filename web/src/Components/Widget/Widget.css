@@ -25,3 +25,9 @@
 .FormWidget {
   margin: 0px 40px 5px 10px;
 }
+
+.DropDownTime {
+  background-color: #494949;
+  color: #1f1f23;
+  width: auto;
+}

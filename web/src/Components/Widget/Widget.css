@@ -3,10 +3,23 @@
   box-shadow: 7px 6px 5px 2px rgba(99, 99, 99, 0.77);
   margin: 10px 30px 10px 40px;
   color: #d2d2d7;
+  border-radius: 20px;
 }
 
 .WeatherWidgetBody {
   display: flex;
-  justify-content: flex-start;
-  align-items: stretch;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: #494949;
+  border-radius: 20px;
+  margin: 1px 10px 10px 10px;
+}
+.WeatherWidgetHead {
+  display: flex;
+  justify-content: space-evenly;
+  justify-content: center;
+}
+
+.FormWidget {
+  margin: 0px 40px 5px 10px;
 }

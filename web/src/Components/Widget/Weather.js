@@ -51,11 +51,11 @@ function Weather(props) {
     return (
       <div>
         <Card className="WidgetCard">
-          <Card.Header>
-            <Col>
-              {country} {city} {desc} {wind} {temp}
+          <Card.Header className="WeatherWidgetHead">
+            <Col md={4}>
+              {country} {city} Weather: {desc} Wind: {wind} T°: {temp}
             </Col>
-            <Col>
+            <Col md={6}>
               <img
                 alt={""}
                 src={`https://www.weatherbit.io/static/img/icons/${icon}.png`}
@@ -65,12 +65,14 @@ function Weather(props) {
           <Card.Body className="WeatherWidgetBody">
             <Row>
               <Form.Control
-                placeholder="City"
-                onChange={e => setCity(e.target.value)}
-              />
-              <Form.Control
+                className="FormWidget"
                 placeholder="Country"
                 onChange={e => setCountry(e.target.value)}
+              />
+              <Form.Control
+                className="FormWidget"
+                placeholder="City"
+                onChange={e => setCity(e.target.value)}
               />
             </Row>
             <Row>

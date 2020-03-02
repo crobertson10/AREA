@@ -46,7 +46,7 @@ function Weather(props) {
       });
   };
 
-  if (props.show === true) {
+  if (props.show === 0) {
     return (
       <div>
         <Card className="WidgetCard">

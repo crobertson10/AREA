@@ -4,8 +4,19 @@
   margin: 10px 30px 10px 40px;
   color: #d2d2d7;
   border-radius: 20px;
+  animation: widgetMove 1s;
 }
 
+@keyframes widgetMove {
+  from {
+    left: 50px;
+    opacity: 0;
+  }
+  to {
+    left: 0px;
+    opacity: 1;
+  }
+}
 .WeatherWidgetBody {
   display: flex;
   flex-direction: row;

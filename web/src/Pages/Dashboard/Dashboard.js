@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import Navbar from "Components/Header/Navbar";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import Weather from "Components/Widget/Weather";
+
 import Nasa from "Components/Widget/Nasa";
+
+import Clock from "Components/Widget/Timer";
+
 import TrelloCard from "Components/ServiceCard/TrelloCard";
 import TwitchCard from "Components/ServiceCard/TwitchCard";
 import SlackCard from "Components/ServiceCard/SlackCard";
@@ -80,10 +84,15 @@ function Dashboard(...props) {
           ></FacebookCard>
         </Col>
         <Col className="middleR" xs={3}>
+
           <Row>
             <Weather show={showW} />
             <Nasa show={showW}></Nasa>
           </Row>
+
+          <Weather title={"Weather"} show={showWeather} />
+          <Clock show={showTime}></Clock>
+
         </Col>
         <Col className="noCol" xs={1}>
           <Container className="rightC">

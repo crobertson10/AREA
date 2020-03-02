@@ -4,7 +4,12 @@
   margin: 10px 30px 10px 40px;
   color: #d2d2d7;
   border-radius: 20px;
+
   animation: widgetMove 1s;
+
+  padding-right: 15px;
+  padding-left: 15px;
+
 }
 
 @keyframes widgetMove {
@@ -27,13 +32,14 @@
 }
 .WeatherWidgetHead {
   display: flex;
-  justify-content: space-evenly;
-  justify-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 
 .FormWidget {
   margin: 0px 40px 5px 10px;
 }
+
 
 .NasaModal {
   display: flex;
@@ -66,4 +72,10 @@
 .NasalogoMod {
   height: 400px;
   width: 450px;
+ }
+
+.DropDownTime {
+  background-color: #494949;
+  color: #1f1f23;
+  width: auto;
 }

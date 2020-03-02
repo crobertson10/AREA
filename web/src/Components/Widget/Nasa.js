@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Card, Form, Col, Row, Modal, Button } from "react-bootstrap";
+import React, { useState } from "react";
+import { Card, Modal, Button } from "react-bootstrap";
 import Axios from "axios";
 import "./Widget.css";
 

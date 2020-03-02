@@ -84,15 +84,11 @@ function Dashboard(...props) {
           ></FacebookCard>
         </Col>
         <Col className="middleR" xs={3}>
-
           <Row>
             <Weather show={showW} />
             <Nasa show={showW}></Nasa>
+            <Clock show={showW}></Clock>
           </Row>
-
-          <Weather title={"Weather"} show={showWeather} />
-          <Clock show={showTime}></Clock>
-
         </Col>
         <Col className="noCol" xs={1}>
           <Container className="rightC">

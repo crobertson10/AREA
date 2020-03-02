@@ -23,3 +23,36 @@
 .FormWidget {
   margin: 0px 40px 5px 10px;
 }
+
+.NasaModal {
+  display: flex;
+  border-radius: 20px;
+}
+
+.NasaHeadMod {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #18181b;
+  color: #eeeef0;
+}
+
+.NasaBodyMod {
+  display: flex;
+  align-items: center;
+  background-color: rgb(63, 63, 63);
+}
+
+.NasaFootMod {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(36, 36, 36);
+  color: #d2d2d7;
+}
+
+.NasalogoMod {
+  height: 400px;
+  width: 450px;
+}

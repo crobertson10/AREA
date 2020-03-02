@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import Navbar from "Components/Header/Navbar";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import Weather from "Components/Widget/Weather/Weather";
+import Weather from "Components/Widget/Weather";
+
+import Nasa from "Components/Widget/Nasa";
+
+import Clock from "Components/Widget/Timer";
+
 import TrelloCard from "Components/ServiceCard/TrelloCard";
 import TwitchCard from "Components/ServiceCard/TwitchCard";
 import SlackCard from "Components/ServiceCard/SlackCard";
@@ -13,40 +18,12 @@ import twitchLogo from "Assets/twitch.png";
 import slackLogo from "Assets/slack.png";
 import githubLogo from "Assets/github.png";
 import yammerLogo from "Assets/yammer.png";
-import facebookLogo from "Assets/trello.png";
+import facebookLogo from "Assets/facebook.png";
 import "./Dashboard.css";
 
 function Dashboard(...props) {
-  const [showWeather, setShowW] = useState(true);
-  const [showTime, setShowT] = useState(true);
-  const [showSat, setShowS] = useState(true);
-  const [showSteam, setShowSteam] = useState(false);
+  const [showW, setShowWidget] = useState(0);
   const [showCard, setShowCard] = useState(0);
-
-  const handleShowW = () => {
-    if (showWeather === false) {
-      console.log(showCard);
-      setShowW(true);
-    } else setShowW(false);
-  };
-
-  const handleShowT = () => {
-    if (showTime === false) {
-      setShowT(true);
-    } else setShowT(false);
-  };
-
-  const handleShowS = () => {
-    if (showSat === false) {
-      setShowS(true);
-    } else setShowS(false);
-  };
-
-  const handleShowSteam = () => {
-    if (showSteam === false) {
-      setShowSteam(true);
-    } else setShowSteam(false);
-  };
 
   return (
     <div>
@@ -107,25 +84,28 @@ function Dashboard(...props) {
           ></FacebookCard>
         </Col>
         <Col className="middleR" xs={3}>
+
           <Row>
-            <Weather title={"Weather"} show={showWeather} />
-            <Weather title={"Time"} show={showTime} />
-            <Weather title={"Satelite"} show={showSat} />
-            <Weather title={"Steam"} show={showSteam} />
+            <Weather show={showW} />
+            <Nasa show={showW}></Nasa>
           </Row>
+
+          <Weather title={"Weather"} show={showWeather} />
+          <Clock show={showTime}></Clock>
+
         </Col>
         <Col className="noCol" xs={1}>
           <Container className="rightC">
-            <Button className="buttonWidget" onClick={handleShowW}>
+            <Button className="buttonWidget" onClick={() => setShowWidget(0)}>
               Weather
             </Button>
-            <Button className="buttonWidget" onClick={handleShowT}>
+            <Button className="buttonWidget" onClick={() => setShowWidget(1)}>
               Time
             </Button>
-            <Button className="buttonWidget" onClick={handleShowS}>
-              Satelite
+            <Button className="buttonWidget" onClick={() => setShowWidget(2)}>
+              Nasa
             </Button>
-            <Button className="buttonWidget" onClick={handleShowSteam}>
+            <Button className="buttonWidget" onClick={() => setShowWidget(3)}>
               Steam
             </Button>
           </Container>

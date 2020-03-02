@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "Components/Header/Navbar";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import Weather from "Components/Widget/Weather/Weather";
+import Weather from "Components/Widget/Weather";
 import "./Login.css";
 
 function Login(...props) {

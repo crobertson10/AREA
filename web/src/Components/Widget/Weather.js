@@ -12,7 +12,6 @@ function Weather(props) {
   const [icon, setIcon] = useState("");
 
   useEffect(() => {
-    console.log(city, " ", country);
     Axios.post("http://localhost:3000/widget/weather", {
       city: "Lille",
       country: "France"
@@ -28,6 +27,9 @@ function Weather(props) {
         console.log("err: " + err);
       });
   });
+
+  
+  if (props.show === 0) {
 
   if (props.show === true) {
     const getWeather = () => {
@@ -47,6 +49,7 @@ function Weather(props) {
           console.log(error);
         });
     };
+
     return (
       <div>
         <Card className="WidgetCard">

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, Form, Col, Row, Button } from "react-bootstrap";
+import { Card, Form, Col, Container, Row, Button } from "react-bootstrap";
 import Axios from "axios";
 import "./Widget.css";
 
@@ -27,40 +27,46 @@ function Weather(props) {
       .catch(err => {
         console.log("err: " + err);
       });
-  }, []);
-
-  const getWeather = () => {
-    console.log(city, " ", country);
-    Axios.post("http://localhost:3000/widget/weather", {
-      city: city,
-      country: country
-    })
-      .then(function(res) {
-        console.log(res);
-        setTemp(res.data.data[0].temp);
-        setIcon(res.data.data[0].weather.icon);
-        setDesc(res.data.data[0].weather.description);
-        setWind(res.data.data[0].wind_spd);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  };
+  });
 
   if (props.show === true) {
+    const getWeather = () => {
+      console.log(city, " ", country);
+      Axios.post("http://localhost:3000/widget/weather", {
+        city: city,
+        country: country
+      })
+        .then(function(res) {
+          console.log(res);
+          setTemp(res.data.data[0].temp);
+          setIcon(res.data.data[0].weather.icon);
+          setDesc(res.data.data[0].weather.description);
+          setWind(res.data.data[0].wind_spd);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    };
     return (
       <div>
         <Card className="WidgetCard">
           <Card.Header className="WeatherWidgetHead">
-            <Col md={4}>
-              {country} {city} Weather: {desc} Wind: {wind} T°: {temp}
-            </Col>
-            <Col md={6}>
+            <Container>
               <img
+                style={{ width: "80px" }}
                 alt={""}
                 src={`https://www.weatherbit.io/static/img/icons/${icon}.png`}
               />
-            </Col>
+              <tr>
+                <li>
+                  {country} {city}
+                </li>
+                <li>Weather: {desc}</li>
+                <li>
+                  Wind: {wind} T°: {temp}
+                </li>
+              </tr>
+            </Container>
           </Card.Header>
           <Card.Body className="WeatherWidgetBody">
             <Row>

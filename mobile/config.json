@@ -1,0 +1,5 @@
+{
+    "address":"http://127.0.0.1:3000",
+    "register": "/api/user/resgister",
+    "login": "/api/user/login"
+}

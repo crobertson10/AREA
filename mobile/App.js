@@ -8,6 +8,7 @@ import Register from './src/Pages/Register/Register';
 import Login from './src/Pages/Login/Login';
 import Option from './src/Pages/Option/Option';
 import Dashboard from './src/Pages/Dashboard/Dashboard';
+import Github from './src/Pages/Dashboard/Action/Github/Github';
 
 function App() {
   const Stack = createStackNavigator();
@@ -28,6 +29,7 @@ function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Option" component={Option}/>
         <Stack.Screen name="Dashboard" component={Dashboard}/>
+        <Stack.Screen name="Github" component={Github}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -29,7 +29,7 @@ function Github({ navigation }) {
   }
 
   function deleteRepo() {
-    axios.post("http://localhost:3000/action/github/delete", {
+    axios.post(`${addr}/action/github/delete`, {
       // token: AsyncStorage.getItem("github-token"),
       repo: repo
     })
@@ -45,7 +45,7 @@ function Github({ navigation }) {
   }
 
   function inviteUser() {
-    axios.post("http://localhost:3000/action/github/invit", {
+    axios.post(`${addr}/action/github/invit`, {
       // token: AsyncStorage.getItem("github-token"),
       repo: repo,
       user: username
@@ -61,7 +61,7 @@ function Github({ navigation }) {
   };
 
   function kickUser() {
-    axios.post("http://localhost:3000/action/github/kick", {
+    axios.post(`${addr}/action/github/kick`, {
       // token: AsyncStorage.getItem("github-token"),
       repo: repo,
       user: username

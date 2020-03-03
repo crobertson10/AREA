@@ -9,6 +9,7 @@ import Login from './src/Pages/Login/Login';
 import Option from './src/Pages/Option/Option';
 import Dashboard from './src/Pages/Dashboard/Dashboard';
 import Github from './src/Pages/Dashboard/Action/Github/Github';
+import Trello from './src/Pages/Dashboard/Action/Trello/Trello';
 
 function App() {
   const Stack = createStackNavigator();
@@ -30,6 +31,7 @@ function App() {
         <Stack.Screen name="Option" component={Option}/>
         <Stack.Screen name="Dashboard" component={Dashboard}/>
         <Stack.Screen name="Github" component={Github}/>
+        <Stack.Screen name="Trello" component={Trello}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -108,6 +108,39 @@ function HomeScreen({navigation}) {
           textAlign={'center'}
           onPress={() => navigation.navigate('Register')}
         />
+        <AREATouchableOpacity
+          text={'Option (tmp for test)'}
+          alignSelf={'stretch'}
+          backgroundColor={'#0000ff'}
+          borderRadius={20}
+          marginRight={10}
+          marginLeft={10}
+          marginTop={5}
+          padding={5}
+          paddingLeft={10}
+          fontSize={20}
+          fontWeight={'bold'}
+          color={'#ffffff'}
+          textAlign={'center'}
+          onPress={() => navigation.navigate('Option')}
+        />
+
+<AREATouchableOpacity
+          text={'Dashboard (tmp for test)'}
+          alignSelf={'stretch'}
+          backgroundColor={'#0000ff'}
+          borderRadius={20}
+          marginRight={10}
+          marginLeft={10}
+          marginTop={5}
+          padding={5}
+          paddingLeft={10}
+          fontSize={20}
+          fontWeight={'bold'}
+          color={'#ffffff'}
+          textAlign={'center'}
+          onPress={() => navigation.navigate('Dashboard')}
+        />
       </KeyboardAvoidingView>
     </ScrollView>
   );

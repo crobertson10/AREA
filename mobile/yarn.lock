@@ -6117,6 +6117,11 @@ shellwords@^0.1.1:
   resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
   integrity sha512-vFwSUfQvqybiICwZY5+DAWIPLKsWO31Q91JSKl3UYv+K5c2QRPzn0qzec6QPu1Qc9eHYItiP3NdJqNVqetYAww==
 
+shitty-qs@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/shitty-qs/-/shitty-qs-1.0.1.tgz#7716a66937411e927315ed49c0fa05addf230386"
+  integrity sha1-dxamaTdBHpJzFe1JwPoFrd8jA4Y=
+
 shortid@^2.2.15:
   version "2.2.15"
   resolved "https://registry.yarnpkg.com/shortid/-/shortid-2.2.15.tgz#2b902eaa93a69b11120373cd42a1f1fe4437c122"

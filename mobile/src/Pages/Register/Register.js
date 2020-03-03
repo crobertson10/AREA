@@ -122,7 +122,7 @@ const addr = config.address + config.register;
           secure={true}
         />
         <AREATouchableOpacity
-          text={'Login'}
+          text={'Register'}
           alignSelf={'stretch'}
           backgroundColor={'#ff0000'}
           borderRadius={20}
@@ -138,7 +138,7 @@ const addr = config.address + config.register;
           onPress={() => register()}
         />
         <AREATouchableOpacity
-          text={'Register'}
+          text={'Login'}
           alignSelf={'stretch'}
           backgroundColor={'#ff0000'}
           borderRadius={20}

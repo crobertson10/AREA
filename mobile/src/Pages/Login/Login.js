@@ -37,6 +37,7 @@ function Login({navigation}) {
       setAuthToken(response.data.authToken);
       // await AsyncStorage.setItem('authToken', response.data.authToken);
       setTokenRegister();
+      navigation.navigate('Dashboard');
     })
     .catch(error => console.log(error));
     ;

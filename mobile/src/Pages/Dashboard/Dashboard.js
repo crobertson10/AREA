@@ -1,7 +1,6 @@
 import React from 'react';
 import AREATouchableOpacity from '../../Components/AREATouchableOpacity/AREATouchableOpacity';
-import AREAInput from '../../Components/AREAInput/AREAInput';
-import { ScrollView, KeyboardAvoidingView } from 'react-native';
+import { ScrollView } from 'react-native';
 
 
 function Dashboard({ navigation }) {
@@ -40,6 +39,38 @@ function Dashboard({ navigation }) {
                 color={'#ffffff'}
                 textAlign={'center'}
                 onPress={() => navigation.navigate('Trello')}
+            />
+            <AREATouchableOpacity
+                text={'Do something with Slack'}
+                alignSelf={'stretch'}
+                backgroundColor={'#00FFFF'}
+                borderRadius={20}
+                marginRight={10}
+                marginLeft={10}
+                marginTop={10}
+                padding={5}
+                paddingLeft={10}
+                fontSize={20}
+                fontWeight={'bold'}
+                color={'#ffffff'}
+                textAlign={'center'}
+                onPress={() => navigation.navigate('Slack')}
+            />
+            <AREATouchableOpacity
+                text={'Option'}
+                alignSelf={'stretch'}
+                backgroundColor={'#0000ff'}
+                borderRadius={20}
+                marginRight={10}
+                marginLeft={10}
+                marginTop={50}
+                padding={5}
+                paddingLeft={10}
+                fontSize={20}
+                fontWeight={'bold'}
+                color={'#ffffff'}
+                textAlign={'center'}
+                onPress={() => navigation.navigate('Option')}
             />
         </ScrollView>
     );

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, Form, Col, Container, Row, Button } from "react-bootstrap";
+import { Card, Form, Container, Row, Button } from "react-bootstrap";
 import Axios from "axios";
 import "./Widget.css";
 
@@ -28,10 +28,7 @@ function Weather(props) {
       });
   });
 
-  
   if (props.show === 0) {
-
-  if (props.show === true) {
     const getWeather = () => {
       console.log(city, " ", country);
       Axios.post("http://localhost:3000/widget/weather", {

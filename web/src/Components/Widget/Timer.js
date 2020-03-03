@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Card,
-  Form,
-  Col,
   Container,
   Dropdown,
   DropdownButton,
@@ -11,10 +9,9 @@ import {
 } from "react-bootstrap";
 import Axios from "axios";
 import "./Widget.css";
-import Moment from "moment";
 
 function Clock(props) {
-  const [cityArr, setCityArr] = useState([
+  const cityArr = [
     "America/Sao_Paulo",
     "Asia/Hong_Kong",
     "Asia/Kuala_Lumpur",
@@ -24,7 +21,7 @@ function Clock(props) {
     "Europe/Madrid",
     "Europe/Paris",
     "Pacific/Honolulu"
-  ]);
+  ];
   const [city, setCity] = useState("Europe/Paris");
   const [time, setTime] = useState();
 
@@ -41,7 +38,7 @@ function Clock(props) {
       });
   };
 
-  if (props.show) {
+  if (props.show === 1) {
     return (
       <div>
         <Card className="WidgetCard">

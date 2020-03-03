@@ -1,15 +1,46 @@
-import React, {useState} from 'react';
+import React, {useState, AsyncStorage} from 'react';
 import {ScrollView, KeyboardAvoidingView} from 'react-native';
 import AREATouchableOpacity from '../../Components/AREATouchableOpacity/AREATouchableOpacity';
 import AREAInput from '../../Components/AREAInput/AREAInput';
+import axios from 'react-native-axios';
+import shittyQs from 'shitty-qs';
+
+import config from '../../../config.json';
 
 function Login({navigation}) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('clement.scherpereel@epitech.eu');
+  const [password, setPassword] = useState('toto');
+  const [authToken, setAuthToken] = useState('');
 
-  function login() {
-    console.log(email);
-    console.log(password);
+
+  async function setTokenRegister() {
+      await AsyncStorage.setItem("AreaToken", authToken);
+  }
+
+
+  const addr = config.address + config.login;
+   function login () {
+    data = {
+      email: email,
+      password: password
+    };
+    console.log(addr);
+    console.log(data);
+
+  axios.post(addr, data,
+      {
+        "headers": {
+          'Content-Type': 'application/json',
+        }})
+    .then(function (response) {
+      console.log(response.data.authToken, "token");
+      setAuthToken(response.data.authToken);
+      // await AsyncStorage.setItem('authToken', response.data.authToken);
+      setTokenRegister();
+      navigation.navigate('Dashboard');
+    })
+    .catch(error => console.log(error));
+    ;
   }
 
   return (

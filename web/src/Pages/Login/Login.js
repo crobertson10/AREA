@@ -36,6 +36,11 @@ function Login(...props) {
           <Weather lol={"Time"} show={showTime} />
           <Weather lol={"Satelite"} show={showSat} />
         </Col>
+        <div>
+          <Button positive as="a" href="client_apk/app-release.apk" download>
+            Download APK
+          </Button>
+        </div>
         <Col className="noCol" xs={1}>
           <Container className="rightC">
             <Button className="buttonWidget" onClick={handleShowW}>

@@ -18,9 +18,21 @@ services:
     restart: always
     ports:
     - 8081:8081
+    depends_on:
+      - client_mobile
+      - api
     volumes:
     - ./web:/web
     - /web/node_modules
+    - ./mobile/android/app/build/outputs/apk/release:/web/public/client_apk
+    networks:
+      - webappnetwork
+  client_mobile:
+    build: ./mobile
+    volumes:
+    - ./mobile:/mobile
+    - /mobile/node_modules
+    - ./mobile/android/app/build/outputs/apk/release:/zoulette
     networks:
       - webappnetwork
   mongodb:

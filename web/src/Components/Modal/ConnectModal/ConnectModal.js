@@ -62,7 +62,7 @@ function ConnectModal(props) {
           console.log(res.data.slack_token);
           localStorage.setItem("slack-token", res.data.slack_token);
           localStorage.removeItem("service");
-          Axios(`${url.local}/api/user/save`, {
+          Axios(`${url.local}api/user/save`, {
             method: "POST",
             body: {
               authToken: localStorage.getItem("accessToken"),

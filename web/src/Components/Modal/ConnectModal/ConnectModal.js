@@ -64,12 +64,18 @@ function ConnectModal(props) {
           localStorage.removeItem("service");
           Axios(`${url.local}api/user/save`, {
             method: "POST",
-            body: {
+            data: {
               authToken: localStorage.getItem("accessToken"),
               token: res.data.slack_token,
               service: "Slack"
             }
-          });
+          })
+            .then(res => {
+              console.log(res);
+            })
+            .catch(err => {
+              console.log(err);
+            });
           window.close();
           window.reload();
         })

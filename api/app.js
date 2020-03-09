@@ -46,6 +46,60 @@ mongoose
     console.log(err);
   });
 
+
+//////////////////////////////////////////////////////////////////////////::
+const Action = require('./models/actionSchema');
+const Reaction = require('./models/reactionSchema');
+
+let action = new Action({
+  service: "Slack",
+  name: "Receive message"
+})
+
+try {
+  action.save();
+} catch (error) {
+  console.log("Error while Slack DB saving");
+  console.log(error);
+}
+
+action = new Action({
+  service: "Slack",
+  name: "Receive invitaion"
+})
+
+try {
+  action.save();
+} catch (error) {
+  console.log("Error while Slack DB saving");
+  console.log(error);
+}
+
+action = new Action({
+  service: "Slack",
+  name: "you've been kicked"
+})
+
+try {
+  action.save();
+} catch (error) {
+  console.log("Error while Slack DB saving");
+  console.log(error);
+}
+action = new Action({
+  service: "Slack",
+  name: "you're dead"
+})
+
+try {
+  action.save();
+} catch (error) {
+  console.log("Error while Slack DB saving");
+  console.log(error);
+}
+
+//////////////////////////////////////////////////////////////////////////::
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");

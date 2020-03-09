@@ -4,10 +4,9 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 module.exports = function(req, res, next) {
-    let token = req.header('auth-token');
-    if (!token) {
-        token = req.query.authToken
-    }
+    console.log(req);
+    
+    token = req.body.authToken
     if (!token)
         return res.status(401).send('Access denied');
     try {

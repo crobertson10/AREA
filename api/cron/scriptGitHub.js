@@ -23,7 +23,21 @@ var scriptGitHub = (function(){
          name =account.name;
       });
   }
-   //GitHubData =  
+  axios({
+   method: 'get',
+   url: `https://api.github.com/user/repos`,
+   headers: {
+       "Authorization": `token ${token}`
+   },
+   }).then((resp)=> {
+       GitHubData =  resp;
+       if (saveGitHubData == "")
+       {
+          saveGitHubData = GitHubData;
+       }
+       console.log(GitHubData);
+   });
+  
    }
 }) ();
 

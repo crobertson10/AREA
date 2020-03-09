@@ -2,12 +2,13 @@ import React from "react";
 import Axios from "axios";
 import { Button } from "react-bootstrap";
 import trelloLogo from "Assets/trello.png";
+import {url} from "../../../Utils/Utils";
 import "./TrelloButton.css";
 
 function LogForm(props) {
   function connect() {
     localStorage.removeItem("trello-token");
-    Axios("http://localhost:3000/link/auth/trello", {
+    Axios(`${url.local}link/auth/trello`, {
       method: "GET"
     })
       .then(res => {

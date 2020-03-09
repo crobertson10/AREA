@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
 
-const createError = require("http-errors");
+const createError = require('http-errors');
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const infoRouter = require("./routes/info");
@@ -16,16 +16,17 @@ const githubRouter = require("./test/auth/Github/Github");
 const yammerRouter = require("./test/auth/Yammer/Yammer");
 const twitchRouter = require("./test/auth/Twitch/Twitch");
 const slackRouter = require("./test/auth/Slack/Slack");
-const facebookRouter = require("./test/auth/Facebook/Facebook");
+const facebookRouter = require('./test/auth/Facebook/Facebook');
+
+const reactionTrello = require("./reaction/trello");
+const reactionGithub = require("./reaction/github");
+const reactionSlack = require("./reaction/slack");
 const weather = require("./test/weather/Weather");
 
 const nasa = require("./test/weather/Nasa");
 
 const timer = require("./test/weather/Timer");
 
-const reactionTrello = require("./reaction/trello");
-const reactionGithub = require("./reaction/github");
-const reactionSlack = require("./reaction/slack");
 
 const app = express();
 
@@ -73,7 +74,6 @@ app.use("/widget", weather);
 app.use("/widget", nasa);
 
 app.use("/widget", timer);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

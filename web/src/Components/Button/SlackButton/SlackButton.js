@@ -3,10 +3,11 @@ import Axios from "axios";
 import { Button } from "react-bootstrap";
 import slackLogo from "Assets/slack.png";
 import "../TrelloButton/TrelloButton.css";
+import {url} from "../../../Utils/Utils";
 
 function LogForm(props) {
   function connect() {
-    Axios("http://localhost:3000/link/auth/slack", {
+    Axios(`${url.local}link/auth/slack`, {
       method: "GET"
     })
       .then(res => {

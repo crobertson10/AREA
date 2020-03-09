@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { Button, Form, Alert } from "react-bootstrap";
 import { login } from "../../Routes/utils";
+import {url} from '../../../Utils/Utils';
 import "./LogForm.css";
 
 function LogForm(props) {
@@ -18,7 +19,7 @@ function LogForm(props) {
 
   const submit = () => {
     axios
-      .post("http://localhost:3000/api/user/login", {
+      .post(`${url.local}api/user/login`, {
         email: email,
         password: pass
       })

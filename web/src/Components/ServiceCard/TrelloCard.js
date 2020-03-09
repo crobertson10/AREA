@@ -3,6 +3,7 @@ import "./ServiceCard.css";
 import { Accordion, Card, Button, Form } from "react-bootstrap";
 import trelloLogo from "Assets/trello.png";
 import Axios from "axios";
+import {url} from "../../Utils/Utils";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function TrelloCard(props) {
@@ -10,7 +11,7 @@ function TrelloCard(props) {
   const [mateName, setMateName] = useState("");
 
   const submitCreate = () => {
-    Axios.post("http://localhost:3000/action/trello/board/create", {
+    Axios.post(`${url.local}action/trello/board/create`, {
       token: localStorage.getItem("trello-token"),
       name: boardName
     })
@@ -23,7 +24,7 @@ function TrelloCard(props) {
   };
 
   const submitDelete = () => {
-    Axios.post("http://localhost:3000/action/trello/board/delete", {
+    Axios.post(`${url.local}action/trello/board/delete`, {
       token: localStorage.getItem("trello-token"),
       name: boardName
     })
@@ -36,7 +37,7 @@ function TrelloCard(props) {
   };
 
   const addMate = () => {
-    Axios.post("http://localhost:3000/action/trello/user", {
+    Axios.post(`${url.local}action/trello/user`, {
       token: localStorage.getItem("trello-token"),
       name: boardName,
       user: mateName,
@@ -52,7 +53,7 @@ function TrelloCard(props) {
 
   const kickMate = () => {
     console.log(boardName, " ", mateName);
-    Axios.post("http://localhost:3000/action/trello/user", {
+    Axios.post(`${url.local}action/trello/user`, {
       token: localStorage.getItem("trello-token"),
       name: boardName,
       user: mateName,

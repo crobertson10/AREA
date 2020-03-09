@@ -4,7 +4,7 @@ const axios = require('axios');
 const router = express.Router();
 
 router.get('/auth/yammer', async (req, res) => {
-    const request = `https://www.yammer.com/oauth2/authorize?client_id=${process.env.YAMMER_CLIENT_ID}&response_type=code&redirect_uri=http://localhost:8080/dashboard`
+    const request = `https://www.yammer.com/oauth2/authorize?client_id=${process.env.YAMMER_CLIENT_ID}&response_type=code&redirect_uri=http://localhost:8081/dashboard`
     res.send({ url: request });
 });
 

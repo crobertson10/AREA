@@ -13,7 +13,7 @@ function Nasa(props) {
   const handleShow = () => setShow(true);
 
   const getImage = () => {
-    Axios.post("http://localhost:3000/widget/nasa", {})
+    Axios.post("http://localhost:8080/widget/nasa", {})
       .then(function(res) {
         setUrl(res.data.url);
         setDesc(res.data.explanation);

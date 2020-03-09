@@ -7,7 +7,7 @@ import "./Header.css";
 function Header(props) {
   const [nshow, nsetShow] = useState(false);
   const [sshow, ssetShow] = useState(false);
-
+  const [zshow, zsetShow] = useState(false);
   return (
     <div className="Header">
       <img className="Logo" src={Logo} alt=""></img>
@@ -20,6 +20,9 @@ function Header(props) {
           Log Out
         </button>
         <LogOutModal show={nshow} onHide={() => nsetShow(false)} />
+        <button className="Button" onClick={() => zsetShow(true)}>
+          Create a Zap!
+        </button>
       </div>
     </div>
   );

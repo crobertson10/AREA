@@ -9,7 +9,7 @@ import TwitchButton from "../../Button/TwitchButton/TwitchButton";
 import SlackButton from "../../Button/SlackButton/SlackButton";
 import FacebookButton from "../../Button/FacebookButton/FacebookButton";
 import Axios from "axios";
-import {url} from "../../../Utils/Utils";
+import { url } from "../../../Utils/Utils";
 
 function ConnectModal(props) {
   const [trelloCo, setTrelloCo] = useState(false);
@@ -62,6 +62,14 @@ function ConnectModal(props) {
           console.log(res.data.slack_token);
           localStorage.setItem("slack-token", res.data.slack_token);
           localStorage.removeItem("service");
+          Axios(`${url.local}/api/user/save`, {
+            method: "POST",
+            body: {
+              authToken: localStorage.getItem("accessToken"),
+              token: res.data.slack_token,
+              service: "Slack"
+            }
+          });
           window.close();
           window.reload();
         })
@@ -97,26 +105,25 @@ function ConnectModal(props) {
 
   function setFacebookToken() {
     if (
-        localStorage.getItem('service') != null &&
-        localStorage.getItem('service') === 'Facebook'
+      localStorage.getItem("service") != null &&
+      localStorage.getItem("service") === "Facebook"
     ) {
-        let token = window.location.href.split('?');
-        console.log(token);
-        let hash = token[1].split('code=');
-        console.log(hash);
-        Axios(`${url.local}link/access/facebook`, {
-          method: 'POST',
-          data: {
-            code: hash[1]
-          }
-        })
-            .then(res => {
-              console.log(res.data.facebook_token);
-              localStorage.setItem('facebook-token', res.data.facebook_token);
-              localStorage.removeItem('service');
-              window.close();
-              window.reload();
-            })
+      let token = window.location.href.split("?");
+      console.log(token);
+      let hash = token[1].split("code=");
+      console.log(hash);
+      Axios(`${url.local}link/access/facebook`, {
+        method: "POST",
+        data: {
+          code: hash[1]
+        }
+      }).then(res => {
+        console.log(res.data.facebook_token);
+        localStorage.setItem("facebook-token", res.data.facebook_token);
+        localStorage.removeItem("service");
+        window.close();
+        window.reload();
+      });
     }
   }
 
@@ -164,6 +171,7 @@ function ConnectModal(props) {
         });
     }
   }, []);
+
   return (
     <Modal className="ConnectModal" {...props}>
       <Modal.Header className="ConnectHeadMod">

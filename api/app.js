@@ -9,6 +9,7 @@ const cors = require("cors");
 const createError = require("http-errors");
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
+const infoRouter = require("./routes/info");
 const authRouter = require("./routes/auth");
 const trelloRouter = require("./test/auth/Trello/Trello");
 const githubRouter = require("./test/auth/Github/Github");
@@ -55,6 +56,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
+app.use("/info", infoRouter);
 app.use("/users", usersRouter);
 app.use("/api/user", authRouter);
 app.use("/link", trelloRouter);

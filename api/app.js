@@ -16,6 +16,7 @@ const yammerRouter = require("./test/auth/Yammer/Yammer");
 const twitchRouter = require("./test/auth/Twitch/Twitch");
 const slackRouter = require("./test/auth/Slack/Slack");
 const facebookRouter = require('./test/auth/Facebook/Facebook');
+const cronGithub = require('./routes/cronRoutes');
 
 const reactionTrello = require("./reaction/trello");
 const reactionGithub = require("./reaction/github");
@@ -68,6 +69,7 @@ app.use("/action", reactionGithub);
 app.use("/action", reactionSlack);
 app.use("/action", reactionTrello);
 app.use("/widget", weather);
+app.use("/cron", cronGithub);
 
 app.use("/widget", nasa);
 

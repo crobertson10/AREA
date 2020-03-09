@@ -89,6 +89,7 @@ router.get('/auth/github/callback', function (req, res, next) {
     passport.authorize('github', { failureRedirect: ClientUrl }, function (err, account, info) {
         if (err) {return next(err);}
         console.log(account);
+        
         const url = ClientUrl + "save/?service=Github&token=" + account.token;
         return res.redirect(url);
     })(req, res, next);

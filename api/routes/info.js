@@ -10,9 +10,9 @@ router.get('/registered', verify, (req, res) => {
 })
 
 router.get('/services', (req, res) => {
-    //const authToken = req.body.authToken;
-    //const verified = jwt.verify(authToken, process.env.TOKEN_SECRET);
-    Registered.find({userId: req.body.id}, function (err, docs) {
+    const authToken = req.body.authToken;
+    const verified = jwt.verify(authToken, process.env.TOKEN_SECRET);
+    Registered.find({userId: verified._id}, function (err, docs) {
         console.log(docs);
         res.send(docs);
     })

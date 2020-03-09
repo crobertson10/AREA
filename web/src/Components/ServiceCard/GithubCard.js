@@ -3,6 +3,7 @@ import "./ServiceCard.css";
 import { Accordion, Card, Button, Form } from "react-bootstrap";
 import trelloLogo from "Assets/github.png";
 import Axios from "axios";
+import {url} from "../../Utils/Utils";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function GithubCard(props) {
@@ -10,7 +11,7 @@ function GithubCard(props) {
   const [mate, setMate] = useState("");
 
   const createRepo = () => {
-    Axios.post("http://localhost:3000/action/github/create", {
+    Axios.post(`${url.local}action/github/create`, {
       token: localStorage.getItem("github-token"),
       repo: repo
     })
@@ -23,7 +24,7 @@ function GithubCard(props) {
   };
 
   const deleteRepo = () => {
-    Axios.post("http://localhost:3000/action/github/delete", {
+    Axios.post(`${url.local}action/github/delete`, {
       token: localStorage.getItem("github-token"),
       repo: repo
     })
@@ -36,7 +37,7 @@ function GithubCard(props) {
   };
 
   const addMate = () => {
-    Axios.post("http://localhost:3000/action/github/invit", {
+    Axios.post(`${url.local}action/github/invit`, {
       token: localStorage.getItem("github-token"),
       repo: repo,
       user: mate
@@ -50,7 +51,7 @@ function GithubCard(props) {
   };
 
   const kickMate = () => {
-    Axios.post("http://localhost:3000/action/github/kick", {
+    Axios.post(`${url.local}action/github/kick`, {
       token: localStorage.getItem("github-token"),
       repo: repo,
       user: mate
@@ -64,7 +65,7 @@ function GithubCard(props) {
   };
 
   const transfert = () => {
-    Axios.post("http://localhost:3000/action/github/transfer", {
+    Axios.post(`${url.local}action/github/transfer`, {
       token: localStorage.getItem("github-token"),
       repo: repo,
       user: mate

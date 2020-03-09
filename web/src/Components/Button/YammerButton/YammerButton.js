@@ -2,11 +2,12 @@ import React from "react";
 import Axios from "axios";
 import { Button } from "react-bootstrap";
 import yammerLogo from "Assets/yammer.png";
+import {url} from "../../../Utils/Utils";
 import "../TrelloButton/TrelloButton.css";
 
 function LogForm(props) {
   function connect() {
-    Axios("http://localhost:3000/link/auth/yammer", {
+    Axios(`${url.local}link/auth/yammer`, {
       method: "GET"
     })
       .then(res => {

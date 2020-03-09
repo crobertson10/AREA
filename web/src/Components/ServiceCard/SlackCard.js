@@ -3,6 +3,7 @@ import "./ServiceCard.css";
 import { Accordion, Card, Button, Form } from "react-bootstrap";
 import trelloLogo from "Assets/slack.png";
 import Axios from "axios";
+import {url} from "../../Utils/Utils";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function SlackCard(props) {
@@ -10,7 +11,7 @@ function SlackCard(props) {
   const [conv, setConv] = useState();
 
   const createConv = () => {
-    Axios.post("http://localhost:3000/action/slack/create", {
+    Axios.post(`${url.local}action/slack/create`, {
       token: localStorage.getItem("slack-token"),
       name: conv
     })
@@ -23,7 +24,7 @@ function SlackCard(props) {
   };
 
   const messConv = () => {
-    Axios.post("http://localhost:3000/action/slack/send", {
+    Axios.post(`${url.local}action/slack/send`, {
       token: localStorage.getItem("slack-token"),
       name: conv,
       message: mess

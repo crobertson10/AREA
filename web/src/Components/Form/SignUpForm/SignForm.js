@@ -3,6 +3,7 @@ import axios from "axios";
 import { Button, Form, Alert } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 import { login } from "../../Routes/utils";
+import {url} from "../../../Utils/Utils";
 import "./SignForm.css";
 
 function SignForm(props) {
@@ -37,7 +38,7 @@ function SignForm(props) {
       firstname
     );
     axios
-      .post("http://localhost:3000/api/user/register", {
+      .post(`${url.local}api/user/register`, {
         email: email,
         password: pass,
         lastname: lastname,

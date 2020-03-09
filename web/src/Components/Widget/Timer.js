@@ -26,7 +26,7 @@ function Clock(props) {
   const [time, setTime] = useState();
 
   const getTime = () => {
-    Axios.post("http://localhost:3000/widget/time", {
+    Axios.post("http://localhost:8080/widget/time", {
       city: city
     })
       .then(function(res) {

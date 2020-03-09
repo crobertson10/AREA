@@ -3,10 +3,11 @@ import Axios from "axios";
 import { Button } from "react-bootstrap";
 import githubLogo from "Assets/github.png";
 import "../TrelloButton/TrelloButton.css";
+import {url} from "../../../Utils/Utils";
 
 function LogForm(props) {
   function connect() {
-    Axios("http://localhost:3000/link/auth/github", {
+    Axios(`${url.local}link/auth/github`, {
       method: "GET"
     })
       .then(res => {

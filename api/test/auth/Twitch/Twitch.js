@@ -4,12 +4,12 @@ const axios = require('axios');
 const router = express.Router();
 
 router.get('/auth/twitch', async (req, res) => {
-    const request = `https://id.twitch.tv/oauth2/authorize?client_id=${process.env.TWITCH_CLIENT_ID}&redirect_uri=http://localhost:8080/dashboard&response_type=code&scope=user:edit+user:read:email+channel:read:subscriptions`
+    const request = `https://id.twitch.tv/oauth2/authorize?client_id=${process.env.TWITCH_CLIENT_ID}&redirect_uri=http://localhost:8081/dashboard&response_type=code&scope=user:edit+user:read:email+channel:read:subscriptions`
     res.send({url: request});
 })
 
 router.post('/access/twitch', async (req, res) => {
-    const request = `https://id.twitch.tv/oauth2/token?client_id=${process.env.TWITCH_CLIENT_ID}&client_secret=${process.env.TWITCH_CLIENT_SECRET}&code=${req.body.code}&grant_type=authorization_code&redirect_uri=http://localhost:8080/dashboard`
+    const request = `https://id.twitch.tv/oauth2/token?client_id=${process.env.TWITCH_CLIENT_ID}&client_secret=${process.env.TWITCH_CLIENT_SECRET}&code=${req.body.code}&grant_type=authorization_code&redirect_uri=http://localhost:8081/dashboard`
 
     console.log(req.body.code);
     await axios(request, {

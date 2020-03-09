@@ -12,7 +12,7 @@ function Weather(props) {
   const [icon, setIcon] = useState("");
 
   useEffect(() => {
-    Axios.post("http://localhost:3000/widget/weather", {
+    Axios.post("http://localhost:8080/widget/weather", {
       city: "Lille",
       country: "France"
     })
@@ -31,7 +31,7 @@ function Weather(props) {
   if (props.show === 0) {
     const getWeather = () => {
       console.log(city, " ", country);
-      Axios.post("http://localhost:3000/widget/weather", {
+      Axios.post("http://localhost:8080/widget/weather", {
         city: city,
         country: country
       })

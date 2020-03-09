@@ -9,6 +9,7 @@ import TwitchButton from "../../Button/TwitchButton/TwitchButton";
 import SlackButton from "../../Button/SlackButton/SlackButton";
 import FacebookButton from "../../Button/FacebookButton/FacebookButton";
 import Axios from "axios";
+import {url} from "../../../Utils/Utils";
 
 function ConnectModal(props) {
   const [trelloCo, setTrelloCo] = useState(false);
@@ -24,7 +25,7 @@ function ConnectModal(props) {
       localStorage.getItem("service") === "Yammer"
     ) {
       let token = window.location.href.split("=");
-      Axios("http://localhost:3000/link/access/yammer", {
+      Axios(`${url.local}link/access/yammer`, {
         method: "POST",
         data: {
           code: token[1]
@@ -51,7 +52,7 @@ function ConnectModal(props) {
       const token = window.location.href.split("&");
       const hash = token[0].split("=");
       console.log(hash[1]);
-      Axios("http://localhost:3000/link/access/slack", {
+      Axios(`${url.local}link/access/slack`, {
         method: "POST",
         data: {
           code: hash[1]
@@ -79,7 +80,7 @@ function ConnectModal(props) {
       console.log(token);
       let hash = token[0].split("=");
       console.log(hash);
-      Axios("http://localhost:3000/link/access/twitch", {
+      Axios(`${url.local}link/access/twitch`, {
         method: "POST",
         data: {
           code: hash[1]
@@ -103,7 +104,7 @@ function ConnectModal(props) {
         console.log(token);
         let hash = token[1].split('code=');
         console.log(hash);
-        Axios('http://localhost:3000/link/access/facebook', {
+        Axios(`${url.local}link/access/facebook`, {
           method: 'POST',
           data: {
             code: hash[1]
@@ -146,7 +147,7 @@ function ConnectModal(props) {
       localStorage.getItem("service") === "Github"
     ) {
       let token = window.location.href.split("=");
-      Axios("http://localhost:3000/link/access/github", {
+      Axios(`${url.local}link/access/github`, {
         method: "POST",
         data: {
           code: token[1]

@@ -24,6 +24,8 @@ const reactionGithub = require("./reaction/github");
 const reactionSlack = require("./reaction/slack");
 const weather = require("./test/weather/Weather");
 
+const zapSaveRouter = require("./action/save");
+
 const nasa = require("./test/weather/Nasa");
 
 const timer = require("./test/weather/Timer");
@@ -125,6 +127,7 @@ app.use("/link", facebookRouter);
 app.use("/action", reactionGithub);
 app.use("/action", reactionSlack);
 app.use("/action", reactionTrello);
+app.use("/zap", zapSaveRouter)
 app.use("/widget", weather);
 
 app.use("/widget", nasa);

@@ -12,7 +12,11 @@ router.post("/services", verify, (req, res) => {
     if (err) {
       return res.status(400).send(err);
     }
-    res.send(docs);
+    var array = []
+    docs.forEach(element => {      
+      array.push(element.name);
+    });
+    res.send(array);
   });
 });
 
@@ -22,7 +26,11 @@ router.post("/actions", verify, (req, res) => {
       console.log(err);
       return res.status(400).send(err);
     }
-    res.send(docs);
+    var array = []
+    docs.forEach(element => {      
+      array.push(element.name);
+    });
+    res.send(array);
   });
 });
 

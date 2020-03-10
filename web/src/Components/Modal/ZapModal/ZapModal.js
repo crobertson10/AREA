@@ -13,7 +13,10 @@ function ZapModal(props) {
   function getActserv() {
     console.log(localStorage.getItem("accessToken"));
     Axios(`http://localhost:8080/info/services`, {
-      method: "get",
+      method: "post",
+      headers: {
+        'content-type': 'application/json'
+      },
       data: {
         authToken: localStorage.getItem("accessToken")
       }

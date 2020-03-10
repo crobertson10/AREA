@@ -5,17 +5,19 @@ const Registered = require("../models/registeredschema");
 const Action = require("../models/actionSchema");
 const Reaction = require("../models/reactionSchema");
 
-router.get("/services", verify, (req, res) => {
-  console.log("lol1");
+router.post("/services", verify, (req, res) => {
+  console.log(req.body);
   const authToken = req.body.authToken;
-  console.log("lol2");
+  console.log(authToken);
   const verified = jwt.verify(authToken, process.env.TOKEN_SECRET);
-  console.log("lol3");
+  console.log(verified);
   Registered.find({ userId: verified._id }, function(err, docs) {
     if (err) {
       console.log(err);
       return res.status(400).send(err);
     }
+    console.log(docs);
+    
     res.send(docs);
   });
 });

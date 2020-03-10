@@ -28,7 +28,8 @@ RUN yarn install
 
 COPY . /mobile/
 
+RUN cd android && ./gradlew clean
+RUN npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
+RUN rm -rf android/app/src/main/res/drawable-*
+RUN rm -rf android/app/src/main/res/raw
 RUN cd android && ./gradlew assembleRelease
-RUN ls android
-RUN ls android/app
-COPY android/app/build/outputs/apk/release/app-release.apk .

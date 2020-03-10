@@ -1,7 +1,7 @@
 version: '3.3'
 
 services:
-  api:
+  server:
     build: ./api
     restart: always
     ports: 
@@ -20,11 +20,11 @@ services:
     - 8081:8081
     depends_on:
       - client_mobile
-      - api
+      - server
     volumes:
     - ./web:/web
     - /web/node_modules
-    - ./mobile/android/app/build/outputs/apk/release:/web/public/client_apk
+    - apk:/web/public/client_apk
     networks:
       - webappnetwork
   client_mobile:
@@ -32,7 +32,7 @@ services:
     volumes:
     - ./mobile:/mobile
     - /mobile/node_modules
-    - ./mobile/android/app/build/outputs/apk/release:/zoulette
+    - apk:/mobile/android/app/build/outputs/apk/release
     networks:
       - webappnetwork
   mongodb:
@@ -50,3 +50,6 @@ services:
 networks:
   webappnetwork:
     driver: bridge
+
+volumes:
+  apk:

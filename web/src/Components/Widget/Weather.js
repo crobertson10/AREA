@@ -11,23 +11,6 @@ function Weather(props) {
   const [desc, setDesc] = useState("");
   const [icon, setIcon] = useState("");
 
-  useEffect(() => {
-    Axios.post("http://localhost:8080/widget/weather", {
-      city: "Lille",
-      country: "France"
-    })
-      .then(res => {
-        console.log(res.data.data[0]);
-        setTemp(res.data.data[0].temp);
-        setIcon(res.data.data[0].weather.icon);
-        setDesc(res.data.data[0].weather.description);
-        setWind(res.data.data[0].wind_spd);
-      })
-      .catch(err => {
-        console.log("err: " + err);
-      });
-  });
-
   if (props.show === 0) {
     const getWeather = () => {
       console.log(city, " ", country);

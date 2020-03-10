@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Logo from "Assets/logo.png";
 import LogOutModal from "Components/Modal/LogOutModal/LogOutModal";
 import ConnectModal from "Components/Modal/ConnectModal/ConnectModal";
+import ZapModal from "Components/Modal/ZapModal/ZapModal";
 import "./Header.css";
 
 function Header(props) {
@@ -23,6 +24,7 @@ function Header(props) {
         <button className="Button" onClick={() => zsetShow(true)}>
           Create a Zap!
         </button>
+        <ZapModal show={zshow} onHide={() => zsetShow(false)} />
       </div>
     </div>
   );

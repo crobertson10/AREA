@@ -35,6 +35,14 @@ function ConnectModal(props) {
           console.log(res.data.yammer_token);
           localStorage.setItem("yammer-token", res.data.yammer_token);
           localStorage.removeItem("service");
+          Axios(`${url.local}api/user/save`, {
+            method: "POST",
+            data: {
+              authToken: localStorage.getItem("accessToken"),
+              token: res.data.yammer_token,
+              service: "Yammer"
+            }
+          });
           window.close();
           window.reload();
         })
@@ -97,6 +105,14 @@ function ConnectModal(props) {
         console.log(res.data.twitch_token);
         localStorage.setItem("twitch-token", res.data.twitch_token);
         localStorage.removeItem("service");
+        Axios(`${url.local}api/user/save`, {
+          method: "POST",
+          data: {
+            authToken: localStorage.getItem("accessToken"),
+            token: res.data.twitch_token,
+            service: "Twitch"
+          }
+        });
         window.close();
         window.reload();
       });
@@ -121,6 +137,14 @@ function ConnectModal(props) {
         console.log(res.data.facebook_token);
         localStorage.setItem("facebook-token", res.data.facebook_token);
         localStorage.removeItem("service");
+        Axios(`${url.local}api/user/save`, {
+          method: "POST",
+          data: {
+            authToken: localStorage.getItem("accessToken"),
+            token: res.data.facebook_token,
+            service: "Facebook"
+          }
+        });
         window.close();
         window.reload();
       });
@@ -146,6 +170,14 @@ function ConnectModal(props) {
       const splitedToken = token.split("=");
       localStorage.setItem("trello-token", splitedToken[1]);
       localStorage.removeItem("service");
+      Axios(`${url.local}api/user/save`, {
+        method: "POST",
+        data: {
+          authToken: localStorage.getItem("accessToken"),
+          token: splitedToken[1],
+          service: "Trello"
+        }
+      });
       window.close();
       window.location.reload();
     }
@@ -163,6 +195,14 @@ function ConnectModal(props) {
         .then(res => {
           localStorage.setItem("github-token", res.data.github_token);
           localStorage.removeItem("service");
+          Axios(`${url.local}api/user/save`, {
+            method: "POST",
+            data: {
+              authToken: localStorage.getItem("accessToken"),
+              token: res.data.github_token,
+              service: "Trello"
+            }
+          });
           window.close();
           window.reload();
         })

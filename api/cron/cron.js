@@ -1,14 +1,20 @@
 var cron =  require('node-cron');
 var scriptGitHub = require('./scriptGitHub');
 
-var id = "";
+let tokenGithub  = "";
+let task = [];
 
-var task = new cron.schedule('*/4 * * * * *', () => {
-   scriptGitHub.scriptGitHub(this.id);
+
+var setTaskGithub =( function()
+{
+ this.task.push([new cron.schedule('*/4 * * * * *', () => {
+   scriptGitHub.scriptGitHub(this.tokenGithub);
  }, {
-   scheduled: false
- });
+   scheduled: true
+ }), this.tokenGithub]);
+});
   
 
+ exports.setTaskGithub = setTaskGithub;
  exports.task = task;
- exports.id = id;
+ exports.tokenGithub = tokenGithub;

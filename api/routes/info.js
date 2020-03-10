@@ -42,7 +42,11 @@ router.post("/reactions", verify, (req, res) => {
       console.log(err);
       return res.status(400).send(err);
     }
-    res.send(docs);
+    var array = []
+    docs.forEach(element => {      
+      array.push(element.name);
+    });
+    res.send(array);
   });
 });
 

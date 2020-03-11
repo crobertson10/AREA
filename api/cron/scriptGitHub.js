@@ -3,7 +3,7 @@ const Registered = require('../models/registeredschema');
 
 var scriptGitHub = (function(){
    saveGitHubData= "";
-   return function (github, slack)
+   return function (github, slack, chan)
    {
   axios({
    method: 'get',
@@ -19,7 +19,7 @@ var scriptGitHub = (function(){
        else{
         if (saveGitHubData.data.length < resp.data.length)
          {
-            let conv = "area";
+            let conv = chan;
             let mess = "|test cron github, un repo a ete cree|";
             console.log("yes");
             axios.post(`http://localhost:8080/action/slack/send`, {
@@ -36,7 +36,7 @@ var scriptGitHub = (function(){
          }
          else if (saveGitHubData.data.length > resp.data.length)
          {
-            let conv = "area";
+            let conv = chan;
             let mess = "|test cron github, un repo a ete supprimer|";
             console.log("no");
             axios.post(`http://localhost:8080/action/slack/send`, {

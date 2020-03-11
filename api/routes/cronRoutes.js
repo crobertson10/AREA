@@ -6,9 +6,10 @@ var Registered = require('../models/registeredschema');
 router.get('/github/on', function(req, res){
    cr.tokenGithub = req.body.authToken;
    cr.tokenSlack = req.body.authToken2;
+   cr.chan = req.body.channel;
    cr.setTaskGithub();
-   res.send({ url: request });
-});
+   res.status(200).send({ url: request });
+})
 
 router.get('/github/off', function(req, res){
    let tab = [];
@@ -25,7 +26,7 @@ router.get('/github/off', function(req, res){
       }
    }
    cr.task = tab;
-   res.send({ url: request });
+   res.status(200).send({ url: request });
 });
 
 module.exports = router;

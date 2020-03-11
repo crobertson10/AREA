@@ -3,39 +3,59 @@ const Registered = require('../models/registeredschema');
 
 var scriptGitHub = (function(){
    saveGitHubData= "";
-   return function (token)
+   return function (github, slack)
    {
   axios({
    method: 'get',
    url: `https://api.github.com/user/repos`,
    headers: {
-       "Authorization": `token ${token}`
+       "Authorization": `token ${github}`
    },
    }).then((resp)=> {
-       GitHubData =  resp;
        if (saveGitHubData == "")
        {
-          saveGitHubData = GitHubData;
+          saveGitHubData = resp;
        }
        else{
-         if (saveGitHubData.data.length == GitHubData.data.length)
+        if (saveGitHubData.data.length < resp.data.length)
          {
-            console.log(false);
-            return false;
+            let conv = "area";
+            let mess = "|test cron github, un repo a ete cree|";
+            console.log("yes");
+            axios.post(`http://localhost:8080/action/slack/send`, {
+               token: slack,
+               name: conv,
+               message: mess
+             })
+               .then(function(response) {
+                 console.log(response);
+               })
+               .catch(function(error) {
+                 console.log(error);
+               });
          }
-         else if (saveGitHubData.data.length < GitHubData.data.length)
+         else if (saveGitHubData.data.length > resp.data.length)
          {
-            console.log("new repo " + (GitHubData.data.length - saveGitHubData.data.length ).toString());
-         }
-         else if (saveGitHubData.data.length > GitHubData.data.length)
-         {
-            console.log("delete repo " + ( saveGitHubData.data.length - GitHubData.data.length).toString());
+            let conv = "area";
+            let mess = "|test cron github, un repo a ete supprimer|";
+            console.log("no");
+            axios.post(`http://localhost:8080/action/slack/send`, {
+               token: slack,
+               name: conv,
+               message: mess
+             })
+               .then(function(response) {
+                 console.log(response);
+               })
+               .catch(function(error) {
+                 console.log(error);
+               });
          }
      
       }  
-      saveGitHubData = GitHubData;
+      saveGitHubData = resp;
    });
-  
+   
    }
 }) ();
 

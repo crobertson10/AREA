@@ -5,6 +5,7 @@ var Registered = require('../models/registeredschema');
 
 router.get('/github/on', function(req, res){
    cr.tokenGithub = req.body.authToken;
+   cr.tokenSlack = req.body.authToken2;
    cr.setTaskGithub();
    res.send({ url: request });
 });
@@ -14,7 +15,7 @@ router.get('/github/off', function(req, res){
    console.log(cr.task);
    for(let i = 0; i < cr.task.length ;i++)
    {
-      if (cr.task[i][1] == req.body.authToken)
+      if (cr.task[i][1] == req.body.authToken && cr.task[i][2] == req.body.authToken2)
       {
          cr.task[i][0].destroy();
       }
@@ -26,4 +27,5 @@ router.get('/github/off', function(req, res){
    cr.task = tab;
    res.send({ url: request });
 });
+
 module.exports = router;

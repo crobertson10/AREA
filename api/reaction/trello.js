@@ -71,7 +71,7 @@ router.post("/trello/board/create", (req, res) => {
         method: "POST",
         url: 'https://api.trello.com/1/boards/',
         qs: {
-            name: req.body.name,
+            name: req.body.data1,
             defaultLabels: 'true',
             defaultLists: 'true',
             keepFromSource: 'none',
@@ -107,7 +107,7 @@ router.post("/trello/board/delete", async (req, res) => {
     }
     else {
         console.log(my_id);
-        var board = await getBoardId(req.body.token, req.body.name, my_id);
+        var board = await getBoardId(req.body.token, req.body.data1, my_id);
         if (!board) {
             res.status(400).send("Can't get board id");
         }

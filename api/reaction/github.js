@@ -11,14 +11,14 @@ router.post("/github/create", (req, res)=> {
             "Authorization": `token ${token}`
         },
         data: {
-            "name": req.body.repo,
+            "name": req.body.data1,
             "private": false,
             "auto_init": true
         }
     }).then((resp)=> {
         console.log(resp);
         
-        res.send(`Success: ${req.body.repo} created`);
+        res.send(`Success: ${req.body.data1} created`);
     }).catch((err) => {
         console.log(err);
         res.status(400).send("Error")

@@ -8,6 +8,14 @@ const actionSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
+    },
+    start: {
+        type: String,
+        required: true
+    },
+    check: {
+        type: String,
+        required: true
     }
 });
 

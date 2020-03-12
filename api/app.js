@@ -25,6 +25,8 @@ const reactionSlack = require("./reaction/slack");
 const weather = require("./test/weather/Weather");
 
 const zapSaveRouter = require("./action/save");
+const slackAction = require("./action/slack");
+const initAction = require("./action/init");
 
 const nasa = require("./test/weather/Nasa");
 
@@ -49,59 +51,7 @@ mongoose
     console.log(err);
   });
 
-
-//////////////////////////////////////////////////////////////////////////::
-const Action = require('./models/actionSchema');
-const Reaction = require('./models/reactionSchema');
-
-let action = new Action({
-  service: "Slack",
-  name: "Receive message"
-})
-
-try {
-  action.save();
-} catch (error) {
-  console.log("Error while Slack DB saving");
-  console.log(error);
-}
-
-action = new Action({
-  service: "Slack",
-  name: "Receive invitaion"
-})
-
-try {
-  action.save();
-} catch (error) {
-  console.log("Error while Slack DB saving");
-  console.log(error);
-}
-
-action = new Action({
-  service: "Slack",
-  name: "you've been kicked"
-})
-
-try {
-  action.save();
-} catch (error) {
-  console.log("Error while Slack DB saving");
-  console.log(error);
-}
-action = new Action({
-  service: "Slack",
-  name: "you're dead"
-})
-
-try {
-  action.save();
-} catch (error) {
-  console.log("Error while Slack DB saving");
-  console.log(error);
-}
-
-//////////////////////////////////////////////////////////////////////////::
+initAction();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -124,9 +74,10 @@ app.use("/link", githubRouter);
 app.use("/link", twitchRouter);
 app.use("/link", yammerRouter);
 app.use("/link", facebookRouter);
-app.use("/action", reactionGithub);
-app.use("/action", reactionSlack);
-app.use("/action", reactionTrello);
+app.use("/reaction", reactionGithub);
+app.use("/reaction", reactionSlack);
+app.use("/reaction", reactionTrello);
+app.use("/action", slackAction);
 app.use("/zap", zapSaveRouter)
 app.use("/widget", weather);
 

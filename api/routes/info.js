@@ -73,6 +73,9 @@ router.post("/zaps", verify, (req, res) => {
       console.log(err);
       return res.status(400).send(err);
     }
+    if (!docs) {
+      res.send([]);
+    }
     res.send(docs);
   })
 })

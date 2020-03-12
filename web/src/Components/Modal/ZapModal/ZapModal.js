@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Arrow from "Assets/arrow.png";
+
 import {
   Modal,
   Container,
@@ -119,7 +121,7 @@ function ZapModal(props) {
       </Modal.Header>
       <Modal.Body className="ConnectBodyMod">
         <Container className="ConnectServiceCard">
-          <DropdownButton onClick={() => getActserv()} title={"Action Service"}>
+          <DropdownButton style={{margin : "5px"}} onClick={() => getActserv()} title={"Action Service"}>
             {serv.map(serv => (
               <Dropdown.Item
                 onClick={() => {
@@ -131,7 +133,7 @@ function ZapModal(props) {
               </Dropdown.Item>
             ))}
           </DropdownButton>
-          <DropdownButton onClick={() => getAct(aS)} title={"Action"}>
+          <DropdownButton style={{margin : "5px"}} onClick={() => getAct(aS)} title={"Action"}>
             {act.map(act => (
               <Dropdown.Item
                 onClick={() => {
@@ -143,14 +145,16 @@ function ZapModal(props) {
             ))}
           </DropdownButton>
           <Form.Control
+            style={{margin : "5px"}}
             size="sm"
             type="text"
             placeholder="Small text"
             onChange={e => changeData1(e)}
           />
         </Container>
+        <img className="Logo" src={Arrow} alt="" class="center"></img>
         <Container className="ConnectServiceCard">
-          <DropdownButton title={"Reaction Service"}>
+          <DropdownButton style={{margin : "5px"}} title={"Reaction Service"}>
             {serv.map(serv => (
               <Dropdown.Item
                 onClick={() => {
@@ -162,7 +166,7 @@ function ZapModal(props) {
               </Dropdown.Item>
             ))}
           </DropdownButton>
-          <DropdownButton onClick={() => getReact(rS)} title={"Action"}>
+          <DropdownButton style={{margin : "5px"}} onClick={() => getReact(rS)} title={"Action"}>
             {act.map(act => (
               <Dropdown.Item
                 onClick={() => {
@@ -174,6 +178,7 @@ function ZapModal(props) {
             ))}
           </DropdownButton>
           <Form.Control
+            style={{margin : "5px"}}
             size="sm"
             type="text"
             placeholder="Small text"

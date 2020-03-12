@@ -33,7 +33,8 @@
 
 .ConnectServiceCard {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  margin-bottom: 5px;
   justify-content: space-between;
   align-items: stretch;
   border: #a970fd;

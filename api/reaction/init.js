@@ -23,7 +23,7 @@ module.exports = function () {
             if (err) {
                 console.log(err);
             }
-            else if (!action) {
+            else if (!reaction) {
                 reaction = new Reaction(element);
                 try {
                     reaction.save()

@@ -27,6 +27,7 @@ const weather = require("./test/weather/Weather");
 const zapSaveRouter = require("./action/save");
 const slackAction = require("./action/slack");
 const initAction = require("./action/init");
+const initReaction = require("./reaction/init");
 
 const nasa = require("./test/weather/Nasa");
 
@@ -52,6 +53,7 @@ mongoose
   });
 
 initAction();
+initReaction();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));

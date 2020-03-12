@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
 import Arrow from "Assets/arrow.png";
 
 import {
+  Row,
   Modal,
   Container,
   Button,
@@ -121,6 +122,7 @@ function ZapModal(props) {
       </Modal.Header>
       <Modal.Body className="ConnectBodyMod">
         <Container className="ConnectServiceCard">
+          <Row>
           <DropdownButton style={{margin : "5px"}} onClick={() => getActserv()} title={"Action Service"}>
             {serv.map(serv => (
               <Dropdown.Item
@@ -133,6 +135,9 @@ function ZapModal(props) {
               </Dropdown.Item>
             ))}
           </DropdownButton>
+          <h1 class="typoservice">{aS}</h1>
+          </Row>
+          <Row>
           <DropdownButton style={{margin : "5px"}} onClick={() => getAct(aS)} title={"Action"}>
             {act.map(act => (
               <Dropdown.Item
@@ -144,6 +149,8 @@ function ZapModal(props) {
               </Dropdown.Item>
             ))}
           </DropdownButton>
+          <h1 class="typoservice">{myAct}</h1>
+          </Row>
           <Form.Control
             style={{margin : "5px"}}
             size="sm"
@@ -154,6 +161,7 @@ function ZapModal(props) {
         </Container>
         <img className="Logo" src={Arrow} alt="" class="center"></img>
         <Container className="ConnectServiceCard">
+        <Row>
           <DropdownButton style={{margin : "5px"}} title={"Reaction Service"}>
             {serv.map(serv => (
               <Dropdown.Item
@@ -166,6 +174,9 @@ function ZapModal(props) {
               </Dropdown.Item>
             ))}
           </DropdownButton>
+          <h1 class="typoservice">{rS}</h1>
+        </Row>
+          <Row>
           <DropdownButton style={{margin : "5px"}} onClick={() => getReact(rS)} title={"Action"}>
             {act.map(act => (
               <Dropdown.Item
@@ -177,6 +188,8 @@ function ZapModal(props) {
               </Dropdown.Item>
             ))}
           </DropdownButton>
+          <h1 class="typoservice">{myReac}</h1>
+          </Row>
           <Form.Control
             style={{margin : "5px"}}
             size="sm"

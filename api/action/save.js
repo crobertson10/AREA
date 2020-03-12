@@ -62,14 +62,7 @@ router.post("/save", verify, async (req, res) => {
 router.post("/delete", verify, (req, res) => {
     const authToken = req.body.authToken;
     const verified = jwt.verify(authToken, process.env.TOKEN_SECRET);
-    var options = {
-        userId: verified._id,
-        serviceA: req.body.serviceA,
-        nameA: req.body.nameA,
-        serviceR: req.body.serviceR,
-        nameR: req.body.nameR
-    }
-    Zap.deleteOne(options, function (err) {
+    Zap.deleteOne({_id: res.body.zapId}, function (err) {
         if (err) {
             console.log(err);
             return res.status(400).send(err);

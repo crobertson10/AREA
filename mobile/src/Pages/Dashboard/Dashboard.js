@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import AREATouchableOpacity from '../../Components/AREATouchableOpacity/AREATouchableOpacity';
+import { StackActions } from '@react-navigation/native';
 import { ScrollView } from 'react-native';
 
 
 function Dashboard({ navigation }) {
 
+    useEffect(() => {
+        StackActions.replace;
+    }, []);
 
     return (
         <ScrollView>

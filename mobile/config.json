@@ -1,5 +1,8 @@
 {
-    "address":"http://127.0.0.1:3000",
+    //"address":"http://127.0.0.1:3000",
+    "address":"http://10.26.112.29:8080",
     "register": "/api/user/register",
-    "login": "/api/user/login"
+    "login": "/api/user/login",
+    "facebook_url": "/link/auth/facebook",
+    "facebook_token": "/link/access/facebook"
 }

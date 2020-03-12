@@ -23,24 +23,22 @@ function Register({ navigation }) {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-const addr = config.address + config.register;
-
   function register() {
-    data = {
-      email: email,
-      password: password,
+    const data = {
+      email,
+      password,
       firstname: firstName,
       lastname: lastName
     };
 
-    console.log(data);
-    console.log(addr);
-    axios.post(addr, data)
-    .then(function (response) {
-      console.log(reponse);
+    axios(`${config.address}${config.register}`, {
+      method: 'POST',
+      data
+    }).then(res => {
+      console.log(res.data);
+    }).catch(err => {
+      console.log(err);
     })
-    .catch(error => console.log(error));
-    ;
   }
 
   return (

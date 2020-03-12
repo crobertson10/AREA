@@ -34,7 +34,7 @@ router.post("/github/invit", (req, res)=> {
             "Authorization": `token ${token}`
         },
     }).then((resp)=> {
-        let murl = `https://api.github.com/repos/${resp.data.login}/${req.body.repo}/collaborators/${req.body.user}`;
+        let murl = `https://api.github.com/repos/${resp.data.login}/${req.body.data1}/collaborators/${req.body.data2}`;
         axios({
             method: 'put',
             url: murl,
@@ -44,7 +44,7 @@ router.post("/github/invit", (req, res)=> {
         })
         .then((resp)=>{
             console.log(resp);
-            res.send(`Success: ${req.body.user} invited to ${req.body.repo}`);
+            res.send(`Success: ${req.body.data2} invited to ${req.body.data1}`);
         })
         .catch((err)=>{
             console.log(err);

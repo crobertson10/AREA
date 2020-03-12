@@ -5,13 +5,13 @@ let data = [
         service: "Slack",
         name: "Message: Create",
         start: "/action/slack/init/message",
-        check: "/action/slack/check/message"
+        check: "/action/slack/check/message/create"
     },
     {
         service: "Slack",
         name: "Message: Invit",
         start: "/action/slack/init/message",
-        check: "/action/slack/check/message"
+        check: "/action/slack/check/message/invit"
     }
 ]
 

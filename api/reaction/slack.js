@@ -11,13 +11,13 @@ router.post('/slack/create', (req, res) => {
         },
         data: {
             "token": token,
-            "name": req.body.name,
+            "name": req.body.data1,
             "is_private": false
         }
     }).then((resp)=> {
         console.log(resp);
         
-        res.send(`Success: ${req.body.name} created`);
+        res.send(`Success: ${req.body.data1} created`);
     }).catch((err) => {
         console.log(err);
         res.status(400).send("Error")

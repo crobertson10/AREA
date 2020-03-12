@@ -14,6 +14,27 @@ let data = [
         service: "Trello",
         name: "Create board",
         route: "/reaction/trello/board/create"
+    },
+    {
+        actionService: "Slack",
+        actionName: "Message: Create",
+        service: "Slack",
+        name: "Create channel",
+        route: "/reaction/slack/create"
+    },
+    {
+        actionService: "Slack",
+        actionName: "Message: Invit",
+        service: "Github",
+        name: "Invit member",
+        route: "/reaction/github/invit"
+    },
+    {
+        actionService: "Slack",
+        actionName: "Message: Invit",
+        service: "Trello",
+        name: "Invit member",
+        route: "/reaction/user"
     }
 ]
 

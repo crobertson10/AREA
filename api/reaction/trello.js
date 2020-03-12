@@ -148,12 +148,12 @@ router.post("/trello/user", async (req, res) => {
     }
     else {
         console.log(my_id);
-        board_id = await getBoardId(req.body.token, req.body.name, my_id);
+        board_id = await getBoardId(req.body.token, req.body.data1, my_id);
         if (!board_id) {
             res.status(400).send("Can't get board id");
         } else {
             console.log(board_id);
-            member_id = await getMemberId(req.body.token, req.body.user);
+            member_id = await getMemberId(req.body.token, req.body.data2);
             if (!member_id) {
                 res.status(400).send("Can't get member id");                
             } else {

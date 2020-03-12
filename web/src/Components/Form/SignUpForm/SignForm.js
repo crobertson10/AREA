@@ -79,7 +79,7 @@ function SignForm(props) {
         <Form.Control type="password" placeholder="Password" onChange={passW} />
       </Form.Group>
 
-      <Button onClick={submit}>Submit</Button>
+      <Button className="TrelloButton" onClick={submit}>Submit</Button>
     </Form>
   );
 }

@@ -200,7 +200,7 @@ function ConnectModal(props) {
             data: {
               authToken: localStorage.getItem("accessToken"),
               token: res.data.github_token,
-              service: "Trello"
+              service: "Github"
             }
           });
           window.close();

@@ -60,6 +60,28 @@ function ZapModal(props) {
       });
   }
 
+  function getReact(props) {
+    Axios(`http://localhost:8080/info/reactions`, {
+      method: "post",
+      headers: {
+        "content-type": "application/json"
+      },
+      data: {
+        authToken: localStorage.getItem("accessToken"),
+        service: props,
+        actionService: aS,
+        actionName: myAct
+      }
+    })
+      .then(res => {
+        setA(res.data);
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.log("popo");
+      });
+  }
+
   function changeData1(e) {
     setData1(e.target.value);
   }
@@ -69,20 +91,25 @@ function ZapModal(props) {
   }
 
   function showAll() {
-    console.log(
-      aS,
-      "  ",
-      rS,
-      "  ",
-      myAct,
-      "  ",
-      myReac,
-      "  ",
-      data1,
-      "  ",
-      data2,
-      "  "
-    );
+    Axios(`http://localhost:8080/zap/save`, {
+      method: "post",
+      headers: {
+        "content-type": "application/json"
+      },
+      data: {
+        authToken: localStorage.getItem("accessToken"),
+        serviceA: aS,
+        serviceR: rS,
+        nameA: myAct,
+        nameR: myReac
+      }
+    })
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.log("popo");
+      });
   }
 
   return (
@@ -135,7 +162,7 @@ function ZapModal(props) {
               </Dropdown.Item>
             ))}
           </DropdownButton>
-          <DropdownButton onClick={() => getAct(rS)} title={"Action"}>
+          <DropdownButton onClick={() => getReact(rS)} title={"Action"}>
             {act.map(act => (
               <Dropdown.Item
                 onClick={() => {
@@ -153,8 +180,8 @@ function ZapModal(props) {
             onChange={e => changeData2(e)}
           />
         </Container>
+        <Button className="TrelloButton" onClick={() => showAll()}>Create my Zap!</Button>
       </Modal.Body>
-      <Button onClick={() => showAll()}>Create my Zap!</Button>
     </Modal>
   );
 }

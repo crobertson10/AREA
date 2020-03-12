@@ -11,6 +11,7 @@
   align-items: center;
   justify-content: center;
   background-color: blueviolet;
+  
 }
 
 .LogBodyMod {
@@ -47,6 +48,6 @@
   margin-left: 40px;
   background-color: inherit;
   color: #b793e6;
-  background-color: white;
+  background-color: #18181b;
   padding: 1px 50px 1px 50px;
 }

@@ -153,8 +153,8 @@ function ZapModal(props) {
             onChange={e => changeData2(e)}
           />
         </Container>
+        <Button className="TrelloButton" onClick={() => showAll()}>Create my Zap!</Button>
       </Modal.Body>
-      <Button onClick={() => showAll()}>Create my Zap!</Button>
     </Modal>
   );
 }

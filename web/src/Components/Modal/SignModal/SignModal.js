@@ -7,10 +7,10 @@ import "./SignModal.css";
 function SignModal(props) {
   return (
     <Modal className="Modal" {...props}>
-      <Modal.Header className="HeadMod">
-        <img src={Logo} alt="" className="logoMod"></img>
+      <Modal.Header className="DisconnectHeadMod">
+        Please enter your personnal informations
       </Modal.Header>
-      <Modal.Body className="BodyMod">
+      <Modal.Body className="DisconnectBodyMod">
         <Form></Form>
       </Modal.Body>
     </Modal>

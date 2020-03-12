@@ -10,11 +10,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: blueviolet;
+  background-color: #18181b;
+  color: #eeeef0;
 }
 
 .BodyMod {
-  color: aliceblue;
+  color: rgb(63, 63, 63);
 }
 
 .FootMod {

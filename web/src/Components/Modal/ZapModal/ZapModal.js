@@ -86,9 +86,17 @@ function ZapModal(props) {
 
   function showAlert(props) {
     if (props === 200) {
-      return <Alert variant="success">Your Zap is successfully created!</Alert>;
+      return (
+        <Alert style={{ margin: "10px" }} variant="success">
+          Your Zap is successfully created!
+        </Alert>
+      );
     } else if (props === 400) {
-      return <Alert variant="danger">Your Zap has not been created!</Alert>;
+      return (
+        <Alert style={{ margin: "10px" }} variant="danger">
+          Your Zap has not been created!
+        </Alert>
+      );
     }
   }
 
@@ -118,7 +126,6 @@ function ZapModal(props) {
     <Modal className="ConnectModal" {...props}>
       <Modal.Header className="ConnectHeadMod">
         Here you can create your zap!
-        {showAlert(status)}
       </Modal.Header>
       <Modal.Body className="ConnectBodyMod">
         <Container className="ZapCard">
@@ -220,6 +227,7 @@ function ZapModal(props) {
         <Button className="TrelloButton" onClick={() => showAll()}>
           Create my Zap!
         </Button>
+        {showAlert(status)}
       </Modal.Body>
     </Modal>
   );

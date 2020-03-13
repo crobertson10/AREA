@@ -8,7 +8,7 @@
 
 .ConnectHeadMod {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   background-color: #18181b;
@@ -16,7 +16,7 @@
 }
 
 .ConnectBodyMod {
-  background-color: rgb(63, 63, 63);
+  background-color: #3f3f3f;
 }
 
 .ConnectFootMod {
@@ -45,12 +45,44 @@
   margin: 10px 0px 10px 0px;
 }
 
+.DeleteZap {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  justify-content: space-between;
+  align-items: center;
+  border: #a970fd;
+  border-width: 2px;
+  border-radius: 10px;
+  background-color: #18181b;
+  box-shadow: 7px 7px 2px -2px rgba(122, 122, 122, 0.67);
+}
+
+.ServZap {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 10px 10px 10px;
+  padding: 5px 10px 5px 10px;
+  justify-content: space-between;
+  align-items: center;
+  border: #a970fd;
+  color: #7e7e7e;
+  border-width: 2px;
+  border-radius: 10px;
+  background-color: #242424;
+  box-shadow: 7px 7px 2px -2px rgba(122, 122, 122, 0.67);
+}
+
+.GetzapModal {
+  display: flex;
+}
+
 .ZapCard {
   display: flex;
   flex-direction: column;
   margin-bottom: 5px;
   justify-content: space-evenly;
-  align-items : center;
+  align-items: center;
   border: #a970fd;
   border-width: 2px;
   border-radius: 10px;
@@ -69,4 +101,18 @@
 .ConnectionMarquer {
   margin: 10px 5px 10px 5px;
   padding: 15px 5px 15px 5px;
+}
+
+.ZapButton {
+  color: #a970fd;
+  border-color: #1f1f23;
+  background-color: #1f1f23;
+  margin: 10px 0px 10px 0px;
+  width: 100%;
+}
+
+.ZapButton:hover {
+  border-color: #1f1f23;
+  color: #a970fd;
+  background-color: #3a3a3a;
 }

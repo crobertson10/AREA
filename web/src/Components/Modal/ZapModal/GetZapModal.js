@@ -49,13 +49,20 @@ function GetZap(props) {
   function showZap() {
     if (zap != null) {
       return zap.map(zap => (
-        <Container className="ConnectServiceCard">
-          {zap.serviceA}
-          {zap.nameA}
-          {zap.serviceR}
-          {zap.nameR}
+        <Container className="DeleteZap">
+          <h4 style={{ color: "#7e7e7e" }}>ZAP</h4>
+          <Container className="ServZap">
+            <h5 style={{ color: "#7e7e7e" }}> {zap.serviceA}</h5>
+            <h5 style={{ color: "#a970fd" }}>Action:</h5>
+            <h5 style={{ color: "#7e7e7e" }}> {zap.nameA}</h5>
+          </Container>
+          <Container className="ServZap">
+            <h5 style={{ color: "#7e7e7e" }}> {zap.serviceR}</h5>
+            <h5 style={{ color: "#a970fd" }}>Reaction:</h5>
+            <h5 style={{ color: "#7e7e7e" }}> {zap.nameR}</h5>
+          </Container>
           <Button
-            className="AccordionButton"
+            className="ZapButton"
             onClick={() => {
               deleteZap(zap._id);
             }}
@@ -68,13 +75,15 @@ function GetZap(props) {
     return null;
   }
   return (
-    <Modal className="ConnectModal" {...props}>
+    <Modal className="GetzapModal" style={{ borderRadius: "30px" }} {...props}>
       <Modal.Header className="ConnectHeadMod">
-        All your zap are here!
+        <h3>All your zap are here!</h3>
         <Button
           onClick={() => {
             getAll();
           }}
+          className="AccordionButton"
+          style={{ margin: "30px" }}
         >
           Get your Zap!
         </Button>

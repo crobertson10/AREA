@@ -22,7 +22,7 @@ function Option({ navigation }) {
         React.useCallback(() => {
             async function getTokens(name, setStatus) {
                 const value = await AsyncStorage.getItem(name);
-                console.log(value);
+                console.log(name + ' ' + value);
                 if (value !== null)
                     setStatus('#00FF00');
             }

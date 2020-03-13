@@ -122,7 +122,7 @@ function ZapModal(props) {
       </Modal.Header>
       <Modal.Body className="ConnectBodyMod">
         <Container className="ZapCard">
-          <Row>
+          <Container className="Itemrow">
           <DropdownButton id="typodropbutton" style={{margin : "5px"}} onClick={() => getActserv()} title={"Action Service"}>
             {serv.map(serv => (
               <Dropdown.Item
@@ -136,8 +136,8 @@ function ZapModal(props) {
             ))}
           </DropdownButton>
           <h1 class="typoservice">{aS}</h1>
-          </Row>
-          <Row>
+          </Container>
+          <Container className="Itemrow">
           <DropdownButton id="typodropbutton" style={{margin : "5px"}} onClick={() => getAct(aS)} title={"Action"}>
             {act.map(act => (
               <Dropdown.Item
@@ -150,7 +150,7 @@ function ZapModal(props) {
             ))}
           </DropdownButton>
           <h1 class="typoservice">{myAct}</h1>
-          </Row>
+          </Container>
           <Form.Control
             style={{margin : "5px"}}
             size="sm"
@@ -161,7 +161,7 @@ function ZapModal(props) {
         </Container>
         <img className="Logo" src={Arrow} alt="" class="center"></img>
         <Container className="ZapCard">
-        <Row>
+        <Container className="Itemrow">
           <DropdownButton id="typodropbutton" style={{margin : "5px"}} title={"Reaction Service"}>
             {serv.map(serv => (
               <Dropdown.Item
@@ -175,8 +175,8 @@ function ZapModal(props) {
             ))}
           </DropdownButton>
           <h1 class="typoservice">{rS}</h1>
-        </Row>
-          <Row>
+        </Container>
+          <Container className="Itemrow">
           <DropdownButton id="typodropbutton" style={{margin : "5px"}} onClick={() => getReact(rS)} title={"Action"}>
             {act.map(act => (
               <Dropdown.Item
@@ -189,7 +189,7 @@ function ZapModal(props) {
             ))}
           </DropdownButton>
           <h1 class="typoservice">{myReac}</h1>
-          </Row>
+          </Container>
           <Form.Control
             style={{margin : "5px"}}
             size="sm"

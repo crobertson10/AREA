@@ -4,5 +4,7 @@
     "register": "/api/user/register",
     "login": "/api/user/login",
     "facebook_url": "/link/auth/facebook",
-    "facebook_token": "/link/access/facebook"
+    "facebook_token": "/link/access/facebook",
+    "github_url": "/link/auth/github",
+    "github_token": "/link/access/github"
 }

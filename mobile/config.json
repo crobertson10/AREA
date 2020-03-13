@@ -1,5 +1,5 @@
 {
-    "address":"http://127.0.0.1:3000",
+    "address":"http://area.retrogala.ovh:8181",
     "register": "/api/user/register",
     "login": "/api/user/login"
 }

@@ -125,11 +125,11 @@ function ZapModal(props) {
   return (
     <Modal className="ConnectModal" {...props}>
       <Modal.Header className="ConnectHeadMod">
-        Here you can create your zap!
+        <h3>Here you can create your zap!</h3>
       </Modal.Header>
       <Modal.Body className="ConnectBodyMod">
         <Container className="ZapCard">
-          <Container className="Itemrow">
+          <Container className="ServZap">
             <DropdownButton
               id="typodropbutton"
               style={{ margin: "5px" }}
@@ -149,7 +149,7 @@ function ZapModal(props) {
             </DropdownButton>
             <h1 class="typoservice">{aS}</h1>
           </Container>
-          <Container className="Itemrow">
+          <Container className="ServZap">
             <DropdownButton
               id="typodropbutton"
               style={{ margin: "5px" }}
@@ -172,13 +172,13 @@ function ZapModal(props) {
             style={{ margin: "5px" }}
             size="sm"
             type="text"
-            placeholder="Small text"
+            placeholder="Condition to trigger"
             onChange={e => changeData1(e)}
           />
         </Container>
         <img className="Logo" src={Arrow} alt="" class="center"></img>
         <Container className="ZapCard">
-          <Container className="Itemrow">
+          <Container className="ServZap">
             <DropdownButton
               id="typodropbutton"
               style={{ margin: "5px" }}
@@ -197,7 +197,7 @@ function ZapModal(props) {
             </DropdownButton>
             <h1 class="typoservice">{rS}</h1>
           </Container>
-          <Container className="Itemrow">
+          <Container className="ServZap">
             <DropdownButton
               id="typodropbutton"
               style={{ margin: "5px" }}
@@ -220,7 +220,7 @@ function ZapModal(props) {
             style={{ margin: "5px" }}
             size="sm"
             type="text"
-            placeholder="Small text"
+            placeholder="To send"
             onChange={e => changeData2(e)}
           />
         </Container>

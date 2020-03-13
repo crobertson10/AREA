@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Modal, Container, Button } from "react-bootstrap";
 import Axios from "axios";
 import "../ConnectModal/ConnectModal";
@@ -48,25 +48,24 @@ function GetZap(props) {
 
   function showZap() {
     if (zap != null) {
-      {
-        return zap.map(zap => (
-          <Container className="ConnectServiceCard">
-            {zap.serviceA}
-            {zap.nameA}
-            {zap.serviceR}
-            {zap.nameR}
-            <Button
-              className="AccordionButton"
-              onClick={() => {
-                deleteZap(zap._id);
-              }}
-            >
-              Delete
-            </Button>
-          </Container>
-        ));
-      }
+      return zap.map(zap => (
+        <Container className="ConnectServiceCard">
+          {zap.serviceA}
+          {zap.nameA}
+          {zap.serviceR}
+          {zap.nameR}
+          <Button
+            className="AccordionButton"
+            onClick={() => {
+              deleteZap(zap._id);
+            }}
+          >
+            Delete
+          </Button>
+        </Container>
+      ));
     }
+    return null;
   }
   return (
     <Modal className="ConnectModal" {...props}>

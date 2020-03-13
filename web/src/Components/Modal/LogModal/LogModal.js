@@ -1,5 +1,4 @@
 import React from "react";
-import Logo from "Assets/logo.png";
 import Form from "Components/Form/LogForm/LogForm";
 import { Modal } from "react-bootstrap";
 import "./LogModal.css";

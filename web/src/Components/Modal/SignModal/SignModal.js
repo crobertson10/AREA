@@ -1,5 +1,4 @@
 import React from "react";
-import Logo from "Assets/logo.png";
 import Form from "Components/Form/SignUpForm/SignForm";
 import { Modal } from "react-bootstrap";
 import "./SignModal.css";

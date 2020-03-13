@@ -66,14 +66,14 @@ function ConnectModal(props) {
           code: hash[1]
         }
       })
-        .then(res => {
+        .then(async res => {
           console.log(res.data.slack_token);
-          localStorage.setItem("slack-token", res.data.slack_token);
-          localStorage.removeItem("service");
+          await localStorage.setItem("slack-token", res.data.slack_token);
+          await localStorage.removeItem("service");
           Axios(`${url.local}api/user/save`, {
             method: "POST",
             data: {
-              authToken: localStorage.getItem("accessToken"),
+              authToken: await localStorage.getItem("accessToken"),
               token: res.data.slack_token,
               service: "Slack"
             }

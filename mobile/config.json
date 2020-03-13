@@ -6,5 +6,6 @@
     "facebook_url": "/link/auth/facebook",
     "facebook_token": "/link/access/facebook",
     "github_url": "/link/auth/github",
-    "github_token": "/link/access/github"
+    "github_token": "/link/access/github",
+    "trello_url": "/link/auth/trello"
 }

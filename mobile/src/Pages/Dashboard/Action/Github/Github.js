@@ -1,10 +1,11 @@
-import React, { useState, AsyncStorage } from 'react';
+import React, { useState } from 'react';
 import AREATouchableOpacity from '../../../../Components/AREATouchableOpacity/AREATouchableOpacity';
 import AREAInput from '../../../../Components/AREAInput/AREAInput';
 import AREAText from '../../../../Components/AREAText/AREAText';
 import { ScrollView, KeyboardAvoidingView, Alert } from 'react-native';
 import axios from 'react-native-axios';
 import Config from '../../../../../config.json'
+import AsyncStorage from '@react-native-community/async-storage';
 
 function Github({ navigation }) {
   const [repo, setRepoName] = useState('');
@@ -12,19 +13,23 @@ function Github({ navigation }) {
 
   const addr = Config.address;
 
-  function createRepo() {
-    axios.post(`${addr}/action/github/create`, {
-      // token: AsyncStorage.getItem("github-token"),
-      repo: repo
+  async function createRepo() {
+    let toto = '';
+    const token = await AsyncStorage.getItem('github-token')
+    .then(value => {
+      toto = value;
     })
-      .then(function (response) {
-        console.log(`repo "${repoName}" was created!`);
+    console.log(toto, ' ', repo);
+    axios.post(`${addr}/action/github/create`, {
+        token: toto,
+        repo
+    }).then(function (response) {
+        console.log(`repo "${repo}" was created!`);
         console.log(response);
         Alert.alert('Creating Repo', `Success: ${response.data}`, [{ text: 'OK' }])
-      })
-      .catch(function (error) {
-        Alert.alert('Creating Repo', `${error}`, [{ text: 'OK' }])
-        console.log(error);
+      }).catch(function (error) {
+          Alert.alert('Creating Repo', `${error}`, [{ text: 'OK' }])
+          console.log(error);
       });
   }
 

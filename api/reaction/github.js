@@ -3,6 +3,7 @@ const axios = require('axios');
 
 router.post("/github/create", (req, res)=> {
     let token = req.body.token;
+    console.log(req.body);
     
     axios({
         method: 'post',

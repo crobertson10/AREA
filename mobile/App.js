@@ -14,6 +14,7 @@ import Trello from './src/Pages/Dashboard/Action/Trello/Trello';
 import Slack from './src/Pages/Dashboard/Action/Slack/Slack';
 import Facebook from './src/Components/Facebook/Facebook';
 import Github_Auth from './src/Components/Github/Github';
+import Trello_Auth from './src/Components/Trello/Trello';
 
 function App() {
   const Stack = createStackNavigator();
@@ -43,6 +44,7 @@ function App() {
         <Stack.Screen name="Slack" component={Slack}/>
         <Stack.Screen options={{headerShown: false}} name="Facebook_Auth" component={Facebook}/>
         <Stack.Screen options={{headerShown: false}} name="Github_Auth" component={Github_Auth}/>
+        <Stack.Screen options={{headerShown: false}} name="Trello_Auth" component={Trello_Auth}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

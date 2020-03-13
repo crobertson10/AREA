@@ -27,7 +27,6 @@ function Github({navigation}) {
 
         if (!navState.url || stop)
             return;
-        console.log(navState.url);
         if (navState.url.includes('code=')) {
             code = navState.url.split('=');
             data.code = code[1];

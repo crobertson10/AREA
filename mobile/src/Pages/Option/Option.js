@@ -48,6 +48,11 @@ function Option({ navigation }) {
                 backgroundColor={statusFacebook}
                 onPress={() => navigation.navigate('Facebook_Auth')}
             />
+            <ServiceButton 
+                text={'Connect to Trello'}
+                backgroundColor={statusTrello}
+                onPress={() => navigation.navigate('Trello_Auth')}
+            />
             <AREATouchableOpacity
                 text={'Disconnect AREA'}
                 alignSelf={'stretch'}

@@ -16,30 +16,35 @@ function Github({ navigation }) {
   async function createRepo() {
     let toto = '';
     const token = await AsyncStorage.getItem('github-token')
-    .then(value => {
-      toto = value;
-    })
+      .then(value => {
+        toto = value;
+      })
     console.log(toto, ' ', repo);
     axios.post(`${addr}/action/github/create`, {
-        token: toto,
-        repo
+      token: toto,
+      repo
     }).then(function (response) {
-        console.log(`repo "${repo}" was created!`);
-        console.log(response);
-        Alert.alert('Creating Repo', `Success: ${response.data}`, [{ text: 'OK' }])
-      }).catch(function (error) {
-          Alert.alert('Creating Repo', `${error}`, [{ text: 'OK' }])
-          console.log(error);
-      });
+      console.log(`repo "${repo}" was created!`);
+      console.log(response);
+      Alert.alert('Creating Repo', `Success: ${response.data}`, [{ text: 'OK' }])
+    }).catch(function (error) {
+      Alert.alert('Creating Repo', `${error}`, [{ text: 'OK' }])
+      console.log(error);
+    });
   }
 
-  function deleteRepo() {
+  async function deleteRepo() {
+    let toto = '';
+    const token = await AsyncStorage.getItem('github-token')
+      .then(value => {
+        toto = value;
+      })
     axios.post(`${addr}/action/github/delete`, {
-      // token: AsyncStorage.getItem("github-token"),
+      token: toto,
       repo: repo
     })
       .then(function (response) {
-        console.log(`repo "${repoName}" was deleted!`);
+        console.log(`repo "${repo}" was deleted!`);
         console.log(response);
         Alert.alert('Deleting Repo', `Success: ${response.data}`, [{ text: 'OK' }])
       })
@@ -49,33 +54,43 @@ function Github({ navigation }) {
       });
   }
 
-  function inviteUser() {
+  async function inviteUser() {
+    let toto = '';
+    const token = await AsyncStorage.getItem('github-token')
+      .then(value => {
+        toto = value;
+      })
     axios.post(`${addr}/action/github/invit`, {
-      // token: AsyncStorage.getItem("github-token"),
+      token: toto,
       repo: repo,
       user: username
     })
-      .then(function(response) {
+      .then(function (response) {
         console.log(response);
         Alert.alert('invite contributor', `Success: ${response.data}`, [{ text: 'OK' }])
       })
-      .catch(function(error) {
+      .catch(function (error) {
         Alert.alert('adding contributor', ` ${error}`, [{ text: 'OK' }])
         console.log(error);
       });
   };
 
-  function kickUser() {
+  async function kickUser() {
+    let toto = '';
+    const token = await AsyncStorage.getItem('github-token')
+      .then(value => {
+        toto = value;
+      })
     axios.post(`${addr}/action/github/kick`, {
-      // token: AsyncStorage.getItem("github-token"),
+      token: toto,
       repo: repo,
       user: username
     })
-      .then(function(response) {
+      .then(function (response) {
         Alert.alert('kicked contributor', `Success: ${response.data}`, [{ text: 'OK' }])
         console.log(response);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         Alert.alert('kicked contributor', ` ${error}`, [{ text: 'OK' }])
 
         console.log(error);
@@ -145,7 +160,7 @@ function Github({ navigation }) {
         alignItems={'center'}
         alignSelf={'center'}
         fontWeight={'bold'}
-        marginTop={30} 
+        marginTop={30}
         fontSize={15}
       />
       <AREAInput

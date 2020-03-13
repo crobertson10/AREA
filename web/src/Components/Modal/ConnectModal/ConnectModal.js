@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Modal, Container } from "react-bootstrap";
+import { Modal, Container, Row } from "react-bootstrap";
 import ConnectMarquer from "Components/Modal/ConnectModal/ConnectMarquer";
 import "./ConnectModal.css";
 import TrelloButton from "../../Button/TrelloButton/TrelloButton";
@@ -235,8 +235,8 @@ function ConnectModal(props) {
           <ConnectMarquer connect={twitchCo}></ConnectMarquer>
         </Container>
         <Container className="ConnectServiceCard">
-          <SlackButton></SlackButton>
-          <ConnectMarquer connect={slackCo}></ConnectMarquer>
+            <SlackButton></SlackButton>
+            <ConnectMarquer connect={slackCo}></ConnectMarquer>
         </Container>
         <Container className="ConnectServiceCard">
           <FacebookButton></FacebookButton>

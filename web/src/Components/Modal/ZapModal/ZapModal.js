@@ -121,9 +121,9 @@ function ZapModal(props) {
         Here you can create your zap!
       </Modal.Header>
       <Modal.Body className="ConnectBodyMod">
-        <Container className="ConnectServiceCard">
+        <Container className="ZapCard">
           <Row>
-          <DropdownButton style={{margin : "5px"}} onClick={() => getActserv()} title={"Action Service"}>
+          <DropdownButton id="typodropbutton" style={{margin : "5px"}} onClick={() => getActserv()} title={"Action Service"}>
             {serv.map(serv => (
               <Dropdown.Item
                 onClick={() => {
@@ -138,7 +138,7 @@ function ZapModal(props) {
           <h1 class="typoservice">{aS}</h1>
           </Row>
           <Row>
-          <DropdownButton style={{margin : "5px"}} onClick={() => getAct(aS)} title={"Action"}>
+          <DropdownButton id="typodropbutton" style={{margin : "5px"}} onClick={() => getAct(aS)} title={"Action"}>
             {act.map(act => (
               <Dropdown.Item
                 onClick={() => {
@@ -160,9 +160,9 @@ function ZapModal(props) {
           />
         </Container>
         <img className="Logo" src={Arrow} alt="" class="center"></img>
-        <Container className="ConnectServiceCard">
+        <Container className="ZapCard">
         <Row>
-          <DropdownButton style={{margin : "5px"}} title={"Reaction Service"}>
+          <DropdownButton id="typodropbutton" style={{margin : "5px"}} title={"Reaction Service"}>
             {serv.map(serv => (
               <Dropdown.Item
                 onClick={() => {
@@ -177,7 +177,7 @@ function ZapModal(props) {
           <h1 class="typoservice">{rS}</h1>
         </Row>
           <Row>
-          <DropdownButton style={{margin : "5px"}} onClick={() => getReact(rS)} title={"Action"}>
+          <DropdownButton id="typodropbutton" style={{margin : "5px"}} onClick={() => getReact(rS)} title={"Action"}>
             {act.map(act => (
               <Dropdown.Item
                 onClick={() => {

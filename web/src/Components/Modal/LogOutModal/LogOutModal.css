@@ -58,3 +58,9 @@
   font-size: large;
   color: #a970fd;
 }
+
+#typodropbutton {
+  color : #a970fd;
+  background-color: #18181b;
+  border-color: #a970fd;
+}

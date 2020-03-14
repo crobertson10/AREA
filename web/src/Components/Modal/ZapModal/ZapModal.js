@@ -111,7 +111,9 @@ function ZapModal(props) {
         serviceA: aS,
         serviceR: rS,
         nameA: myAct,
-        nameR: myReac
+        nameR: myReac,
+        data1: data1,
+        data2: data2
       }
     })
       .then(res => {

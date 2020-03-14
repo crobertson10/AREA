@@ -31,11 +31,11 @@ function ConnectModal(props) {
           code: token[1]
         }
       })
-        .then(res => {
+        .then(async res => {
           console.log(res.data.yammer_token);
           localStorage.setItem("yammer-token", res.data.yammer_token);
           localStorage.removeItem("service");
-          Axios(`${url.local}api/user/save`, {
+          await Axios(`${url.local}api/user/save`, {
             method: "POST",
             data: {
               authToken: localStorage.getItem("accessToken"),
@@ -68,12 +68,12 @@ function ConnectModal(props) {
       })
         .then(async res => {
           console.log(res.data.slack_token);
-          await localStorage.setItem("slack-token", res.data.slack_token);
-          await localStorage.removeItem("service");
-          Axios(`${url.local}api/user/save`, {
+          localStorage.setItem("slack-token", res.data.slack_token);
+          localStorage.removeItem("service");
+          await Axios(`${url.local}api/user/save`, {
             method: "POST",
             data: {
-              authToken: await localStorage.getItem("accessToken"),
+              authToken: localStorage.getItem("accessToken"),
               token: res.data.slack_token,
               service: "Slack"
             }
@@ -101,11 +101,11 @@ function ConnectModal(props) {
         data: {
           code: hash[1]
         }
-      }).then(res => {
+      }).then(async res => {
         console.log(res.data.twitch_token);
         localStorage.setItem("twitch-token", res.data.twitch_token);
         localStorage.removeItem("service");
-        Axios(`${url.local}api/user/save`, {
+        await Axios(`${url.local}api/user/save`, {
           method: "POST",
           data: {
             authToken: localStorage.getItem("accessToken"),
@@ -133,11 +133,11 @@ function ConnectModal(props) {
         data: {
           code: hash[1]
         }
-      }).then(res => {
+      }).then(async res => {
         console.log(res.data.facebook_token);
         localStorage.setItem("facebook-token", res.data.facebook_token);
         localStorage.removeItem("service");
-        Axios(`${url.local}api/user/save`, {
+        await Axios(`${url.local}api/user/save`, {
           method: "POST",
           data: {
             authToken: localStorage.getItem("accessToken"),
@@ -151,7 +151,7 @@ function ConnectModal(props) {
     }
   }
 
-  useEffect(() => {
+  useEffect(async () => {
     setSlackToken();
     setTwitchToken();
     setYammerToken();
@@ -170,7 +170,7 @@ function ConnectModal(props) {
       const splitedToken = token.split("=");
       localStorage.setItem("trello-token", splitedToken[1]);
       localStorage.removeItem("service");
-      Axios(`${url.local}api/user/save`, {
+      await Axios(`${url.local}api/user/save`, {
         method: "POST",
         data: {
           authToken: localStorage.getItem("accessToken"),
@@ -192,10 +192,10 @@ function ConnectModal(props) {
           code: token[1]
         }
       })
-        .then(res => {
+        .then(async res => {
           localStorage.setItem("github-token", res.data.github_token);
           localStorage.removeItem("service");
-          Axios(`${url.local}api/user/save`, {
+          await Axios(`${url.local}api/user/save`, {
             method: "POST",
             data: {
               authToken: localStorage.getItem("accessToken"),

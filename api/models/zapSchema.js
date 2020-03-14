@@ -20,6 +20,10 @@ const zapSchema = new mongoose.Schema({
     nameR: {
         type: String,
         required: true
+    },
+    data2: {
+        type: String,
+        required: false
     }
 });
 

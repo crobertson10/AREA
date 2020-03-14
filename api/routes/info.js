@@ -77,4 +77,16 @@ router.post("/zaps", verify, (req, res) => {
   })
 })
 
+router.post("/datas", verify, (req, res) => {
+  const authToken = req.body.authToken;
+  const verified = jwt.verify(authToken, process.env.TOKEN_SECRET);
+  Message.find({userId: verified._id}, function (err, docs) {
+    if (err) {
+      console.log(err);
+      return res.status(400).send(err);
+    }
+    res.send(docs);
+  })
+})
+
 module.exports = router;

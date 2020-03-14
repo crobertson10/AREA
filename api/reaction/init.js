@@ -34,7 +34,49 @@ let data = [
         actionName: "Message: Invit",
         service: "Trello",
         name: "Invit member",
-        route: "/reaction/user"
+        route: "/reaction/trello/user/add"
+    },
+    {
+        actionService: "Github",
+        actionName: "Repo Created",
+        service: "Github",
+        name: "Tranfert repo",
+        route: "/reaction/github/tranfer"
+    },
+    {
+        actionService: "Github",
+        actionName: "Repo Created",
+        service: "Github",
+        name: "Delete repo",
+        route: "/reaction/github/delete"
+    },
+    {
+        actionService: "Github",
+        actionName: "Repo Created",
+        service: "Slack",
+        name: "Create channel",
+        route: "/reaction/slack/create"
+    },
+    {
+        actionService: "Github",
+        actionName: "Repo Created",
+        service: "Slack",
+        name: "Send message",
+        route: "/reaction/slack/send"
+    },
+    {
+        actionService: "Github",
+        actionName: "Repo Created",
+        service: "Trello",
+        name: "Create board",
+        route: "/reaction/trello/board/create"
+    },
+    {
+        actionService: "Github",
+        actionName: "Repo Created",
+        service: "Trello",
+        name: "Delete board",
+        route: "/reaction/trello/board/delete"
     }
 ]
 
@@ -52,7 +94,6 @@ module.exports = function () {
                     console.log(error);
                 }
             }
-            console.log(reaction);
         })
     });
 }

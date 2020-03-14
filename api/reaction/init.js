@@ -54,13 +54,6 @@ let data = [
         actionService: "Github",
         actionName: "Repo Created",
         service: "Slack",
-        name: "Create channel",
-        route: "/reaction/slack/create"
-    },
-    {
-        actionService: "Github",
-        actionName: "Repo Created",
-        service: "Slack",
         name: "Send message",
         route: "/reaction/slack/send"
     },

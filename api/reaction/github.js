@@ -48,13 +48,13 @@ router.post("/github/invit", (req, res)=> {
         })
         .catch((err)=>{
             console.log(err);
-            res.status(400).send("Error")
+            res.status(400).send("Errrrror")
             
         });
     })
     .catch((err) => {
         console.log(err);
-        res.status(400).send("Error")
+        res.status(400).send("Errorrrrr")
     })
 });
 
@@ -124,7 +124,7 @@ router.post("/github/delete", (req, res)=> {
     })
 });
 
-router.post("/github/transfer", (req, res)=> {
+router.post("/github/tranfer", (req, res)=> {
     let token = req.body.token;
     axios({
         method: 'get',

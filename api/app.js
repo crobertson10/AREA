@@ -26,6 +26,7 @@ const weather = require("./test/weather/Weather");
 
 const zapSaveRouter = require("./action/save");
 const slackAction = require("./action/slack");
+const githubAction = require("./action/github");
 const initAction = require("./action/init");
 const initReaction = require("./reaction/init");
 
@@ -33,6 +34,7 @@ const nasa = require("./test/weather/Nasa");
 
 const timer = require("./test/weather/Timer");
 
+const cron = require("./cron");
 
 const app = express();
 
@@ -54,6 +56,7 @@ mongoose
 
 initAction();
 initReaction();
+cron.start();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -80,6 +83,7 @@ app.use("/reaction", reactionGithub);
 app.use("/reaction", reactionSlack);
 app.use("/reaction", reactionTrello);
 app.use("/action", slackAction);
+app.use("/action", githubAction);
 app.use("/zap", zapSaveRouter)
 app.use("/widget", weather);
 

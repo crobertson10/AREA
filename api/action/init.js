@@ -12,6 +12,12 @@ let data = [
         name: "Message: Invit",
         start: "/action/slack/init/message",
         check: "/action/slack/check/message/invit"
+    },
+    {
+        service: "Github",
+        name: "Repo Created",
+        start: "/action/github/repo/init",
+        check: "/action/github/repo/created"
     }
 ]
 
@@ -29,7 +35,6 @@ module.exports = function () {
                     console.log(error);
                 }
             }
-            console.log(action);
         })
     });
 }

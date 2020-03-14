@@ -37,7 +37,7 @@ router.post('/slack/send', (req, res) => {
         let bool = false;
         let channels = resp.data.channels;
         channels.forEach(element => {
-            if (element.name === req.body.name) {
+            if (element.name === req.body.channel) {
                 bool = true;
                 console.log(element);
                 axios({

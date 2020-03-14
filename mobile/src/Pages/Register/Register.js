@@ -1,4 +1,5 @@
 import React, { Component, useState } from 'react';
+import AsyncStorage from '@react-native-community/async-storage';
 import {
   StyleSheet,
   Text,
@@ -17,27 +18,39 @@ import axios from 'react-native-axios';
 import config from '../../../config.json';
 
 function Register({ navigation }) {
-  const [email, setEmail] = useState('toto@toto.fr');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [email, setEmail] = useState('fred@fred.fr');
+  const [firstName, setFirstName] = useState('fred');
+  const [lastName, setLastName] = useState('fred');
+  const [password, setPassword] = useState('fred');
+  const [confirmPassword, setConfirmPassword] = useState('fred');
 
   function register() {
+    if (confirmPassword != password) {
+      Alert.alert('Register', `Error: password was different.`, [{ text: 'OK' }])
+      return;
+
+    }
     const data = {
       email,
       password,
       firstname: firstName,
       lastname: lastName
     };
-
     axios(`${config.address}${config.register}`, {
       method: 'POST',
       data
     }).then(res => {
       console.log(res.data);
+      if (res.status == 200) {
+        Alert.alert('Register', `Success`, [{ text: 'OK' }])
+        AsyncStorage.setItem('AreaToken', res.data.authToken);
+        navigation.navigate('Dashboard');
+      }
     }).catch(err => {
       console.log(err);
+      if (err.status != 200) {
+        Alert.alert('Register', `Error: email are already used`, [{ text: 'OK' }])
+      }
     })
   }
 

@@ -1,16 +1,16 @@
-import React, {useState} from 'react';
-import {ScrollView, KeyboardAvoidingView} from 'react-native';
+import React, { useState } from 'react';
+import { ScrollView, KeyboardAvoidingView, Alert } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import AREATouchableOpacity from '../../Components/AREATouchableOpacity/AREATouchableOpacity';
 import AREAInput from '../../Components/AREAInput/AREAInput';
 import axios from 'react-native-axios';
 import config from '../../../config.json';
 
-function Login({navigation}) {
-  const [email, setEmail] = useState('clement.scherpereel@epitech.eu');
-  const [password, setPassword] = useState('toto');
+function Login({ navigation }) {
+  const [email, setEmail] = useState('fred@fred.fr');
+  const [password, setPassword] = useState('fred');
 
-   function login () {
+  function login() {
     const data = {
       email,
       password
@@ -21,10 +21,15 @@ function Login({navigation}) {
       data
     }).then(res => {
       console.log(res.data);
-      AsyncStorage.setItem("AreaToken", res.data.authToken);
-      navigation.navigate('Dashboard');
+      if (res.status == 200) {
+        AsyncStorage.setItem("AreaToken", res.data.authToken);
+        navigation.navigate('Dashboard');
+      }
     }).catch(err => {
       console.log(err);
+      if (err.status != 200) {
+        Alert.alert('Login', `Error: Bad Creditentials`, [{ text: 'OK' }])
+      }
     })
   }
 

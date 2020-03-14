@@ -53,6 +53,16 @@ function Option({ navigation }) {
                 backgroundColor={statusTrello}
                 onPress={() => navigation.navigate('Trello_Auth')}
             />
+            <ServiceButton 
+                text={'Connect to Slack'}
+                backgroundColor={statusSlack}
+                onPress={() => navigation.navigate('Slack_Auth')}
+            />
+            <ServiceButton 
+                text={'Connect to Yammer'}
+                backgroundColor={statusYammer}
+                onPress={() => navigation.navigate('Yammer_Auth')}
+            />
             <AREATouchableOpacity
                 text={'Disconnect AREA'}
                 alignSelf={'stretch'}

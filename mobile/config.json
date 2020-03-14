@@ -1,11 +1,17 @@
 {
     //"address":"http://127.0.0.1:3000",
-    "address":"http://10.26.112.29:8080",
+    // "address":"http://10.26.112.29:8080",
+    "address":"http:/192.168.0.112:8080",
     "register": "/api/user/register",
     "login": "/api/user/login",
     "facebook_url": "/link/auth/facebook",
     "facebook_token": "/link/access/facebook",
     "github_url": "/link/auth/github",
     "github_token": "/link/access/github",
-    "trello_url": "/link/auth/trello"
+    "trello_url": "/link/auth/trello",
+    "twitch_url": "/link/auth/twitch",
+    "slack_url": "/link/auth/slack",
+    "slack_token":"/link/access/slack",
+    "yammer_token":"/link/access/yammer",
+    "yammer_url": "/link/auth/yammer"
 }

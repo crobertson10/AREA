@@ -2,14 +2,10 @@ import React from "react";
 import { Switch, BrowserRouter, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "Pages/Login/Login";
+import Mobile from "Pages/MobilePage/Mobile";
 import PrivateRoute from "./Components/Routes/PrivateRoutes";
 import Dashboard from "Pages/Dashboard/Dashboard";
-import {
-  BrowserView,
-  MobileView,
-  isBrowser,
-  isMobile
-} from "react-device-detect";
+import { BrowserView, MobileView } from "react-device-detect";
 import "./App.css";
 
 function App() {
@@ -24,7 +20,12 @@ function App() {
         </BrowserRouter>
       </BrowserView>
       <MobileView>
-        <h1>coucou</h1>
+        <BrowserRouter>
+          <Switch>
+            <Route exact component={Mobile} path="/client.apk" />
+            <Route exact component={Mobile} path="/" />
+          </Switch>
+        </BrowserRouter>
       </MobileView>
     </div>
   );

@@ -61,6 +61,38 @@ function Dashboard({ navigation }) {
                 onPress={() => navigation.navigate('Slack')}
             />
             <AREATouchableOpacity
+                text={'Create your AREA'}
+                alignSelf={'stretch'}
+                backgroundColor={'#00FFFF'}
+                borderRadius={20}
+                marginRight={10}
+                marginLeft={10}
+                marginTop={10}
+                padding={5}
+                paddingLeft={10}
+                fontSize={20}
+                fontWeight={'bold'}
+                color={'#ffffff'}
+                textAlign={'center'}
+                onPress={() => navigation.navigate('Zap')}
+            />
+            <AREATouchableOpacity
+                text={'Display my AREA'}
+                alignSelf={'stretch'}
+                backgroundColor={'#00FFFF'}
+                borderRadius={20}
+                marginRight={10}
+                marginLeft={10}
+                marginTop={10}
+                padding={5}
+                paddingLeft={10}
+                fontSize={20}
+                fontWeight={'bold'}
+                color={'#ffffff'}
+                textAlign={'center'}
+                onPress={() => navigation.navigate('ShowZap')}
+            />
+            <AREATouchableOpacity
                 text={'Option'}
                 alignSelf={'stretch'}
                 backgroundColor={'#0000ff'}

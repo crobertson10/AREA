@@ -1,0 +1,4 @@
+avoir les services ou t'es enregistré lors de la co : {url}/info/services avec data => authToken:"accesssToken"
+avoir les actoin lié au service selectionné: {url}/info/actions data => authToken:"accesssToken" +  service: "le serve selectionné"
+avoir les reactoin lié au service  reaction selectionné: {url}/info/reactions data => authToken:"accesssToken" +  service: "le service REACTION" + actionService: "service ACTION selectionné" + actionName:"ACTION selectionné"
+crée le ZAP {url}/zap/save data=> authToken:"accesssToken" + serviceA:"service Action selectionné" + serviceR:"service REaction selectionné" + nameA: "Action selected" + nameR: "REAction selected" + data1:"input Action" + data2"input REAction"

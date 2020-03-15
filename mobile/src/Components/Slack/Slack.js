@@ -22,6 +22,7 @@ function Slack({ navigation }) {
     function isRedirecting(navState) {
         let code = '';
         let split = '';
+        let auth = '';
 
         if (!navState.url || stop)
             return;
@@ -34,9 +35,26 @@ function Slack({ navigation }) {
                 data: {
                     code: code[1],
                 }
-            }).then(res => {
+            }).then(async res => {
                 console.log(res.data);
-                AsyncStorage.setItem('slack-token', res.data.slack_token);
+                await AsyncStorage.setItem('slack-token', res.data.slack_token);
+                await AsyncStorage.getItem('AreaToken')
+                .then(value => {
+                    auth = value;
+                })
+                console.log('VALUE: ', auth);
+                await Axios(`${config.address}/api/user/save`, {
+                    method: 'POST',
+                    data: {
+                        authToken: auth,
+                        token: res.data.slack_token,
+                        service: 'Slack'
+                    }
+                }).then(res => {
+                    console.log(res.data);
+                }).catch(err => {
+                    console.log(err);
+                })
                 navigation.navigate('Option');
             }).catch(err => {
                 console.log(err);

@@ -18,23 +18,23 @@ services:
     restart: always
     ports:
     - 8081:8081
-    # depends_on:
-    #   - client_mobile
-    #   - server
+    depends_on:
+      - client_mobile
+      - server
     volumes:
     - ./web:/web
     - /web/node_modules
-    - apk:/web/public/client_apk
+    - apk:/web/public/client_apk_final/:ro
     networks:
       - webappnetwork
-  # client_mobile:
-  #   build: ./mobile
-  #   volumes:
-  #   - ./mobile:/mobile
-  #   - /mobile/node_modules
-  #   - apk:/mobile/android/app/build/outputs/apk/debug
-  #   networks:
-  #     - webappnetwork
+  client_mobile:
+    build: ./mobile
+    volumes:
+    - ./mobile:/mobile
+    - /mobile/node_modules
+    - apk:/mobile/android/app/build/outputs/apk/release/:rw
+    networks:
+      - webappnetwork
   mongodb:
     image: mongo
     restart: always

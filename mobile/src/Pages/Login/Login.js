@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollView, KeyboardAvoidingView, Alert } from 'react-native';
+import { ScrollView, KeyboardAvoidingView, Alert, View, Text } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import AREATouchableOpacity from '../../Components/AREATouchableOpacity/AREATouchableOpacity';
 import AREAInput from '../../Components/AREAInput/AREAInput';
@@ -9,6 +9,7 @@ import config from '../../../config.json';
 function Login({ navigation }) {
   const [email, setEmail] = useState('fred@fred.fr');
   const [password, setPassword] = useState('fred');
+  const [toto, setToto] = useState('');
 
   function login() {
     const data = {
@@ -17,7 +18,7 @@ function Login({ navigation }) {
     };
     console.log('toto');
     console.log(`${config.address}${config.login}`);
-
+    //setToto(`${config.address}${config.login}`);
     axios(`${config.address}${config.login}`, {
       method: 'POST',
       data
@@ -101,6 +102,11 @@ function Login({ navigation }) {
           onPress={() => navigation.navigate('Register')}
         />
       </KeyboardAvoidingView>
+      <View>
+        <Text>
+        {toto}
+        </Text>
+      </View>
     </ScrollView>
   );
 }

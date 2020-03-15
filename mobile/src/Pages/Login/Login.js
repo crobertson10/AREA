@@ -15,6 +15,8 @@ function Login({ navigation }) {
       email,
       password
     };
+    console.log('toto');
+    console.log(`${config.address}${config.login}`);
 
     axios(`${config.address}${config.login}`, {
       method: 'POST',

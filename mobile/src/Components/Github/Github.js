@@ -23,6 +23,7 @@ function Github({navigation}) {
 
     function isRedirecting(navState) {
         let code = '';
+        let auth = '';
         const data = {};
 
         if (!navState.url || stop)
@@ -33,8 +34,25 @@ function Github({navigation}) {
             Axios(`${config.address}${config.github_token}`, {
                 method: 'POST',
                 data
-            }).then(res => {
-                AsyncStorage.setItem('github-token', res.data.github_token);
+            }).then(async res => {
+                await AsyncStorage.setItem('github-token', res.data.github_token);
+                await AsyncStorage.getItem('AreaToken')
+                .then(value => {
+                    auth = value;
+                })
+                console.log('VALUE: ', auth);
+                await Axios(`${config.address}/api/user/save`, {
+                    method: 'POST',
+                    data: {
+                        authToken: auth,
+                        token: res.data.github_token,
+                        service: 'Github'
+                    }
+                }).then(res => {
+                    console.log(res.data);
+                }).catch(err => {
+                    console.log(err);
+                })
                 navigation.navigate('Option');
             }).catch(err => {
                 console.log(err);
@@ -49,7 +67,6 @@ function Github({navigation}) {
             ref={ref => setWebView(ref)}
             onNavigationStateChange={navState => {isRedirecting(navState)}}
             source={{ uri: (url !== '' ? url : '') }}
-            incognito={true}
         />
     )
 }

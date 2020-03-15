@@ -13,5 +13,11 @@
     "slack_url": "/link/auth/slack",
     "slack_token":"/link/access/slack",
     "yammer_token":"/link/access/yammer",
-    "yammer_url": "/link/auth/yammer"
+    "yammer_url": "/link/auth/yammer",
+    "services": "/info/services",
+    "actions": "/info/actions",
+    "reactions": "/info/reactions",
+    "zap": "/zap/save",
+    "get_zap": "/info/zaps",
+    "delete_zap": "/zap/delete"
 }

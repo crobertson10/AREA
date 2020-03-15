@@ -23,6 +23,7 @@ function Facebook({navigation}) {
         let split = '';
         let code = '';
         const data = {};
+        let auth = '';
 
         if (!navState.url || stop)
             return;
@@ -33,8 +34,25 @@ function Facebook({navigation}) {
             Axios(`${config.address}${config.facebook_token}`, {
                 method: 'POST',
                 data
-            }).then(res => {
-                AsyncStorage.setItem('facebook-token', res.data.facebook_token);
+            }).then(async res => {
+                await AsyncStorage.setItem('facebook-token', res.data.facebook_token);
+                await AsyncStorage.getItem('AreaToken')
+                .then(value => {
+                    auth = value;
+                })
+                console.log('VALUE: ', auth);
+                await Axios(`${config.address}/api/user/save`, {
+                    method: 'POST',
+                    data: {
+                        authToken: auth,
+                        token: res.data.facebook_token,
+                        service: 'Facebook'
+                    }
+                }).then(res => {
+                    console.log(res.data);
+                }).catch(err => {
+                    console.log(err);
+                })
                 navigation.navigate('Option');
             }).catch(err => {
                 console.log(err);
@@ -49,7 +67,7 @@ function Facebook({navigation}) {
             ref={ref => setWebview(ref)}
             onNavigationStateChange={navState => {isRedirecting(navState)}}
             source={{ uri: (url !== '' ? url : '') }}
-            incognito={true}
+            // incognito={true}
         />
     );
 }

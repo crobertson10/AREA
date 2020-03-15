@@ -15,7 +15,7 @@ function Mobile(...props) {
           style={{ width: "380px" }}
           positive
           as="a"
-          href="client_apk/app-release.apk"
+          href="client_apk_final/app-release.apk"
           download
         >
           Download the APK

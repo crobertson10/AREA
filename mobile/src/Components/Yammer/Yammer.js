@@ -21,6 +21,7 @@ function Yammer({ navigation }) {
 
     function isRedirecting(navState) {
         let code = '';
+        let auth = '';
 
         if (!navState.url || stop)
             return;
@@ -32,9 +33,26 @@ function Yammer({ navigation }) {
                 data: {
                     code: code[1],
                 }
-            }).then(res => {
+            }).then(async res => {
                 console.log(res.data);
-                AsyncStorage.setItem('yammer-token', res.data.yammer_token);
+                await AsyncStorage.setItem('yammer-token', res.data.yammer_token);
+                await AsyncStorage.getItem('AreaToken')
+                .then(value => {
+                    auth = value;
+                })
+                console.log('VALUE: ', auth);
+                await Axios(`${config.address}/api/user/save`, {
+                    method: 'POST',
+                    data: {
+                        authToken: auth,
+                        token: res.data.yammer_token,
+                        service: 'Yammer'
+                    }
+                }).then(res => {
+                    console.log(res.data);
+                }).catch(err => {
+                    console.log(err);
+                })
                 navigation.navigate('Option');
             }).catch(err => {
                 console.log(err);

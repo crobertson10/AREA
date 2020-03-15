@@ -11,14 +11,14 @@ router.post("/github/create", (req, res)=> {
             "Authorization": `token ${token}`
         },
         data: {
-            "name": req.body.repo,
+            "name": req.body.data1,
             "private": false,
             "auto_init": true
         }
     }).then((resp)=> {
         console.log(resp);
         
-        res.send(`Success: ${req.body.repo} created`);
+        res.send(`Success: ${req.body.data1} created`);
     }).catch((err) => {
         console.log(err);
         res.status(400).send("Error")
@@ -34,7 +34,7 @@ router.post("/github/invit", (req, res)=> {
             "Authorization": `token ${token}`
         },
     }).then((resp)=> {
-        let murl = `https://api.github.com/repos/${resp.data.login}/${req.body.repo}/collaborators/${req.body.user}`;
+        let murl = `https://api.github.com/repos/${resp.data.login}/${req.body.data1}/collaborators/${req.body.data2}`;
         axios({
             method: 'put',
             url: murl,
@@ -44,17 +44,17 @@ router.post("/github/invit", (req, res)=> {
         })
         .then((resp)=>{
             console.log(resp);
-            res.send(`Success: ${req.body.user} invited to ${req.body.repo}`);
+            res.send(`Success: ${req.body.data2} invited to ${req.body.data1}`);
         })
         .catch((err)=>{
             console.log(err);
-            res.status(400).send("Error")
+            res.status(400).send("Errrrror")
             
         });
     })
     .catch((err) => {
         console.log(err);
-        res.status(400).send("Error")
+        res.status(400).send("Errorrrrr")
     })
 });
 
@@ -67,7 +67,7 @@ router.post("/github/kick", (req, res)=> {
             "Authorization": `token ${token}`
         },
     }).then((resp)=> {
-        let murl = `https://api.github.com/repos/${resp.data.login}/${req.body.repo}/collaborators/${req.body.user}`;
+        let murl = `https://api.github.com/repos/${resp.data.login}/${req.body.data1}/collaborators/${req.body.data2}`;
         axios({
             method: 'delete',
             url: murl,
@@ -77,7 +77,7 @@ router.post("/github/kick", (req, res)=> {
         })
         .then((resp)=>{
             console.log(resp);
-            res.send(`Success: ${req.body.user} kicked of ${req.body.repo}`);
+            res.send(`Success: ${req.body.data2} kicked of ${req.body.data1}`);
         })
         .catch((err)=>{
             console.log(err);
@@ -100,7 +100,7 @@ router.post("/github/delete", (req, res)=> {
             "Authorization": `token ${token}`
         },
     }).then((resp)=> {
-        let murl = `https://api.github.com/repos/${resp.data.login}/${req.body.repo}`;
+        let murl = `https://api.github.com/repos/${resp.data.login}/${req.body.data1}`;
         axios({
             method: 'delete',
             url: murl,
@@ -110,7 +110,7 @@ router.post("/github/delete", (req, res)=> {
         })
         .then((resp)=>{
             console.log(resp);
-            res.send(`Success: ${req.body.repo} deleted`);
+            res.send(`Success: ${req.body.data1} deleted`);
         })
         .catch((err)=>{
             console.log(err);
@@ -124,7 +124,7 @@ router.post("/github/delete", (req, res)=> {
     })
 });
 
-router.post("/github/transfer", (req, res)=> {
+router.post("/github/tranfer", (req, res)=> {
     let token = req.body.token;
     axios({
         method: 'get',
@@ -133,7 +133,7 @@ router.post("/github/transfer", (req, res)=> {
             "Authorization": `token ${token}`
         },
     }).then((resp)=> {
-        let murl = `https://api.github.com/repos/${resp.data.login}/${req.body.repo}/transfer`;
+        let murl = `https://api.github.com/repos/${resp.data.login}/${req.body.data1}/transfer`;
         axios({
             method: 'post',
             url: murl,
@@ -141,12 +141,12 @@ router.post("/github/transfer", (req, res)=> {
                 "Authorization": `token ${token}`
             },
             data: {
-                "new_owner": req.body.user
+                "new_owner": req.body.channel
             }
         })
         .then((resp)=>{
             console.log(resp);
-            res.send(`Success: ${req.body.repo} deleted`);
+            res.send(`Success: ${req.body.data1} trafered`);
         })
         .catch((err)=>{
             console.log(err);

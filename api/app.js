@@ -9,6 +9,8 @@ const cors = require("cors");
 const createError = require('http-errors');
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
+const infoRouter = require("./routes/info");
+const adminRouter = require("./routes/admin");
 const authRouter = require("./routes/auth");
 const trelloRouter = require("./test/auth/Trello/Trello");
 const githubRouter = require("./test/auth/Github/Github");
@@ -22,10 +24,17 @@ const reactionGithub = require("./reaction/github");
 const reactionSlack = require("./reaction/slack");
 const weather = require("./test/weather/Weather");
 
+const zapSaveRouter = require("./action/save");
+const slackAction = require("./action/slack");
+const githubAction = require("./action/github");
+const initAction = require("./action/init");
+const initReaction = require("./reaction/init");
+
 const nasa = require("./test/weather/Nasa");
 
 const timer = require("./test/weather/Timer");
 
+const cron = require("./cron");
 
 const app = express();
 
@@ -45,6 +54,10 @@ mongoose
     console.log(err);
   });
 
+initAction();
+initReaction();
+cron.start();
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
@@ -56,6 +69,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
+app.use("/admin", adminRouter);
+app.use("/info", infoRouter);
 app.use("/users", usersRouter);
 app.use("/api/user", authRouter);
 app.use("/link", trelloRouter);
@@ -64,9 +79,12 @@ app.use("/link", githubRouter);
 app.use("/link", twitchRouter);
 app.use("/link", yammerRouter);
 app.use("/link", facebookRouter);
-app.use("/action", reactionGithub);
-app.use("/action", reactionSlack);
-app.use("/action", reactionTrello);
+app.use("/reaction", reactionGithub);
+app.use("/reaction", reactionSlack);
+app.use("/reaction", reactionTrello);
+app.use("/action", slackAction);
+app.use("/action", githubAction);
+app.use("/zap", zapSaveRouter)
 app.use("/widget", weather);
 
 app.use("/widget", nasa);

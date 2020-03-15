@@ -71,7 +71,7 @@ router.post("/trello/board/create", (req, res) => {
         method: "POST",
         url: 'https://api.trello.com/1/boards/',
         qs: {
-            name: req.body.name,
+            name: req.body.data1,
             defaultLabels: 'true',
             defaultLists: 'true',
             keepFromSource: 'none',
@@ -107,7 +107,7 @@ router.post("/trello/board/delete", async (req, res) => {
     }
     else {
         console.log(my_id);
-        var board = await getBoardId(req.body.token, req.body.name, my_id);
+        var board = await getBoardId(req.body.token, req.body.data1, my_id);
         if (!board) {
             res.status(400).send("Can't get board id");
         }
@@ -135,25 +135,21 @@ router.post("/trello/board/delete", async (req, res) => {
     }
 }) 
 
-router.post("/trello/user", async (req, res) => {
+router.post("/trello/user/invit", async (req, res) => {
     var method = 'PUT';
     var option = {type: 'normal'};
-    if (req.body.delete === true) {
-        method = 'DELETE'
-        options = null;
-    }
     my_id = await getMemberId(req.body.token, "you");
     if (!my_id) {
         res.status(400).send("Can't get your id");
     }
     else {
         console.log(my_id);
-        board_id = await getBoardId(req.body.token, req.body.name, my_id);
+        board_id = await getBoardId(req.body.token, req.body.data1, my_id);
         if (!board_id) {
             res.status(400).send("Can't get board id");
         } else {
             console.log(board_id);
-            member_id = await getMemberId(req.body.token, req.body.user);
+            member_id = await getMemberId(req.body.token, req.body.data2);
             if (!member_id) {
                 res.status(400).send("Can't get member id");                
             } else {
@@ -165,6 +161,46 @@ router.post("/trello/user", async (req, res) => {
                     headers: {'content-type': 'application/json'}
                 };
                   
+                request(options, function (error, response, body) {
+                    if (error) {
+                        console.log(error);
+                        res.status(400).send(error);
+                    }
+                    else {
+                        console.log(response);
+                        res.send("Success");
+                    }
+                });                            
+            }
+        }
+    }
+})
+
+router.post("/trello/user/delete", async (req, res) => {
+    method = 'DELETE'
+    options = null;
+    my_id = await getMemberId(req.body.token, "you");
+    if (!my_id) {
+        res.status(400).send("Can't get your id");
+    }
+    else {
+        console.log(my_id);
+        board_id = await getBoardId(req.body.token, req.body.data1, my_id);
+        if (!board_id) {
+            res.status(400).send("Can't get board id");
+        } else {
+            console.log(board_id);
+            member_id = await getMemberId(req.body.token, req.body.data2);
+            if (!member_id) {
+                res.status(400).send("Can't get member id");                
+            } else {
+                console.log(member_id);
+                var options = {
+                    method: method,
+                    url: `https://api.trello.com/1/boards/${board_id}/members/${member_id}`,
+                    qs: {type: 'normal', key: process.env.TRELLO_API_KEY, token: req.body.token},
+                    headers: {'content-type': 'application/json'}
+                };
                 request(options, function (error, response, body) {
                     if (error) {
                         console.log(error);

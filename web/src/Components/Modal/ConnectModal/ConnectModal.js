@@ -9,7 +9,7 @@ import TwitchButton from "../../Button/TwitchButton/TwitchButton";
 import SlackButton from "../../Button/SlackButton/SlackButton";
 import FacebookButton from "../../Button/FacebookButton/FacebookButton";
 import Axios from "axios";
-import {url} from "../../../Utils/Utils";
+import { url } from "../../../Utils/Utils";
 
 function ConnectModal(props) {
   const [trelloCo, setTrelloCo] = useState(false);
@@ -31,10 +31,18 @@ function ConnectModal(props) {
           code: token[1]
         }
       })
-        .then(res => {
+        .then(async res => {
           console.log(res.data.yammer_token);
           localStorage.setItem("yammer-token", res.data.yammer_token);
           localStorage.removeItem("service");
+          await Axios(`${url.local}api/user/save`, {
+            method: "POST",
+            data: {
+              authToken: localStorage.getItem("accessToken"),
+              token: res.data.yammer_token,
+              service: "Yammer"
+            }
+          });
           window.close();
           window.reload();
         })
@@ -58,10 +66,18 @@ function ConnectModal(props) {
           code: hash[1]
         }
       })
-        .then(res => {
+        .then(async res => {
           console.log(res.data.slack_token);
           localStorage.setItem("slack-token", res.data.slack_token);
           localStorage.removeItem("service");
+          await Axios(`${url.local}api/user/save`, {
+            method: "POST",
+            data: {
+              authToken: localStorage.getItem("accessToken"),
+              token: res.data.slack_token,
+              service: "Slack"
+            }
+          });
           window.close();
           window.reload();
         })
@@ -85,10 +101,18 @@ function ConnectModal(props) {
         data: {
           code: hash[1]
         }
-      }).then(res => {
+      }).then(async res => {
         console.log(res.data.twitch_token);
         localStorage.setItem("twitch-token", res.data.twitch_token);
         localStorage.removeItem("service");
+        await Axios(`${url.local}api/user/save`, {
+          method: "POST",
+          data: {
+            authToken: localStorage.getItem("accessToken"),
+            token: res.data.twitch_token,
+            service: "Twitch"
+          }
+        });
         window.close();
         window.reload();
       });
@@ -97,30 +121,37 @@ function ConnectModal(props) {
 
   function setFacebookToken() {
     if (
-        localStorage.getItem('service') != null &&
-        localStorage.getItem('service') === 'Facebook'
+      localStorage.getItem("service") != null &&
+      localStorage.getItem("service") === "Facebook"
     ) {
-        let token = window.location.href.split('?');
-        console.log(token);
-        let hash = token[1].split('code=');
-        console.log(hash);
-        Axios(`${url.local}link/access/facebook`, {
-          method: 'POST',
+      let token = window.location.href.split("?");
+      console.log(token);
+      let hash = token[1].split("code=");
+      console.log(hash);
+      Axios(`${url.local}link/access/facebook`, {
+        method: "POST",
+        data: {
+          code: hash[1]
+        }
+      }).then(async res => {
+        console.log(res.data.facebook_token);
+        localStorage.setItem("facebook-token", res.data.facebook_token);
+        localStorage.removeItem("service");
+        await Axios(`${url.local}api/user/save`, {
+          method: "POST",
           data: {
-            code: hash[1]
+            authToken: localStorage.getItem("accessToken"),
+            token: res.data.facebook_token,
+            service: "Facebook"
           }
-        })
-            .then(res => {
-              console.log(res.data.facebook_token);
-              localStorage.setItem('facebook-token', res.data.facebook_token);
-              localStorage.removeItem('service');
-              window.close();
-              window.reload();
-            })
+        });
+        window.close();
+        window.reload();
+      });
     }
   }
 
-  useEffect(() => {
+  useEffect(async () => {
     setSlackToken();
     setTwitchToken();
     setYammerToken();
@@ -139,6 +170,14 @@ function ConnectModal(props) {
       const splitedToken = token.split("=");
       localStorage.setItem("trello-token", splitedToken[1]);
       localStorage.removeItem("service");
+      await Axios(`${url.local}api/user/save`, {
+        method: "POST",
+        data: {
+          authToken: localStorage.getItem("accessToken"),
+          token: splitedToken[1],
+          service: "Trello"
+        }
+      });
       window.close();
       window.location.reload();
     }
@@ -153,9 +192,17 @@ function ConnectModal(props) {
           code: token[1]
         }
       })
-        .then(res => {
+        .then(async res => {
           localStorage.setItem("github-token", res.data.github_token);
           localStorage.removeItem("service");
+          await Axios(`${url.local}api/user/save`, {
+            method: "POST",
+            data: {
+              authToken: localStorage.getItem("accessToken"),
+              token: res.data.github_token,
+              service: "Github"
+            }
+          });
           window.close();
           window.reload();
         })
@@ -164,6 +211,7 @@ function ConnectModal(props) {
         });
     }
   }, []);
+
   return (
     <Modal className="ConnectModal" {...props}>
       <Modal.Header className="ConnectHeadMod">

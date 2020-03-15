@@ -1,5 +1,4 @@
 import React from "react";
-import Logo from "Assets/logo.png";
 import Form from "Components/Form/LogForm/LogForm";
 import { Modal } from "react-bootstrap";
 import "./LogModal.css";
@@ -7,10 +6,10 @@ import "./LogModal.css";
 function LogModal(props) {
   return (
     <Modal className="Modal" {...props}>
-      <Modal.Header className="HeadMod">
-        <img src={Logo} alt="" className="logoMod"></img>
+      <Modal.Header className="DisconnectHeadMod">
+        Please enter your Ids
       </Modal.Header>
-      <Modal.Body className="LogBodyMod">
+      <Modal.Body className="DisconnectBodyMod">
         <Form></Form>
       </Modal.Body>
     </Modal>

@@ -1,0 +1,13 @@
+.mobileContainer {
+  color: blueviolet;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: auto;
+}
+
+.logoMob {
+  height: 200px;
+  width: 200px;
+  margin: 40px 20px 40px 20px;
+}

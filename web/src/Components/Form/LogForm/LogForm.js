@@ -45,7 +45,7 @@ function LogForm(props) {
         <Form.Label className="Typo">Password</Form.Label>
         <Form.Control type="password" placeholder="Password" onChange={passW} />
       </Form.Group>
-      <Button className="LogFormButton" onClick={submit}>
+      <Button className="TrelloButton" onClick={submit}>
         Submit
       </Button>
     </Form>

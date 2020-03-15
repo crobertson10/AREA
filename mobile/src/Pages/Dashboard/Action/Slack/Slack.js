@@ -1,4 +1,5 @@
-import React, { useState, AsyncStorage } from 'react';
+import React, { useState } from 'react';
+import AsyncStorage from '@react-native-community/async-storage';
 import AREATouchableOpacity from '../../../../Components/AREATouchableOpacity/AREATouchableOpacity';
 import AREAInput from '../../../../Components/AREAInput/AREAInput';
 import AREAText from '../../../../Components/AREAText/AREAText';
@@ -11,10 +12,11 @@ function Slack({ navigation }) {
     const [conv, setConv] = useState();
 
     const addr = Config.address;
-    function createConv() {
+    async function createConv() {
+        let tmpToken = await AsyncStorage.getItem("slack-token");
         axios.post(`${addr}/action/slack/create`, {
-            token: localStorage.getItem("slack-token"),
-            name: conv
+            token: tmpToken,
+            name: conv.toLowerCase()
         })
             .then(function (response) {
                 Alert.alert('Creating Conversation', `Success: ${response.data}`, [{ text: 'OK' }])
@@ -25,10 +27,11 @@ function Slack({ navigation }) {
                 console.log(error);
             });
     };
-    function sendingMessage() {
+    async function sendingMessage() {
+        let tmpToken = await AsyncStorage.getItem("slack-token");
         axios.post(`${addr}/action/slack/send`, {
-            token: localStorage.getItem("slack-token"),
-            name: conv,
+            token: tmpToken,
+            name: conv.toLowerCase(),
             message: mess
         })
             .then(function (response) {

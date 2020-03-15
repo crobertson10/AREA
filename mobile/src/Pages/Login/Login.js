@@ -1,30 +1,38 @@
-import React, {useState} from 'react';
-import {ScrollView, KeyboardAvoidingView} from 'react-native';
+import React, { useState } from 'react';
+import { ScrollView, KeyboardAvoidingView, Alert, View, Text } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import AREATouchableOpacity from '../../Components/AREATouchableOpacity/AREATouchableOpacity';
 import AREAInput from '../../Components/AREAInput/AREAInput';
 import axios from 'react-native-axios';
 import config from '../../../config.json';
 
-function Login({navigation}) {
-  const [email, setEmail] = useState('clement.scherpereel@epitech.eu');
-  const [password, setPassword] = useState('toto');
+function Login({ navigation }) {
+  const [email, setEmail] = useState('fred@fred.fr');
+  const [password, setPassword] = useState('fred');
+  const [toto, setToto] = useState('');
 
-   function login () {
+  function login() {
     const data = {
       email,
       password
     };
-
+    console.log('toto');
+    console.log(`${config.address}${config.login}`);
+    //setToto(`${config.address}${config.login}`);
     axios(`${config.address}${config.login}`, {
       method: 'POST',
       data
     }).then(res => {
       console.log(res.data);
-      AsyncStorage.setItem("AreaToken", res.data.authToken);
-      navigation.navigate('Dashboard');
+      if (res.status == 200) {
+        AsyncStorage.setItem("AreaToken", res.data.authToken);
+        navigation.navigate('Dashboard');
+      }
     }).catch(err => {
       console.log(err);
+      if (err.status != 200) {
+        Alert.alert('Login', `Error: Bad Creditentials`, [{ text: 'OK' }])
+      }
     })
   }
 
@@ -94,6 +102,11 @@ function Login({navigation}) {
           onPress={() => navigation.navigate('Register')}
         />
       </KeyboardAvoidingView>
+      <View>
+        <Text>
+        {toto}
+        </Text>
+      </View>
     </ScrollView>
   );
 }

@@ -1,80 +1,101 @@
-import React, { useState, AsyncStorage } from 'react';
+import React, { useState } from 'react';
 import AREATouchableOpacity from '../../../../Components/AREATouchableOpacity/AREATouchableOpacity';
 import AREAInput from '../../../../Components/AREAInput/AREAInput';
 import AREAText from '../../../../Components/AREAText/AREAText';
 import { ScrollView, KeyboardAvoidingView, Alert } from 'react-native';
-import axios from 'react-native-axios';
-import Config from '../../../../../config.json'
+import Axios from 'react-native-axios';
+import Config from '../../../../../config.json';
+import AsyncStorage from '@react-native-community/async-storage';
 
 function Trello({ navigation }) {
-    const [boardName, setBoardName] = useState('');
-    const [emailMate, setEmailMate] = useState('');
-    const addr = Config.address;
+  const [boardName, setBoardName] = useState('');
+  const [emailMate, setEmailMate] = useState('');
+  const addr = Config.address;
 
-    function createBoard() {
-        axios.post(`${addr}/action/trello/board/create`, {
-            token: AsyncStorage.getItem("trello-token"),
-            name: boardName
-        })
-            .then(function (response) {
-                console.log(response);
-                Alert.alert('Creating Board ', `Success: ${response.data}`, [{ text: 'OK' }])
-            })
-            .catch(function (error) {
-                console.log(error);
-                Alert.alert('Creating Board ', `${error}`, [{ text: 'OK' }])
-            });
-    };
-    function DeleteBoard() {
-        Axios.post(`${addr}/action/trello/board/delete`, {
-            token: AsyncStorage.getItem("trello-token"),
-            name: boardName
-        })
-            .then(function (response) {
-                Alert.alert('Deleting Board ', `Success: ${response.data}`, [{ text: 'OK' }])
-                console.log(response);
-            })
-            .catch(function (error) {
-                Alert.alert('Deleting Board ', `${error}`, [{ text: 'OK' }])
-                console.log(error);
-            });
-    };
-    function addingMate() {
-        Axios.post(`${addr}/action/trello/user`, {
-            token: AsyncStorage.getItem("trello-token"),
-            name: boardName,
-            user: mateName,
-            delete: false
-        })
-            .then(function (response) {
-                Alert.alert('Adding mate to Board ', `Success: ${response.data}`, [{ text: 'OK' }])
-                console.log(response);
-            })
-            .catch(function (error) {
-                Alert.alert('Adding mate to Board ', ` ${error}`, [{ text: 'OK' }])
-                console.log(error);
-            });
-    }
-    function deletingMate() {
-        Axios.post(`${addr}/action/trello/user`, {
-            token: AsyncStorage.getItem("trello-token"),
-            name: boardName,
-            user: mateName,
-            delete: true
-        })
-            .then(function (response) {
-                Alert.alert('Deleting mate to Board ', `Success: ${response.data}`, [{ text: 'OK' }])
-                console.log(response);
-            })
-            .catch(function (error) {
-                Alert.alert('Deleting mate to Board ', `${error}`, [{ text: 'OK' }])
-                console.log(error);
-            });
-    };
+  async function createBoard() {
+    let toto = '';
+    await AsyncStorage.getItem('trello-token')
+      .then(value => {
+        toto = value;
+      })
+    Axios.post(`${addr}/action/trello/board/create`, {
+      token: toto,
+      name: boardName
+    })
+      .then(function (response) {
+        console.log(response);
+        Alert.alert('Creating Board ', `Success: ${response.data}`, [{ text: 'OK' }])
+      })
+      .catch(function (error) {
+        console.log(error);
+        Alert.alert('Creating Board ', `${error}`, [{ text: 'OK' }])
+      });
+  };
+  async function DeleteBoard() {
+    let toto = '';
+    await AsyncStorage.getItem('trello-token')
+      .then(value => {
+        toto = value;
+      })
+    Axios.post(`${addr}/action/trello/board/delete`, {
+      token: toto,
+      name: boardName
+    })
+      .then(function (response) {
+        Alert.alert('Deleting Board ', `Success: ${response.data}`, [{ text: 'OK' }])
+        console.log(response);
+      })
+      .catch(function (error) {
+        Alert.alert('Deleting Board ', `${error}`, [{ text: 'OK' }])
+        console.log(error);
+      });
+  };
+  async function addingMate() {
+    let toto = '';
+    await AsyncStorage.getItem('trello-token')
+      .then(value => {
+        toto = value;
+      })
+    Axios.post(`${addr}/action/trello/user`, {
+      token: toto,
+      name: boardName,
+      user: emailMate,
+      delete: false
+    })
+      .then(function (response) {
+        Alert.alert('Adding mate to Board ', `Success: ${response.data}`, [{ text: 'OK' }])
+        console.log(response);
+      })
+      .catch(function (error) {
+        Alert.alert('Adding mate to Board ', ` ${error}`, [{ text: 'OK' }])
+        console.log(error);
+      });
+  }
+  async function deletingMate() {
+    let toto = '';
+    await AsyncStorage.getItem('trello-token')
+      .then(value => {
+        toto = value;
+      })
+    Axios.post(`${addr}/action/trello/user`, {
+      token: toto,
+      name: boardName,
+      user: emailMate,
+      delete: true
+    })
+      .then(function (response) {
+        Alert.alert('Deleting mate to Board ', `Success: ${response.data}`, [{ text: 'OK' }])
+        console.log(response);
+      })
+      .catch(function (error) {
+        Alert.alert('Deleting mate to Board ', `${error}`, [{ text: 'OK' }])
+        console.log(error);
+      });
+  };
 
 
-    return(
-        <ScrollView>
+  return (
+    <ScrollView>
       <AREAText
         text={"DELETE / CREATE BOARD"}
         justifyContent={'center'}
@@ -136,7 +157,7 @@ function Trello({ navigation }) {
         alignItems={'center'}
         alignSelf={'center'}
         fontWeight={'bold'}
-        marginTop={30} 
+        marginTop={30}
         fontSize={15}
       />
       <AREAInput
@@ -187,7 +208,7 @@ function Trello({ navigation }) {
         onPress={() => deletingMate()}
       />
     </ScrollView>
-    );
+  );
 };
 
 export default Trello;

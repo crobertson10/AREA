@@ -37,8 +37,8 @@ function Login(...props) {
           <Weather lol={"Satelite"} show={showSat} />
         </Col>
         <div>
-          <Button positive as="a" href="client_apk/app-release.apk" download>
-            Download APK
+          <Button positive as="a" href="client_apk_final/app-release.apk" download>
+            Download APK_final
           </Button>
         </div>
         <Col className="noCol" xs={1}>

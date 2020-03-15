@@ -4,15 +4,17 @@ import Axios from 'react-native-axios';
 import config from '../../../config.json';
 import AsyncStorage from '@react-native-community/async-storage';
 
-function Facebook({navigation}) {
+function Github({navigation}) {
     const [url, setUrl] = React.useState('');
-    const [webview, setWebview] = React.useState(null);
+    const [webview, setWebView] = React.useState(null);
     const [stop, setStop] = React.useState(false);
 
     React.useEffect(() => {
-        Axios(`${config.address}${config.facebook_url}`, {
+        console.log(`${config.address}${config.github_url}`);
+        Axios(`${config.address}${config.github_url}`, {
             method: 'GET'
         }).then(res => {
+            console.log(res.data.url);
             setUrl(res.data.url);
         }).catch(err => {
             console.log(err);
@@ -20,21 +22,19 @@ function Facebook({navigation}) {
     }, []);
 
     function isRedirecting(navState) {
-        let split = '';
         let code = '';
         const data = {};
 
         if (!navState.url || stop)
             return;
-        if (navState.url.includes('?code=')) {
-            split = navState.url.split('?');
-            code = split[1].split('code=');
+        if (navState.url.includes('code=')) {
+            code = navState.url.split('=');
             data.code = code[1];
-            Axios(`${config.address}${config.facebook_token}`, {
+            Axios(`${config.address}${config.github_token}`, {
                 method: 'POST',
                 data
             }).then(res => {
-                AsyncStorage.setItem('facebook-token', res.data.facebook_token);
+                AsyncStorage.setItem('github-token', res.data.github_token);
                 navigation.navigate('Option');
             }).catch(err => {
                 console.log(err);
@@ -45,13 +45,13 @@ function Facebook({navigation}) {
     }
 
     return (
-        <WebView
-            ref={ref => setWebview(ref)}
+        <WebView 
+            ref={ref => setWebView(ref)}
             onNavigationStateChange={navState => {isRedirecting(navState)}}
             source={{ uri: (url !== '' ? url : '') }}
             incognito={true}
         />
-    );
+    )
 }
 
-export default Facebook;
+export default Github;

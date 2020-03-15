@@ -13,6 +13,11 @@ import Github from './src/Pages/Dashboard/Action/Github/Github';
 import Trello from './src/Pages/Dashboard/Action/Trello/Trello';
 import Slack from './src/Pages/Dashboard/Action/Slack/Slack';
 import Facebook from './src/Components/Facebook/Facebook';
+import Github_Auth from './src/Components/Github/Github';
+import Trello_Auth from './src/Components/Trello/Trello';
+import Twitch_Auth from './src/Components/Twitch/Twitch';
+import Slack_Auth from './src/Components/Slack/Slack';
+import Yammer_Auth from './src/Components/Yammer/Yammer';
 
 function App() {
   const Stack = createStackNavigator();
@@ -40,7 +45,12 @@ function App() {
         <Stack.Screen name="Github" component={Github}/>
         <Stack.Screen name="Trello" component={Trello}/>
         <Stack.Screen name="Slack" component={Slack}/>
-        <Stack.Screen name="Facebook" component={Facebook}/>
+        <Stack.Screen options={{headerShown: false}} name="Facebook_Auth" component={Facebook}/>
+        <Stack.Screen options={{headerShown: false}} name="Github_Auth" component={Github_Auth}/>
+        <Stack.Screen options={{headerShown: false}} name="Trello_Auth" component={Trello_Auth}/>
+        <Stack.Screen options={{headerShown: false}} name="Slack_Auth" component={Slack_Auth}/>
+        <Stack.Screen options={{headerShown: false}} name="Yammer_Auth" component={Yammer_Auth}/>
+        {/* <Stack.Screen options={{headerShown: false}} name="Twitch_Auth" component={Twitch_Auth}/> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -28,11 +28,11 @@ RUN yarn install
 
 COPY . /mobile/
 
-# CMD keytool -genkey -v -keystore area.keystore -alias area -keyalg RSA -keysize 4096 -validity 10000
-CMD keytool -genkeypair -v -keystore my-upload-key.keystore -alias my-key-alias -keyalg RSA -keysize 4096 -validity 10000
-# RUN cp area.keystore android/app/
-CMD cd android && ./gradlew clean
-CMD npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
-CMD rm -rf android/app/src/main/res/drawable-*
-CMD rm -rf android/app/src/main/res/raw
-CMD cd android && ./gradlew assembleRelease
+RUN keytool -genkeypair -v -keystore my-upload-key.keystore -alias my-key-alias -keyalg RSA -keysize 4096 -validity 10000
+RUN cd android && ./gradlew clean
+RUN rm -rf android/app/src/main/assets
+RUN mkdir android/app/src/main/assets
+RUN npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
+RUN rm -rf android/app/src/main/res/drawable-*
+RUN rm -rf android/app/src/main/res/raw
+RUN cd android && ./gradlew assembleRelease

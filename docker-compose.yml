@@ -32,7 +32,7 @@ services:
     volumes:
     - ./mobile:/mobile
     - /mobile/node_modules
-    - apk:/mobile/android/app/build/outputs/apk/release
+    - apk:/mobile/android/app/build/outputs/apk/debug
     networks:
       - webappnetwork
   mongodb:
